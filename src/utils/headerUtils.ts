@@ -1,8 +1,7 @@
-import { ackPayload } from "../models/interface";
+import { ackPayload, ONDCSubscriber } from "../models/interface";
 import { vLookUp } from "vlookup-ondc";
 import logger from "./logger";
 import { createAuthorizationHeader } from "ondc-crypto-sdk-nodejs";
-import { ONDCSubscriber } from "../models/interface";
 
 const createAuthHeader = async (payload: ackPayload) => {
   try {
@@ -35,33 +34,53 @@ const fetchSubscriberDetails = (header: string) => {
 };
 
 const getPublicKeys = async (header: string, payload: ackPayload) => {
-  const { subscriberId, ukId } = fetchSubscriberDetails(header) || {};
+  try {
+    // Fetching subscriber details and ensuring they exist
+    const { subscriberId, ukId } = fetchSubscriberDetails(header) || {};
 
-  vLookUp({
-    senderSubscriberId: process.env.SUBSCRIBER_ID || "", //subscriber_id of sender
-    privateKey: process.env.SIGN_PRIVATE_KEY || "", //private key of sender in base64 encoding
-    //search parameters of the NP whose details need to be fetched from registry
-    domain: payload.context?.domain,
-    subscriberId: subscriberId || "",
-    country: payload.context?.country,
-    type: "sellerApp", //buyerApp, sellerApp, gateway
-    city: "std:080",
-    env: "preprod", //staging,preprod,prod
-  })
-    .then((res) => {
-      if (typeof res === "string") {
-        const parsedResponse: ONDCSubscriber[] = JSON.parse(res);
-        return parsedResponse[0]["signing_public_key"];
-      }
+    if (
+      !subscriberId ||
+      !payload?.context?.domain ||
+      !payload?.context?.country
+    ) {
+      throw new Error(
+        "Missing required parameters: subscriberId, domain or country"
+      );
+    }
 
-      return res[0]["signing_public_key"];
-    })
-    .catch((err) => {
-      logger.error("Error while fetching public keys!");
-      throw new Error("Error while fetching public keys");
+    // Destructuring environment variables with fallbacks
+    const { SUBSCRIBER_ID = "", SIGN_PRIVATE_KEY = "" } = process.env;
+
+    if (!SUBSCRIBER_ID || !SIGN_PRIVATE_KEY) {
+      throw new Error(
+        "Missing environment variables: SUBSCRIBER_ID or SIGN_PRIVATE_KEY"
+      );
+    }
+
+    // Making the vLookUp request and handling the response
+    const res = await vLookUp({
+      senderSubscriberId: SUBSCRIBER_ID, // subscriber_id of sender
+      privateKey: SIGN_PRIVATE_KEY, // private key of sender in base64 encoding
+      domain: payload.context?.domain,
+      subscriberId: subscriberId, // fetched subscriberId
+      country: payload.context?.country,
+      type: "sellerApp", // type (buyerApp, sellerApp, gateway)
+      city: "std:080", // example city code
+      env: "preprod", // environment (staging, preprod, prod)
     });
 
-  return "";
+    // Parsing response and returning the signing public key
+    if (typeof res === "string") {
+      const parsedResponse: ONDCSubscriber[] = JSON.parse(res);
+      return parsedResponse[0]?.signing_public_key || "";
+    }
+
+    return res[0]?.signing_public_key || "";
+  } catch (error) {
+    // Detailed error logging for easier debugging
+    logger.error("Error while fetching public keys:", error);
+    throw new Error("Error while fetching public keys");
+  }
 };
 
-export { getPublicKeys };
+export { getPublicKeys, createAuthHeader };
