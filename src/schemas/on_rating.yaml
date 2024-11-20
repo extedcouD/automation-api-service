@@ -1,0 +1,397 @@
+type: object
+additionalProperties: false
+properties: &properties
+  context: &properties_context
+    allOf: &properties_context_allOf
+      - &properties_context_allOf_0
+        description: Every API call in beckn protocol has a context. It provides a
+          high-level overview to the receiver about the nature of the intended
+          transaction. Typically, it is the BAP that sets the transaction
+          context based on the consumer's location and action on their UI. But
+          sometimes, during unsolicited callbacks, the BPP also sets the
+          transaction context but it is usually the same as the context of a
+          previous full-cycle, request-callback interaction between the BAP and
+          the BPP. The context object contains four types of fields.
+          <ol><li>Demographic information about the transaction using fields
+          like `domain`, `country`, and `region`.</li><li>Addressing details
+          like the sending and receiving platform's ID and API
+          URL.</li><li>Interoperability information like the protocol version
+          that implemented by the sender and,</li><li>Transaction details like
+          the method being called at the receiver's endpoint, the transaction_id
+          that represents an end-to-end user session at the BAP, a message ID to
+          pair requests with callbacks, a timestamp to capture sending times, a
+          ttl to specifiy the validity of the request, and a key to encrypt
+          information if necessary.</li></ol> This object must be passed in
+          every interaction between a BAP and a BPP. In HTTP/S implementations,
+          it is not necessary to send the context during the synchronous
+          response. However, in asynchronous protocols, the context must be sent
+          during all interactions,
+        type: object
+        additionalProperties: false
+        properties: &properties_context_allOf_0_properties
+          domain: &properties_context_allOf_0_properties_domain
+            description: Domain code that is relevant to this transaction context
+            allOf: &properties_context_allOf_0_properties_domain_allOf
+              - &properties_context_allOf_0_properties_domain_allOf_0
+                type: string
+                description: Standard code representing the domain. The standard is usually
+                  published as part of the network policy. Furthermore, the
+                  network facilitator should also provide a mechanism to provide
+                  the supported domains of a network.
+          location: &properties_context_allOf_0_properties_location
+            description: The location where the transaction is intended to be fulfilled.
+            allOf: &properties_context_allOf_0_properties_location_allOf
+              - &properties_context_allOf_0_properties_location_allOf_0
+                description: The physical location of something
+                type: object
+                additionalProperties: false
+                properties: &properties_context_allOf_0_properties_location_allOf_0_properties
+                  id: &properties_context_allOf_0_properties_location_allOf_0_properties_id
+                    type: string
+                  descriptor: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                    description: Physical description of something.
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties
+                      name: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      short_desc: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      long_desc: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      additional_desc: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_additional_desc
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_additional_desc_properties
+                          url: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                          content_type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      media: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media
+                        type: array
+                        items: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items
+                          description: This object contains a url to a media file.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties
+                            mimetype: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_mimetype
+                              description: indicates the nature and format of the document, file, or
+                                assortment of bytes. MIME types are defined and
+                                standardized in IETF's RFC 6838
+                              type: string
+                            url: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_url
+                              description: The URL of the file
+                              type: string
+                              format: uri
+                            signature: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_signature
+                              description: The digital signature of the file signed by the sender
+                              type: string
+                            dsa: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_dsa
+                              description: The signing algorithm used by the sender
+                              type: string
+                      images: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images
+                        type: array
+                        items: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items
+                          description: Describes an image
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties
+                            url: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_url
+                              description: URL to the image. This can be a data url or an remote url
+                              type: string
+                              format: uri
+                            size_type: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_size_type
+                              description: The size of the image. The network policy can define the default
+                                dimensions of each type
+                              type: string
+                            width: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_width
+                              description: Width of the image in pixels
+                              type: string
+                            height: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_height
+                              description: Height of the image in pixels
+                              type: string
+                  map_url: &properties_context_allOf_0_properties_location_allOf_0_properties_map_url
+                    description: The url to the map of the location. This can be a globally
+                      recognized map url or the one specified by the network
+                      policy.
+                    type: string
+                    format: uri
+                  gps: &properties_context_allOf_0_properties_location_allOf_0_properties_gps
+                    description: The GPS co-ordinates of this location.
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf_0
+                        description: Describes a GPS coordinate
+                        type: string
+                        pattern: ^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$
+                  updated_at: &properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                    type: string
+                    format: date-time
+                  address: &properties_context_allOf_0_properties_location_allOf_0_properties_address
+                    description: The address of this location.
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf_0
+                        description: Describes a postal address.
+                        type: string
+                  city: &properties_context_allOf_0_properties_location_allOf_0_properties_city
+                    description: The city this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0
+                        description: Describes a city
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties_name
+                            description: Name of the city
+                            type: string
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties_code
+                            description: City code
+                            type: string
+                  district: &properties_context_allOf_0_properties_location_allOf_0_properties_district
+                    description: The state this location is, or is located within
+                    type: string
+                  state: &properties_context_allOf_0_properties_location_allOf_0_properties_state
+                    description: The state this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0
+                        description: A bounded geopolitical region of governance inside a country.
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties_name
+                            type: string
+                            description: Name of the state
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties_code
+                            type: string
+                            description: State code as per country or international standards
+                  country: &properties_context_allOf_0_properties_location_allOf_0_properties_country
+                    description: The country this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0
+                        description: Describes a country
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties_name
+                            type: string
+                            description: Name of the country
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties_code
+                            type: string
+                            description: Country code as per ISO 3166-1 and ISO 3166-2 format
+                  area_code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  circle: &properties_context_allOf_0_properties_location_allOf_0_properties_circle
+                    description: Describes a circular region of a specified radius centered at a
+                      specified GPS coordinate.
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties
+                      gps: *properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf_0
+                      radius: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius
+                        description: Describes a scalar
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties
+                          type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                          value: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                            description: Describes a numerical value in decimal form
+                            type: string
+                            pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                          estimated_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          computed_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          range: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_range
+                            type: object
+                            additionalProperties: false
+                            properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_range_properties
+                              min: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                              max: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          unit: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  polygon: &properties_context_allOf_0_properties_location_allOf_0_properties_polygon
+                    description: The boundary polygon of this location
+                    type: string
+                  3dspace: &properties_context_allOf_0_properties_location_allOf_0_properties_3dspace
+                    description: The three dimensional region describing this location
+                    type: string
+                  rating: &properties_context_allOf_0_properties_location_allOf_0_properties_rating
+                    description: The rating of this location
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf_0
+                        description: Rating value given to the object. This can be a single value or can
+                          also contain an inequality operator like gt, gte, lt,
+                          lte. This can also contain an inequality expression
+                          containing logical operators like && and ||.
+                        type: string
+          action: &properties_context_allOf_0_properties_action
+            description: The Beckn protocol method being called by the sender and executed
+              at the receiver.
+            type: string
+          version: &properties_context_allOf_0_properties_version
+            type: string
+            description: Version of transaction protocol being used by the sender.
+          bap_id: &properties_context_allOf_0_properties_bap_id
+            description: Subscriber ID of the BAP
+            allOf: &properties_context_allOf_0_properties_bap_id_allOf
+              - &properties_context_allOf_0_properties_bap_id_allOf_0
+                description: A globally unique identifier of the platform, Typically it is the
+                  fully qualified domain name (FQDN) of the platform.
+                type: string
+          bap_uri: &properties_context_allOf_0_properties_bap_uri
+            description: Subscriber URL of the BAP for accepting callbacks from BPPs.
+            allOf: &properties_context_allOf_0_properties_bap_uri_allOf
+              - &properties_context_allOf_0_properties_bap_uri_allOf_0
+                description: The callback URL of the Subscriber. This should necessarily contain
+                  the same domain name as set in `subscriber_id``.
+                type: string
+                format: uri
+          bpp_id: &properties_context_allOf_0_properties_bpp_id
+            description: Subscriber ID of the BPP
+            allOf: *properties_context_allOf_0_properties_bap_id_allOf
+          bpp_uri: &properties_context_allOf_0_properties_bpp_uri
+            description: Subscriber URL of the BPP for accepting calls from BAPs.
+            allOf: *properties_context_allOf_0_properties_bap_uri_allOf
+          transaction_id: &properties_context_allOf_0_properties_transaction_id
+            description: This is a unique value which persists across all API calls from
+              `search` through `confirm`. This is done to indicate an active
+              user session across multiple requests. The BPPs can use this value
+              to push personalized recommendations, and dynamic offerings
+              related to an ongoing transaction despite being unaware of the
+              user active on the BAP.
+            type: string
+            format: uuid
+          message_id: &properties_context_allOf_0_properties_message_id
+            description: This is a unique value which persists during a request / callback
+              cycle. Since beckn protocol APIs are asynchronous, BAPs need a
+              common value to match an incoming callback from a BPP to an
+              earlier call. This value can also be used to ignore duplicate
+              messages coming from the BPP. It is recommended to generate a
+              fresh message_id for every new interaction. When sending
+              unsolicited callbacks, BPPs must generate a new message_id.
+            type: string
+            format: uuid
+          timestamp: &properties_context_allOf_0_properties_timestamp
+            description: Time of request generation in RFC3339 format
+            type: string
+            format: date-time
+          key: &properties_context_allOf_0_properties_key
+            description: The encryption public key of the sender
+            type: string
+          ttl: &properties_context_allOf_0_properties_ttl
+            description: The duration in ISO8601 format after timestamp for which this
+              message holds valid
+            type: string
+      - &properties_context_allOf_1
+        type: object
+        properties: &properties_context_allOf_1_properties
+          action: &properties_context_allOf_1_properties_action {}
+  message: &properties_message
+    type: object
+    properties: &properties_message_properties
+      feedback_form: &properties_message_properties_feedback_form
+        description: A feedback form to allow the user to provide additional information
+          on the rating provided
+        allOf: &properties_message_properties_feedback_form_allOf
+          - &properties_message_properties_feedback_form_allOf_0
+            description: Contains any additional or extended inputs required to confirm an
+              order. This is typically a Form Input. Sometimes, selection of
+              catalog elements is not enough for the BPP to confirm an order.
+              For example, to confirm a flight ticket, the airline requires
+              details of the passengers along with information on baggage,
+              identity, in addition to the class of ticket. Similarly, a
+              logistics company may require details on the nature of shipment in
+              order to confirm the shipping. A recruiting firm may require
+              additional details on the applicant in order to confirm a job
+              application. For all such purposes, the BPP can choose to send
+              this object attached to any object in the catalog that is required
+              to be sent while placing the order. This object can typically be
+              sent at an item level or at the order level. The item level XInput
+              will override the Order level XInput as it indicates a special
+              requirement of information for that particular item. Hence the BAP
+              must render a separate form for the Item and another form at the
+              Order level before confirmation.
+            type: object
+            additionalProperties: false
+            properties: &properties_message_properties_feedback_form_allOf_0_properties
+              head: &properties_message_properties_feedback_form_allOf_0_properties_head
+                description: Provides the header information for the xinput.
+                type: object
+                additionalProperties: false
+                properties: &properties_message_properties_feedback_form_allOf_0_properties_head_properties
+                  descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                  index: &properties_message_properties_feedback_form_allOf_0_properties_head_properties_index
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_message_properties_feedback_form_allOf_0_properties_head_properties_index_properties
+                      min: &properties_message_properties_feedback_form_allOf_0_properties_head_properties_index_properties_min
+                        type: integer
+                      cur: *properties_message_properties_feedback_form_allOf_0_properties_head_properties_index_properties_min
+                      max: *properties_message_properties_feedback_form_allOf_0_properties_head_properties_index_properties_min
+                  headings: &properties_message_properties_feedback_form_allOf_0_properties_head_properties_headings
+                    type: array
+                    items: &properties_message_properties_feedback_form_allOf_0_properties_head_properties_headings_items
+                      type: string
+                      description: The heading names of the forms
+              form: &properties_message_properties_feedback_form_allOf_0_properties_form
+                description: Describes a form
+                type: object
+                additionalProperties: false
+                properties: &properties_message_properties_feedback_form_allOf_0_properties_form_properties
+                  id: &properties_message_properties_feedback_form_allOf_0_properties_form_properties_id
+                    description: The form identifier.
+                    type: string
+                  url: &properties_message_properties_feedback_form_allOf_0_properties_form_properties_url
+                    description: The URL from where the form can be fetched. The content fetched
+                      from the url must be processed as per the mime_type
+                      specified in this object. Once fetched, the rendering
+                      platform can choosed to render the form as-is as an
+                      embeddable element; or process it further to blend with
+                      the theme of the application. In case the interface is
+                      non-visual, the the render can process the form data and
+                      reproduce it as per the standard specified in the form.
+                    type: string
+                    format: uri
+                  data: &properties_message_properties_feedback_form_allOf_0_properties_form_properties_data
+                    description: The form submission data
+                    type: object
+                    additionalProperties: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  mime_type: &properties_message_properties_feedback_form_allOf_0_properties_form_properties_mime_type
+                    description: This field indicates the nature and format of the form received by
+                      querying the url. MIME types are defined and standardized
+                      in IETF's RFC 6838.
+                    type: string
+                  resubmit: &properties_message_properties_feedback_form_allOf_0_properties_form_properties_resubmit
+                    type: boolean
+                  multiple_sumbissions: *properties_message_properties_feedback_form_allOf_0_properties_form_properties_resubmit
+              form_response: &properties_message_properties_feedback_form_allOf_0_properties_form_response
+                description: Describes the response to a form submission
+                type: object
+                additionalProperties: false
+                properties: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties
+                  status: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_status
+                    description: Contains the status of form submission.
+                    type: string
+                  signature: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  submission_id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  errors: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors
+                    type: array
+                    items: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items
+                      description: Describes an error object that is returned by a BAP, BPP or BG as a
+                        response or callback to an action by another network
+                        participant. This object is sent when any request
+                        received by a network participant is unacceptable. This
+                        object can be sent either during Ack or with the
+                        callback.
+                      type: object
+                      additionalProperties: false
+                      properties: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items_properties
+                        code: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items_properties_code
+                          type: string
+                          description: Standard error code. For full list of error codes, refer to
+                            docs/protocol-drafts/BECKN-005-ERROR-CODES-DRAFT-01.md
+                            of this repo"
+                        paths: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items_properties_paths
+                          type: string
+                          description: Path to json schema generating the error. Used only during json
+                            schema validation errors
+                        message: &properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items_properties_message
+                          type: string
+                          description: Human readable message describing the error. Used mainly for
+                            logging. Not recommended to be shown to the user.
+              required: &properties_message_properties_feedback_form_allOf_0_properties_required
+                description: Indicates whether the form data is mandatorily required by the BPP
+                  to confirm the order.
+                type: boolean
+  error: *properties_message_properties_feedback_form_allOf_0_properties_form_response_properties_errors_items

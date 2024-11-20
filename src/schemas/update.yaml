@@ -1,0 +1,1390 @@
+type: object
+additionalProperties: false
+properties: &properties
+  context: &properties_context
+    allOf: &properties_context_allOf
+      - &properties_context_allOf_0
+        description: Every API call in beckn protocol has a context. It provides a
+          high-level overview to the receiver about the nature of the intended
+          transaction. Typically, it is the BAP that sets the transaction
+          context based on the consumer's location and action on their UI. But
+          sometimes, during unsolicited callbacks, the BPP also sets the
+          transaction context but it is usually the same as the context of a
+          previous full-cycle, request-callback interaction between the BAP and
+          the BPP. The context object contains four types of fields.
+          <ol><li>Demographic information about the transaction using fields
+          like `domain`, `country`, and `region`.</li><li>Addressing details
+          like the sending and receiving platform's ID and API
+          URL.</li><li>Interoperability information like the protocol version
+          that implemented by the sender and,</li><li>Transaction details like
+          the method being called at the receiver's endpoint, the transaction_id
+          that represents an end-to-end user session at the BAP, a message ID to
+          pair requests with callbacks, a timestamp to capture sending times, a
+          ttl to specifiy the validity of the request, and a key to encrypt
+          information if necessary.</li></ol> This object must be passed in
+          every interaction between a BAP and a BPP. In HTTP/S implementations,
+          it is not necessary to send the context during the synchronous
+          response. However, in asynchronous protocols, the context must be sent
+          during all interactions,
+        type: object
+        additionalProperties: false
+        properties: &properties_context_allOf_0_properties
+          domain: &properties_context_allOf_0_properties_domain
+            description: Domain code that is relevant to this transaction context
+            allOf: &properties_context_allOf_0_properties_domain_allOf
+              - &properties_context_allOf_0_properties_domain_allOf_0
+                type: string
+                description: Standard code representing the domain. The standard is usually
+                  published as part of the network policy. Furthermore, the
+                  network facilitator should also provide a mechanism to provide
+                  the supported domains of a network.
+          location: &properties_context_allOf_0_properties_location
+            description: The location where the transaction is intended to be fulfilled.
+            allOf: &properties_context_allOf_0_properties_location_allOf
+              - &properties_context_allOf_0_properties_location_allOf_0
+                description: The physical location of something
+                type: object
+                additionalProperties: false
+                properties: &properties_context_allOf_0_properties_location_allOf_0_properties
+                  id: &properties_context_allOf_0_properties_location_allOf_0_properties_id
+                    type: string
+                  descriptor: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                    description: Physical description of something.
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties
+                      name: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      short_desc: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      long_desc: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      additional_desc: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_additional_desc
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_additional_desc_properties
+                          url: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                          content_type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      media: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media
+                        type: array
+                        items: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items
+                          description: This object contains a url to a media file.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties
+                            mimetype: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_mimetype
+                              description: indicates the nature and format of the document, file, or
+                                assortment of bytes. MIME types are defined and
+                                standardized in IETF's RFC 6838
+                              type: string
+                            url: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_url
+                              description: The URL of the file
+                              type: string
+                              format: uri
+                            signature: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_signature
+                              description: The digital signature of the file signed by the sender
+                              type: string
+                            dsa: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items_properties_dsa
+                              description: The signing algorithm used by the sender
+                              type: string
+                      images: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images
+                        type: array
+                        items: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items
+                          description: Describes an image
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties
+                            url: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_url
+                              description: URL to the image. This can be a data url or an remote url
+                              type: string
+                              format: uri
+                            size_type: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_size_type
+                              description: The size of the image. The network policy can define the default
+                                dimensions of each type
+                              type: string
+                            width: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_width
+                              description: Width of the image in pixels
+                              type: string
+                            height: &properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items_properties_height
+                              description: Height of the image in pixels
+                              type: string
+                  map_url: &properties_context_allOf_0_properties_location_allOf_0_properties_map_url
+                    description: The url to the map of the location. This can be a globally
+                      recognized map url or the one specified by the network
+                      policy.
+                    type: string
+                    format: uri
+                  gps: &properties_context_allOf_0_properties_location_allOf_0_properties_gps
+                    description: The GPS co-ordinates of this location.
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf_0
+                        description: Describes a GPS coordinate
+                        type: string
+                        pattern: ^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$
+                  updated_at: &properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                    type: string
+                    format: date-time
+                  address: &properties_context_allOf_0_properties_location_allOf_0_properties_address
+                    description: The address of this location.
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf_0
+                        description: Describes a postal address.
+                        type: string
+                  city: &properties_context_allOf_0_properties_location_allOf_0_properties_city
+                    description: The city this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0
+                        description: Describes a city
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties_name
+                            description: Name of the city
+                            type: string
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf_0_properties_code
+                            description: City code
+                            type: string
+                  district: &properties_context_allOf_0_properties_location_allOf_0_properties_district
+                    description: The state this location is, or is located within
+                    type: string
+                  state: &properties_context_allOf_0_properties_location_allOf_0_properties_state
+                    description: The state this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0
+                        description: A bounded geopolitical region of governance inside a country.
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties_name
+                            type: string
+                            description: Name of the state
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf_0_properties_code
+                            type: string
+                            description: State code as per country or international standards
+                  country: &properties_context_allOf_0_properties_location_allOf_0_properties_country
+                    description: The country this location is, or is located within
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0
+                        description: Describes a country
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties
+                          name: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties_name
+                            type: string
+                            description: Name of the country
+                          code: &properties_context_allOf_0_properties_location_allOf_0_properties_country_allOf_0_properties_code
+                            type: string
+                            description: Country code as per ISO 3166-1 and ISO 3166-2 format
+                  area_code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  circle: &properties_context_allOf_0_properties_location_allOf_0_properties_circle
+                    description: Describes a circular region of a specified radius centered at a
+                      specified GPS coordinate.
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties
+                      gps: *properties_context_allOf_0_properties_location_allOf_0_properties_gps_allOf_0
+                      radius: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius
+                        description: Describes a scalar
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties
+                          type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                          value: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                            description: Describes a numerical value in decimal form
+                            type: string
+                            pattern: "[+-]?([0-9]*[.])?[0-9]+"
+                          estimated_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          computed_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          range: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_range
+                            type: object
+                            additionalProperties: false
+                            properties: &properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_range_properties
+                              min: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                              max: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                          unit: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                  polygon: &properties_context_allOf_0_properties_location_allOf_0_properties_polygon
+                    description: The boundary polygon of this location
+                    type: string
+                  3dspace: &properties_context_allOf_0_properties_location_allOf_0_properties_3dspace
+                    description: The three dimensional region describing this location
+                    type: string
+                  rating: &properties_context_allOf_0_properties_location_allOf_0_properties_rating
+                    description: The rating of this location
+                    allOf: &properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf
+                      - &properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf_0
+                        description: Rating value given to the object. This can be a single value or can
+                          also contain an inequality operator like gt, gte, lt,
+                          lte. This can also contain an inequality expression
+                          containing logical operators like && and ||.
+                        type: string
+          action: &properties_context_allOf_0_properties_action
+            description: The Beckn protocol method being called by the sender and executed
+              at the receiver.
+            type: string
+          version: &properties_context_allOf_0_properties_version
+            type: string
+            description: Version of transaction protocol being used by the sender.
+          bap_id: &properties_context_allOf_0_properties_bap_id
+            description: Subscriber ID of the BAP
+            allOf: &properties_context_allOf_0_properties_bap_id_allOf
+              - &properties_context_allOf_0_properties_bap_id_allOf_0
+                description: A globally unique identifier of the platform, Typically it is the
+                  fully qualified domain name (FQDN) of the platform.
+                type: string
+          bap_uri: &properties_context_allOf_0_properties_bap_uri
+            description: Subscriber URL of the BAP for accepting callbacks from BPPs.
+            allOf: &properties_context_allOf_0_properties_bap_uri_allOf
+              - &properties_context_allOf_0_properties_bap_uri_allOf_0
+                description: The callback URL of the Subscriber. This should necessarily contain
+                  the same domain name as set in `subscriber_id``.
+                type: string
+                format: uri
+          bpp_id: &properties_context_allOf_0_properties_bpp_id
+            description: Subscriber ID of the BPP
+            allOf: *properties_context_allOf_0_properties_bap_id_allOf
+          bpp_uri: &properties_context_allOf_0_properties_bpp_uri
+            description: Subscriber URL of the BPP for accepting calls from BAPs.
+            allOf: *properties_context_allOf_0_properties_bap_uri_allOf
+          transaction_id: &properties_context_allOf_0_properties_transaction_id
+            description: This is a unique value which persists across all API calls from
+              `search` through `confirm`. This is done to indicate an active
+              user session across multiple requests. The BPPs can use this value
+              to push personalized recommendations, and dynamic offerings
+              related to an ongoing transaction despite being unaware of the
+              user active on the BAP.
+            type: string
+            format: uuid
+          message_id: &properties_context_allOf_0_properties_message_id
+            description: This is a unique value which persists during a request / callback
+              cycle. Since beckn protocol APIs are asynchronous, BAPs need a
+              common value to match an incoming callback from a BPP to an
+              earlier call. This value can also be used to ignore duplicate
+              messages coming from the BPP. It is recommended to generate a
+              fresh message_id for every new interaction. When sending
+              unsolicited callbacks, BPPs must generate a new message_id.
+            type: string
+            format: uuid
+          timestamp: &properties_context_allOf_0_properties_timestamp
+            description: Time of request generation in RFC3339 format
+            type: string
+            format: date-time
+          key: &properties_context_allOf_0_properties_key
+            description: The encryption public key of the sender
+            type: string
+          ttl: &properties_context_allOf_0_properties_ttl
+            description: The duration in ISO8601 format after timestamp for which this
+              message holds valid
+            type: string
+      - &properties_context_allOf_1
+        type: object
+        properties: &properties_context_allOf_1_properties
+          action: &properties_context_allOf_1_properties_action {}
+  message: &properties_message
+    type: object
+    additionalProperties: false
+    properties: &properties_message_properties
+      update_target: &properties_message_properties_update_target
+        description: 'Comma separated values of order objects being updated. For
+          example: ```"update_target":"item,billing,fulfillment"```'
+        type: string
+      order: &properties_message_properties_order
+        description: Updated order object
+        allOf: &properties_message_properties_order_allOf
+          - &properties_message_properties_order_allOf_0
+            description: Describes a legal purchase order. It contains the complete details
+              of the legal contract created between the buyer and the seller.
+            type: object
+            additionalProperties: false
+            properties: &properties_message_properties_order_allOf_0_properties
+              id: &properties_message_properties_order_allOf_0_properties_id
+                type: string
+                description: Human-readable ID of the order. This is generated at the BPP layer.
+                  The BPP can either generate order id within its system or
+                  forward the order ID created at the provider level.
+              ref_order_ids: &properties_message_properties_order_allOf_0_properties_ref_order_ids
+                description: A list of order IDs to link this order to previous orders.
+                type: array
+                items: &properties_message_properties_order_allOf_0_properties_ref_order_ids_items
+                  type: string
+                  description: ID of a previous order
+              status: &properties_message_properties_order_allOf_0_properties_status
+                description: Status of the order. Allowed values can be defined by the network
+                  policy
+                type: string
+              type: &properties_message_properties_order_allOf_0_properties_type
+                description: This is used to indicate the type of order being created to BPPs.
+                  Sometimes orders can be linked to previous orders, like a
+                  replacement order in a retail domain. A follow-up consultation
+                  in healthcare domain. A single order part of a subscription
+                  order. The list of order types can be standardized at the
+                  network level.
+                type: string
+                default: DEFAULT
+              provider: &properties_message_properties_order_allOf_0_properties_provider
+                description: Details of the provider whose catalog items have been selected.
+                allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf
+                  - &properties_message_properties_order_allOf_0_properties_provider_allOf_0
+                    description: Describes the catalog of a business.
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties
+                      id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_id
+                        type: string
+                        description: Id of the provider
+                      descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                      category_id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_category_id
+                        type: string
+                        description: Category Id of the provider at the BPP-level catalog
+                      rating: *properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf_0
+                      time: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time
+                        description: Describes time in its various forms. It can be a single point in
+                          time; duration; or a structured timetable of
+                          operations<br>This has properties like label, time
+                          stamp,duration,range, days, schedule
+                        type: object
+                        additionalProperties: false
+                        properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties
+                          label: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                          timestamp: *properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                          duration: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_duration
+                            description: Describes duration as per ISO8601 format
+                            type: string
+                          range: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_range
+                            type: object
+                            additionalProperties: false
+                            properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_range_properties
+                              start: *properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                              end: *properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                          days: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_days
+                            type: string
+                            description: comma separated values representing days of the week
+                          schedule: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_schedule
+                            description: Describes schedule as a repeating time period used to describe a
+                              regularly recurring event. At a minimum a schedule
+                              will specify frequency which describes the
+                              interval between occurrences of the event.
+                              Additional information can be provided to specify
+                              the schedule more precisely. This includes
+                              identifying the timestamps(s) of when the event
+                              will take place. Schedules may also have holidays
+                              to exclude a specific day from the
+                              schedule.<br>This has properties like frequency,
+                              holidays, times
+                            type: object
+                            additionalProperties: false
+                            properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_schedule_properties
+                              frequency: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_duration
+                              holidays: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_schedule_properties_holidays
+                                type: array
+                                items: *properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                              times: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_schedule_properties_holidays
+                      categories: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items
+                          description: A label under which a collection of items can be grouped.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties
+                            id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_id
+                              description: ID of the category
+                              type: string
+                            parent_category_id: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_id
+                            descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                            time: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time
+                            ttl: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_ttl
+                              description: Time to live for an instance of this schema
+                            tags: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items
+                                description: A collection of tag objects with group level attributes. For
+                                  detailed documentation on the Tags and Tag
+                                  Groups schema go to
+                                  https://github.com/beckn/protocol-specifications/discussions/316
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties
+                                  display: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_display
+                                    description: Indicates the display properties of the tag group. If display is
+                                      set to false, then the group will not be
+                                      displayed. If it is set to true, it should
+                                      be displayed. However, group-level display
+                                      properties can be overriden by individual
+                                      tag-level display property. As this schema
+                                      is purely for catalog display purposes, it
+                                      is not recommended to send this value
+                                      during search.
+                                    type: boolean
+                                    default: true
+                                  descriptor: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor
+                                    description: Description of the TagGroup, can be used to store detailed
+                                      information.
+                                    allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor_allOf
+                                      - *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                                  list: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list
+                                    description: An array of Tag objects listed under this group. This property can
+                                      be set by BAPs during search to narrow the
+                                      `search` and achieve more relevant
+                                      results. When received during `on_search`,
+                                      BAPs must render this list under the
+                                      heading described by the `name` property
+                                      of this schema.
+                                    type: array
+                                    items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list_items
+                                      description: Describes a tag. This is used to contain extended metadata. This
+                                        object can be added as a property to any
+                                        schema to describe extended attributes.
+                                        For BAPs, tags can be sent during search
+                                        to optimize and filter search results.
+                                        BPPs can use tags to index their catalog
+                                        to allow better search functionality.
+                                        Tags are sent by the BPP as part of the
+                                        catalog response in the `on_search`
+                                        callback. Tags are also meant for
+                                        display purposes. Upon receiving a tag,
+                                        BAPs are meant to render them as
+                                        name-value pairs. This is particularly
+                                        useful when rendering tabular
+                                        information about a product or service.
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list_items_properties
+                                        descriptor: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list_items_properties_descriptor
+                                          description: Description of the Tag, can be used to store detailed information.
+                                          allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor_allOf
+                                        value: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list_items_properties_value
+                                          description: The value of the tag. This set by the BPP and rendered as-is by the
+                                            BAP.
+                                          type: string
+                                        display: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_list_items_properties_display
+                                          description: This value indicates if the tag is intended for display purposes.
+                                            If set to `true`, then this tag must
+                                            be displayed. If it is set to
+                                            `false`, it should not be displayed.
+                                            This value can override the group
+                                            display value.
+                                          type: boolean
+                      fulfillments: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items
+                          description: Describes how a an order will be rendered/fulfilled to the
+                            end-customer
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties
+                            id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_id
+                              description: Unique reference ID to the fulfillment of an order
+                              type: string
+                            type: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_type
+                              description: A code that describes the mode of fulfillment. This is typically
+                                set when there are multiple ways an order can be
+                                fulfilled. For example, a retail order can be
+                                fulfilled either via store pickup or a home
+                                delivery. Similarly, a medical consultation can
+                                be provided either in-person or via
+                                tele-consultation. The network policy must
+                                publish standard fulfillment type codes for the
+                                different modes of fulfillment.
+                              type: string
+                            rateable: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_rateable
+                              description: Whether the fulfillment can be rated or not
+                              type: boolean
+                            rating: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_rating
+                              description: The rating value of the fulfullment service.
+                              allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf
+                            state: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state
+                              description: The current state of fulfillment. The BPP must set this value
+                                whenever the state of the order fulfillment
+                                changes and fire an unsolicited `on_status`
+                                call.
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state_allOf
+                                - &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state_allOf_0
+                                  description: Describes the state of fulfillment
+                                  type: object
+                                  additionalProperties: false
+                                  properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state_allOf_0_properties
+                                    descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                                    updated_at: *properties_context_allOf_0_properties_location_allOf_0_properties_updated_at
+                                    updated_by: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state_allOf_0_properties_updated_by
+                                      type: string
+                                      description: ID of entity which changed the state
+                            tracking: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_tracking
+                              type: boolean
+                              description: Indicates whether the fulfillment allows tracking
+                              default: false
+                            customer: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer
+                              description: The person that will ultimately receive the order
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf
+                                - &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0
+                                  description: Describes a customer buying/availing a product or a service
+                                  type: object
+                                  additionalProperties: false
+                                  properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties
+                                    person: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person
+                                      description: Describes a person as any individual
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties
+                                        id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_id
+                                          type: string
+                                          description: Describes the identity of the person
+                                        url: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_url
+                                          description: Profile url of the person
+                                          type: string
+                                          format: uri
+                                        name: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_name
+                                          description: the name of the person
+                                          type: string
+                                        image: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_images_items
+                                        age: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_age
+                                          description: Age of the person
+                                          allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_age_allOf
+                                            - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_duration
+                                        dob: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_dob
+                                          description: Date of birth of the person
+                                          type: string
+                                          format: date
+                                        gender: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_gender
+                                          type: string
+                                          description: Gender of something, typically a Person, but possibly also
+                                            fictional characters, animals, etc.
+                                            While Male and Female may be used,
+                                            text strings are also acceptable for
+                                            people who do not identify as a
+                                            binary gender.Allowed values for
+                                            this field can be published in the
+                                            network policy
+                                        creds: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_creds
+                                          type: array
+                                          items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_creds_items
+                                            description: Describes a credential of an entity - Person or Organization
+                                            type: object
+                                            additionalProperties: false
+                                            properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_creds_items_properties
+                                              id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                              type: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_creds_items_properties_type
+                                                type: string
+                                                default: VerifiableCredential
+                                              url: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_creds_items_properties_url
+                                                description: URL of the credential
+                                                type: string
+                                                format: uri
+                                        languages: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_languages
+                                          type: array
+                                          items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_languages_items
+                                            description: Describes a language known to the person.
+                                            type: object
+                                            additionalProperties: false
+                                            properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_languages_items_properties
+                                              code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                              name: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                        skills: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_skills
+                                          type: array
+                                          items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_skills_items
+                                            description: Describes a skill of the person.
+                                            type: object
+                                            additionalProperties: false
+                                            properties: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person_properties_languages_items_properties
+                                        tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                                    contact: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact
+                                      description: Describes the contact information of an entity
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact_properties
+                                        phone: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                        email: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                        jcard: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact_properties_jcard
+                                          type: object
+                                          additionalProperties: false
+                                          description: A Jcard object as per draft-ietf-jcardcal-jcard-03 specification
+                            agent: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent
+                              description: The agent that is currently handling the fulfillment of the order
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf
+                                - &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0
+                                  description: Describes the direct performer, driver or executor that fulfills an
+                                    order. It is usually a person. But in some
+                                    rare cases, it could be a non-living entity
+                                    like a drone, or a bot. Some examples of
+                                    agents are Doctor in the healthcare sector,
+                                    a driver in the mobility sector, or a
+                                    delivery person in the logistics sector.
+                                    This object can be set at any stage of the
+                                    order lifecycle. This can be set at the
+                                    discovery stage when the BPP wants to
+                                    provide details on the agent fulfilling the
+                                    order, like in healthcare, where the
+                                    doctor's name appears during search. This
+                                    object can also used to search for a
+                                    particular person that the customer wants
+                                    fulfilling an order. Sometimes, this object
+                                    gets instantiated after the order is
+                                    confirmed, like in the case of on-demand
+                                    taxis, where the driver is assigned after
+                                    the user confirms the ride.
+                                  type: object
+                                  additionalProperties: false
+                                  properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties
+                                    person: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person
+                                    contact: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact
+                                    organization: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization
+                                      description: An organization. Usually a recognized business entity.
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization_properties
+                                        descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                                        address: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization_properties_address
+                                          description: The postal address of the organization
+                                          allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf
+                                        state: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization_properties_state
+                                          description: The state where the organization's address is registered
+                                          allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                                        city: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization_properties_city
+                                          description: The city where the the organization's address is registered
+                                          allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf
+                                        contact: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact
+                                    rating: *properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf_0
+                            contact: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact
+                            vehicle: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle
+                              description: Describes a vehicle is a device that is designed or used to
+                                transport people or cargo over land, water, air,
+                                or through space.<br>This has properties like
+                                category, capacity, make, model,
+                                size,variant,color,energy_type,registration
+                              type: object
+                              additionalProperties: false
+                              properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle_properties
+                                category: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                capacity: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle_properties_capacity
+                                  type: integer
+                                make: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                model: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                size: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                variant: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                color: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                energy_type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                registration: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                wheels_count: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                cargo_volumne: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                wheelchair_access: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                emission_standard: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            stops: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops
+                              description: The list of logical stops encountered during the fulfillment of an
+                                order.
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items
+                                description: A logical point in space and time during the fulfillment of an
+                                  order.
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties
+                                  id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                  parent_stop_id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                  location: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_location
+                                    description: Location of the stop
+                                    allOf: *properties_context_allOf_0_properties_location_allOf
+                                  type: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_type
+                                    description: The type of stop. Allowed values of this property can be defined by
+                                      the network policy.
+                                    type: string
+                                  time: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time
+                                    description: Timings applicable at the stop.
+                                    allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                                      - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time
+                                  instructions: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_instructions
+                                    description: Instructions that need to be followed at the stop
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor_allOf
+                                  contact: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_contact
+                                    description: Contact details of the stop
+                                    allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_contact_allOf
+                                      - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_contact
+                                  person: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_person
+                                    description: The details of the person present at the stop
+                                    allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_person_allOf
+                                      - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_customer_allOf_0_properties_person
+                                  authorization: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization
+                                    description: Describes an authorization mechanism used to start or end the
+                                      fulfillment of an order. For example, in
+                                      the mobility sector, the driver may
+                                      require a one-time password to initiate
+                                      the ride. In the healthcare sector, a
+                                      patient may need to provide a password to
+                                      open a video conference link during a
+                                      teleconsultation.
+                                    type: object
+                                    additionalProperties: false
+                                    properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties
+                                      type: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties_type
+                                        description: Type of authorization mechanism used. The allowed values for this
+                                          field can be published as part of the
+                                          network policy.
+                                        type: string
+                                      token: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties_token
+                                        description: Token used for authorization. This is typically generated at the
+                                          BPP. The BAP can send this value to
+                                          the user via any channel that it uses
+                                          to authenticate the user like SMS,
+                                          Email, Push notification, or in-app
+                                          rendering.
+                                        type: string
+                                      valid_from: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties_valid_from
+                                        description: Timestamp in RFC3339 format from which token is valid
+                                        type: string
+                                        format: date-time
+                                      valid_to: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties_valid_to
+                                        description: Timestamp in RFC3339 format until which token is valid
+                                        type: string
+                                        format: date-time
+                                      status: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_authorization_properties_status
+                                        description: Status of the token
+                                        type: string
+                            path: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_path
+                              description: The physical path taken by the agent that can be rendered on a map.
+                                The allowed format of this property can be set
+                                by the network.
+                              type: string
+                            tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                      payments: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items
+                          description: Describes the terms of settlement between the BAP and the BPP for a
+                            single transaction. When instantiated, this object
+                            contains <ol><li>the amount that has to be
+                            settled,</li><li>The payment destination destination
+                            details</li><li>When the settlement should happen,
+                            and</li><li>A transaction reference ID</li></ol>.
+                            During a transaction, the BPP reserves the right to
+                            decide the terms of payment. However, the BAP can
+                            send its terms to the BPP first. If the BPP does not
+                            agree to those terms, it must overwrite the terms
+                            and return them to the BAP. If overridden, the BAP
+                            must either agree to the terms sent by the BPP in
+                            order to preserve the provider's autonomy, or abort
+                            the transaction. In case of such disagreements, the
+                            BAP and the BPP can perform offline negotiations on
+                            the payment terms. Once an agreement is reached, the
+                            BAP and BPP can resume transactions.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties
+                            id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_id
+                              description: ID of the payment term that can be referred at an item or an order
+                                level in a catalog
+                              type: string
+                            collected_by: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_collected_by
+                              description: This field indicates who is the collector of payment. The BAP can
+                                set this value to 'bap' if it wants to collect
+                                the payment first and  settle it to the BPP. If
+                                the BPP agrees to those terms, the BPP should
+                                not send the payment url. Alternatively, the BPP
+                                can set this field with the value 'bpp' if it
+                                wants the payment to be made directly.
+                              type: string
+                            url: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_url
+                              type: string
+                              description: A payment url to be called by the BAP. If empty, then the payment
+                                is to be done offline. The details of payment
+                                should be present in the params object. If
+                                tl_method = http/get, then the payment details
+                                will be sent as url params. Two url param
+                                values, ```$transaction_id``` and ```$amount```
+                                are mandatory.
+                              format: uri
+                            tl_method: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            params: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_params
+                              type: object
+                              additionalProperties: false
+                              properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_params_properties
+                                transaction_id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_params_properties_transaction_id
+                                  type: string
+                                  description: The reference transaction ID associated with a payment activity
+                                amount: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                currency: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                bank_code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                bank_account_number: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                virtual_payment_address: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                source_bank_code: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                source_bank_account_number: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                source_virtual_payment_address: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            type: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            status: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            time: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time
+                            tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                      locations: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_locations
+                        type: array
+                        items: *properties_context_allOf_0_properties_location_allOf_0
+                      offers: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items
+                          description: An offer associated with a catalog. This is typically used to
+                            promote a particular product and enable more
+                            purchases.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties
+                            id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                            location_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_location_ids
+                              type: array
+                              items: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            category_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_category_ids
+                              type: array
+                              items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_id
+                            item_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_item_ids
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_item_ids_items
+                                description: ID of the item.
+                                type: string
+                            time: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time
+                            tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                      items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items
+                          description: Describes a product or a service offered to the end consumer by the
+                            provider. In the mobility sector, it can represent a
+                            fare product like one way journey. In the logistics
+                            sector, it can represent the delivery service
+                            offering. In the retail domain it can represent a
+                            product like a grocery item.
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties
+                            id: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_item_ids_items
+                            parent_item_id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_id
+                              description: ID of the item, this item is a variant of
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_id_allOf
+                                - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items_properties_item_ids_items
+                            parent_item_quantity: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity
+                              description: The number of units of the parent item this item is a multiple of
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf
+                                - &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0
+                                  description: Describes the count or amount of an item
+                                  type: object
+                                  additionalProperties: false
+                                  properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties
+                                    allocated: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated
+                                      description: This represents the exact quantity allocated for purchase of the
+                                        item.
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated_properties
+                                        count: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated_properties_count
+                                          type: integer
+                                          minimum: 0
+                                        measure: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius
+                                    available: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_available
+                                      description: This represents the exact quantity available for purchase of the
+                                        item. The buyer can only purchase
+                                        multiples of this
+                                      type: object
+                                      additionalProperties: false
+                                      properties: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated_properties
+                                    maximum: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_maximum
+                                      description: This represents the maximum quantity allowed for purchase of the
+                                        item
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_maximum_properties
+                                        count: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_maximum_properties_count
+                                          type: integer
+                                          minimum: 1
+                                        measure: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius
+                                    minimum: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_minimum
+                                      description: This represents the minimum quantity allowed for purchase of the
+                                        item
+                                      type: object
+                                      additionalProperties: false
+                                      properties: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated_properties
+                                    selected: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_selected
+                                      description: This represents the quantity selected for purchase of the item
+                                      type: object
+                                      additionalProperties: false
+                                      properties: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_allocated_properties
+                                    unitized: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_unitized
+                                      description: This represents the quantity available in a single unit of the item
+                                      type: object
+                                      additionalProperties: false
+                                      properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_unitized_properties
+                                        count: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0_properties_unitized_properties_count
+                                          type: integer
+                                          minimum: 1
+                                          maximum: 1
+                                        measure: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius
+                            descriptor: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_descriptor
+                              description: Physical description of the item
+                              allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor_allOf
+                            creator: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_creator
+                              description: The creator of this item
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_creator_allOf
+                                - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_agent_allOf_0_properties_organization
+                            price: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price
+                              description: The price of this item, if it has intrinsic value
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf
+                                - &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf_0
+                                  description: Describes the price of a product or service
+                                  type: object
+                                  additionalProperties: false
+                                  properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf_0_properties
+                                    currency: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                    value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    estimated_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    computed_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    listed_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    offered_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    minimum_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                    maximum_value: *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                            quantity: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_quantity
+                              description: The selling quantity of the item
+                              allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf
+                            category_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_category_ids
+                              description: Categories this item can be listed under
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_category_ids_items
+                                allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_category_ids_items_allOf
+                                  - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_id
+                            fulfillment_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_fulfillment_ids
+                              description: Modes through which this item can be fulfilled
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_fulfillment_ids_items
+                                allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_fulfillment_ids_items_allOf
+                                  - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_id
+                            location_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_location_ids
+                              description: Provider Locations this item is available in
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_location_ids_items
+                                allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_location_ids_items_allOf
+                                  - *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            payment_ids: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_payment_ids
+                              description: Payment modalities through which this item can be ordered
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_payment_ids_items
+                                allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_payment_ids_items_allOf
+                                  - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items_properties_id
+                            add_ons: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_add_ons
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_add_ons_items
+                                description: Describes an additional item offered as a value-addition to a
+                                  product or service. This does not exist
+                                  independently in a catalog and is always
+                                  associated with an item.
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_add_ons_items_properties
+                                  id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_add_ons_items_properties_id
+                                    description: Provider-defined ID of the add-on
+                                    type: string
+                                  descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                                  price: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf_0
+                                  quantity: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_parent_item_quantity_allOf_0
+                            cancellation_terms: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms
+                              description: Cancellation terms of this item
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items
+                                description: Describes the cancellation terms of an item or an order. This can
+                                  be referenced at an item or order level.
+                                  Item-level cancellation terms can override the
+                                  terms at the order level.
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties
+                                  fulfillment_state: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_fulfillment_state
+                                    description: The state of fulfillment during which this term is applicable.
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_state_allOf
+                                  reason_required: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_reason_required
+                                    description: Indicates whether a reason is required to cancel the order
+                                    type: boolean
+                                  cancel_by: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancel_by
+                                    description: Information related to the time of cancellation.
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                                  cancellation_fee: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancellation_fee
+                                    description: A fee applied on a particular entity
+                                    type: object
+                                    additionalProperties: false
+                                    properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancellation_fee_properties
+                                      percentage: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancellation_fee_properties_percentage
+                                        description: Percentage of a value
+                                        allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancellation_fee_properties_percentage_allOf
+                                          - *properties_context_allOf_0_properties_location_allOf_0_properties_circle_properties_radius_properties_value
+                                      amount: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_cancellation_fee_properties_amount
+                                        description: A fixed value
+                                        allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf
+                                  xinput: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput
+                                    description: Contains any additional or extended inputs required to confirm an
+                                      order. This is typically a Form Input.
+                                      Sometimes, selection of catalog elements
+                                      is not enough for the BPP to confirm an
+                                      order. For example, to confirm a flight
+                                      ticket, the airline requires details of
+                                      the passengers along with information on
+                                      baggage, identity, in addition to the
+                                      class of ticket. Similarly, a logistics
+                                      company may require details on the nature
+                                      of shipment in order to confirm the
+                                      shipping. A recruiting firm may require
+                                      additional details on the applicant in
+                                      order to confirm a job application. For
+                                      all such purposes, the BPP can choose to
+                                      send this object attached to any object in
+                                      the catalog that is required to be sent
+                                      while placing the order. This object can
+                                      typically be sent at an item level or at
+                                      the order level. The item level XInput
+                                      will override the Order level XInput as it
+                                      indicates a special requirement of
+                                      information for that particular item.
+                                      Hence the BAP must render a separate form
+                                      for the Item and another form at the Order
+                                      level before confirmation.
+                                    type: object
+                                    additionalProperties: false
+                                    properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties
+                                      head: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head
+                                        description: Provides the header information for the xinput.
+                                        type: object
+                                        additionalProperties: false
+                                        properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head_properties
+                                          descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                                          index: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head_properties_index
+                                            type: object
+                                            additionalProperties: false
+                                            properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head_properties_index_properties
+                                              min: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle_properties_capacity
+                                              cur: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle_properties_capacity
+                                              max: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_vehicle_properties_capacity
+                                          headings: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head_properties_headings
+                                            type: array
+                                            items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_head_properties_headings_items
+                                              type: string
+                                              description: The heading names of the forms
+                                      form: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form
+                                        description: Describes a form
+                                        type: object
+                                        additionalProperties: false
+                                        properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties
+                                          id: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_id
+                                            description: The form identifier.
+                                            type: string
+                                          url: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_url
+                                            description: The URL from where the form can be fetched. The content fetched
+                                              from the url must be processed as
+                                              per the mime_type specified in
+                                              this object. Once fetched, the
+                                              rendering platform can choosed to
+                                              render the form as-is as an
+                                              embeddable element; or process it
+                                              further to blend with the theme of
+                                              the application. In case the
+                                              interface is non-visual, the the
+                                              render can process the form data
+                                              and reproduce it as per the
+                                              standard specified in the form.
+                                            type: string
+                                            format: uri
+                                          data: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_data
+                                            description: The form submission data
+                                            type: object
+                                            additionalProperties: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                          mime_type: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_mime_type
+                                            description: This field indicates the nature and format of the form received by
+                                              querying the url. MIME types are
+                                              defined and standardized in IETF's
+                                              RFC 6838.
+                                            type: string
+                                          resubmit: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_resubmit
+                                            type: boolean
+                                          multiple_sumbissions: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_resubmit
+                                      form_response: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response
+                                        description: Describes the response to a form submission
+                                        type: object
+                                        additionalProperties: false
+                                        properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties
+                                          status: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_status
+                                            description: Contains the status of form submission.
+                                            type: string
+                                          signature: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                          submission_id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                                          errors: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors
+                                            type: array
+                                            items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors_items
+                                              description: Describes an error object that is returned by a BAP, BPP or BG as a
+                                                response or callback to an
+                                                action by another network
+                                                participant. This object is sent
+                                                when any request received by a
+                                                network participant is
+                                                unacceptable. This object can be
+                                                sent either during Ack or with
+                                                the callback.
+                                              type: object
+                                              additionalProperties: false
+                                              properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors_items_properties
+                                                code: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors_items_properties_code
+                                                  type: string
+                                                  description: Standard error code. For full list of error codes, refer to
+                                                    docs/protocol-drafts/BECKN-005-ERROR-CODES-DRAFT-01.md
+                                                    of this repo"
+                                                paths: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors_items_properties_paths
+                                                  type: string
+                                                  description: Path to json schema generating the error. Used only during json
+                                                    schema validation errors
+                                                message: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_response_properties_errors_items_properties_message
+                                                  type: string
+                                                  description: Human readable message describing the error. Used mainly for
+                                                    logging. Not recommended to
+                                                    be shown to the user.
+                                      required: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_required
+                                        description: Indicates whether the form data is mandatorily required by the BPP
+                                          to confirm the order.
+                                        type: boolean
+                                  external_ref: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items
+                            refund_terms: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms
+                              description: Refund terms of this item
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items
+                                description: Refund term of an item or an order
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items_properties
+                                  fulfillment_state: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items_properties_fulfillment_state
+                                    description: The state of fulfillment during which this term is applicable.
+                                    allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                                  refund_eligible: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items_properties_refund_eligible
+                                    description: Indicates if cancellation will result in a refund
+                                    type: boolean
+                                  refund_within: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items_properties_refund_within
+                                    description: Time within which refund will be processed after successful
+                                      cancellation.
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                                  refund_amount: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf_0
+                            replacement_terms: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_replacement_terms
+                              description: Terms that are applicable be met when this item is replaced
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_replacement_terms_items
+                                description: The replacement policy of an item or an order
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_replacement_terms_items_properties
+                                  fulfillment_state: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms_items_properties_fulfillment_state
+                                  replace_within: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_replacement_terms_items_properties_replace_within
+                                    description: Applicable only for buyer managed returns where the buyer has to
+                                      replace the item before a certain
+                                      date-time, failing which they will not be
+                                      eligible for replacement
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                                  external_ref: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor_properties_media_items
+                            return_terms: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms
+                              description: Terms that are applicable when this item is returned
+                              type: array
+                              items: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items
+                                description: Describes the return policy of an item or an order
+                                type: object
+                                additionalProperties: false
+                                properties: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties
+                                  fulfillment_state: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties_fulfillment_state
+                                    description: The state of fulfillment during which this term IETF''s applicable.
+                                    allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                                  return_eligible: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties_return_eligible
+                                    description: Indicates whether the item is eligible for return
+                                    type: boolean
+                                  return_time: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties_return_time
+                                    description: Applicable only for buyer managed returns where the buyer has to
+                                      return the item to the origin before a
+                                      certain date-time, failing which they will
+                                      not be eligible for refund.
+                                    allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                                  return_location: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties_return_location
+                                    description: The location where the item or order must / will be returned to
+                                    allOf: *properties_context_allOf_0_properties_location_allOf
+                                  fulfillment_managed_by: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items_properties_fulfillment_managed_by
+                                    description: The entity that will perform the return
+                                    type: string
+                            xinput: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_xinput
+                              description: Additional input required from the customer to purchase / avail
+                                this item
+                              allOf: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_xinput_allOf
+                                - *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput
+                            time: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_time
+                              description: Temporal attributes of this item. This property is used when the
+                                item exists on the catalog only for a limited
+                                period of time.
+                              allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                            rateable: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_rateable
+                              description: Whether this item can be rated
+                              type: boolean
+                            rating: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_rating
+                              description: The rating of the item
+                              allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_rating_allOf
+                            matched: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_matched
+                              description: Whether this item is an exact match of the request
+                              type: boolean
+                            related: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_related
+                              description: Whether this item is a related item to the exactly matched item
+                              type: boolean
+                            recommended: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_recommended
+                              description: Whether this item is a recommended item to a response
+                              type: boolean
+                            ttl: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_ttl
+                              description: Time to live in seconds for an instance of this schema
+                              type: string
+                            tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+                      exp: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_exp
+                        type: string
+                        description: Time after which catalog has to be refreshed
+                        format: date-time
+                      rateable: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_rateable
+                        description: Whether this provider can be rated or not
+                        type: boolean
+                      ttl: &properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_ttl
+                        description: The time-to-live in seconds, for this object. This can be overriden
+                          at deeper levels. A value of -1 indicates that this
+                          object is not cacheable.
+                        type: string
+                      tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
+              items: &properties_message_properties_order_allOf_0_properties_items
+                description: The items purchased / availed in this order
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items
+              add_ons: &properties_message_properties_order_allOf_0_properties_add_ons
+                description: The add-ons purchased / availed in this order
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_add_ons_items
+              offers: &properties_message_properties_order_allOf_0_properties_offers
+                description: The offers applied in this order
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_offers_items
+              billing: &properties_message_properties_order_allOf_0_properties_billing
+                description: The billing details of this order
+                allOf: &properties_message_properties_order_allOf_0_properties_billing_allOf
+                  - &properties_message_properties_order_allOf_0_properties_billing_allOf_0
+                    description: Describes the billing details of an entity.<br>This has properties
+                      like
+                      name,organization,address,email,phone,time,tax_number,
+                      created_at,updated_at
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties
+                      name: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_name
+                        description: Name of the billable entity
+                        type: string
+                      organization: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_organization
+                        description: Details of the organization being billed.
+                        allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_creator_allOf
+                      address: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_address
+                        description: The address of the billable entity
+                        allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_address_allOf
+                      state: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_state
+                        description: The state where the billable entity resides. This is important for
+                          state-level tax calculation
+                        allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_state_allOf
+                      city: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_city
+                        description: The city where the billable entity resides.
+                        allOf: *properties_context_allOf_0_properties_location_allOf_0_properties_city_allOf
+                      email: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_email
+                        description: Email address where the bill is sent to
+                        type: string
+                        format: email
+                      phone: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_phone
+                        description: Phone number of the billable entity
+                        type: string
+                      time: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_time
+                        description: Details regarding the billing period
+                        allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items_properties_stops_items_properties_time_allOf
+                      tax_id: &properties_message_properties_order_allOf_0_properties_billing_allOf_0_properties_tax_id
+                        description: ID of the billable entity as recognized by the taxation authority
+                        type: string
+              fulfillments: &properties_message_properties_order_allOf_0_properties_fulfillments
+                description: The fulfillments involved in completing this order
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_fulfillments_items
+              cancellation: &properties_message_properties_order_allOf_0_properties_cancellation
+                description: The cancellation details of this order
+                allOf: &properties_message_properties_order_allOf_0_properties_cancellation_allOf
+                  - &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0
+                    description: Describes a cancellation event
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties
+                      time: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_time
+                        description: Date-time when the order was cancelled by the buyer
+                        type: string
+                        format: date-time
+                      cancelled_by: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                      reason: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_reason
+                        description: The reason for cancellation
+                        allOf: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_reason_allOf
+                          - &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_reason_allOf_0
+                            description: Describes a selectable option
+                            type: object
+                            additionalProperties: false
+                            properties: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_reason_allOf_0_properties
+                              id: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                              descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                      additional_description: &properties_message_properties_order_allOf_0_properties_cancellation_allOf_0_properties_additional_description
+                        description: Any additional information regarding the nature of cancellation
+                        allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags_items_properties_descriptor_allOf
+              cancellation_terms: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms
+              documents: &properties_message_properties_order_allOf_0_properties_documents
+                type: array
+                items: &properties_message_properties_order_allOf_0_properties_documents_items
+                  description: Documnents associated to the order
+                  type: object
+                  additionalProperties: false
+                  properties: &properties_message_properties_order_allOf_0_properties_documents_items_properties
+                    descriptor: *properties_context_allOf_0_properties_location_allOf_0_properties_descriptor
+                    mime_type: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_cancellation_terms_items_properties_xinput_properties_form_properties_mime_type
+                    url: &properties_message_properties_order_allOf_0_properties_documents_items_properties_url
+                      description: The URL from where the form can be fetched. The content fetched
+                        from the url must be processed as per the mime_type
+                        specified in this object.
+                      type: string
+                      format: uri
+              refund_terms: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_refund_terms
+              replacement_terms: &properties_message_properties_order_allOf_0_properties_replacement_terms
+                description: Replacement terms of this item
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_replacement_terms_items
+              return_terms: &properties_message_properties_order_allOf_0_properties_return_terms
+                description: Return terms of this item
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_return_terms_items
+              quote: &properties_message_properties_order_allOf_0_properties_quote
+                description: The mutually agreed upon quotation for this order.
+                allOf: &properties_message_properties_order_allOf_0_properties_quote_allOf
+                  - &properties_message_properties_order_allOf_0_properties_quote_allOf_0
+                    description: Describes a quote. It is the estimated price of products or
+                      services from the BPP.<br>This has properties like price,
+                      breakup, ttl
+                    type: object
+                    additionalProperties: false
+                    properties: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties
+                      id: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties_id
+                        description: ID of the quote.
+                        type: string
+                        format: uuid
+                      price: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties_price
+                        description: The total quoted price
+                        allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf
+                      breakup: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties_breakup
+                        description: the breakup of the total quoted price
+                        type: array
+                        items: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties_breakup_items
+                          type: object
+                          additionalProperties: false
+                          properties: &properties_message_properties_order_allOf_0_properties_quote_allOf_0_properties_breakup_items_properties
+                            item: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items
+                            title: *properties_context_allOf_0_properties_location_allOf_0_properties_id
+                            price: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_price_allOf_0
+                      ttl: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_time_properties_duration
+              payments: &properties_message_properties_order_allOf_0_properties_payments
+                description: The terms of settlement for this order
+                type: array
+                items: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_payments_items
+              created_at: &properties_message_properties_order_allOf_0_properties_created_at
+                description: The date-time of creation of this order
+                type: string
+                format: date-time
+              updated_at: &properties_message_properties_order_allOf_0_properties_updated_at
+                description: The date-time of updated of this order
+                type: string
+                format: date-time
+              xinput: &properties_message_properties_order_allOf_0_properties_xinput
+                description: Additional input required from the customer to confirm this order
+                allOf: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_items_items_properties_xinput_allOf
+              tags: *properties_message_properties_order_allOf_0_properties_provider_allOf_0_properties_categories_items_properties_tags
