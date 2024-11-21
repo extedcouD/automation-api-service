@@ -41,17 +41,27 @@ const getPublicKeys = async (header: string, payload: ackPayload) => {
     if (
       !subscriberId ||
       !payload?.context?.domain ||
-      !payload?.context?.country
+      !payload?.context?.location?.country?.code
     ) {
+      logger.error(
+        "Missing required parameters: subscriberId, domain or country"
+      );
       throw new Error(
         "Missing required parameters: subscriberId, domain or country"
       );
     }
 
     // Destructuring environment variables with fallbacks
-    const { SUBSCRIBER_ID = "", SIGN_PRIVATE_KEY = "" } = process.env;
+    const {
+      SUBSCRIBER_ID = "",
+      SIGN_PRIVATE_KEY = "",
+      ONDC_ENV = "",
+    } = process.env;
 
     if (!SUBSCRIBER_ID || !SIGN_PRIVATE_KEY) {
+      logger.error(
+        "Missing environment variables: SUBSCRIBER_ID or SIGN_PRIVATE_KEY"
+      );
       throw new Error(
         "Missing environment variables: SUBSCRIBER_ID or SIGN_PRIVATE_KEY"
       );
@@ -63,10 +73,10 @@ const getPublicKeys = async (header: string, payload: ackPayload) => {
       privateKey: SIGN_PRIVATE_KEY, // private key of sender in base64 encoding
       domain: payload.context?.domain,
       subscriberId: subscriberId, // fetched subscriberId
-      country: payload.context?.country,
+      country: payload.context?.location?.country?.code,
       type: "sellerApp", // type (buyerApp, sellerApp, gateway)
-      city: "std:080", // example city code
-      env: "preprod", // environment (staging, preprod, prod)
+      city: payload.context?.location?.city?.code, // example city code
+      env: ONDC_ENV, // environment (staging, preprod, prod)
     });
 
     // Parsing response and returning the signing public key
