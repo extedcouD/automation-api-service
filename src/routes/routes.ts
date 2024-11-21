@@ -19,14 +19,10 @@ router.post("/:action", (req: Request, res: Response) => {
 		if (!l0Result.valid) {
 			res
 				.status(200)
-				.send(setAckResponse(body.context, l0Result.valid, l0Result.errors));
+				.send(setAckResponse(l0Result.valid, l0Result.errors, "400"));
 		}
 		const l1Result = performL1Validations(action, body);
-		res
-			.status(200)
-			.send(
-				setAckResponse(body.context, l1Result.valid, l1Result.error ?? null)
-			);
+		res.status(200).send(setAckResponse(l1Result.valid, l1Result.error, "400"));
 	} else {
 		logger.error("body", body);
 		res.status(400).send("Bad Request");

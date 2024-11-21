@@ -9,12 +9,11 @@ type AckResponse = {
 };
 
 export const setAckResponse = (
-	context: any = null,
 	ack: boolean = true,
-	error: any = null
+	error?: string,
+	errorCode?: string
 ): AckResponse => {
 	const resp: AckResponse = {
-		context: context,
 		message: {
 			ack: {
 				status: ack ? "ACK" : "NACK",
@@ -22,8 +21,11 @@ export const setAckResponse = (
 		},
 	};
 
-	if (error) {
-		resp.error = error;
+	if (error && errorCode) {
+		resp.error = {
+			code: errorCode,
+			message: error,
+		};
 	}
 
 	return resp;

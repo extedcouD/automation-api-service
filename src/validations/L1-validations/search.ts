@@ -116,7 +116,6 @@ function validate_attribute_9(payload: any) {
 	for (const testObj of scope) {
 		const attr = payloadUtils.getJsonPath(testObj, "$.context.action");
 		const nulls = ["null"];
-		console.log(attr);
 		const skipCheck = false;
 		if (skipCheck) continue;
 		const output = validations.NONE_IN(attr, nulls);

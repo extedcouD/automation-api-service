@@ -4,4 +4,5 @@ dotenv.config();
 export const config = {
   port: process.env.PORT || 3000,
   environment: process.env.NODE_ENV || "development",
+  ondcEnvironment: process.env.ONDC_ENV || "preprod",
 };
