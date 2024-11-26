@@ -1,26 +1,5 @@
 import { RedisService } from "ondc-automation-cache-lib";
-
-type Context = {
-	action: string; // ! extepected action
-	bap_id: string;
-	bap_uri: string;
-	bpp_id: string;
-	bpp_uri: string;
-	domain: string;
-	location: {
-		city: {
-			code: string;
-		};
-		country: {
-			code: string;
-		};
-	};
-	message_id: string; // ! should be unique
-	timestamp: string; // ISO 8601 format
-	transaction_id: string;
-	ttl: string; // Duration in ISO 8601 format (e.g., PT30S)
-	version: string;
-};
+import { BecknContext } from "../../models/beckn-types";
 
 type TrasactionData = {
 	latestTimestamp: string;
@@ -30,7 +9,7 @@ type TrasactionData = {
 	message_ids: string[];
 };
 
-export async function saveContextData(context: Context) {
+export async function saveContextData(context: BecknContext) {
 	if (context.action === "search") {
 		const action = context.action;
 		const timestamp = context.timestamp;
