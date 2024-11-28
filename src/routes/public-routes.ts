@@ -1,6 +1,6 @@
 import express from "express";
 import { ValidationController } from "../controllers/validation-controller";
-import { CommunicationController } from "../controllers/forwarding-controller";
+import { CommunicationController } from "../controllers/communication-controller";
 import { DataController } from "../controllers/data-controller";
 
 const router = express();
@@ -17,9 +17,10 @@ router.post(
 	validationController.validateRequestBody,
 	validationController.validateL0,
 	validationController.validateL1,
-	validationController.saveTransactionInCache,
+	validationController.validateContext,
+	dbController.saveTransactionInCache,
 	// dbController.saveDataToDb,
-	commController.ForwardToMockServer
+	commController.forwardToMockServer
 );
 
 export default router;

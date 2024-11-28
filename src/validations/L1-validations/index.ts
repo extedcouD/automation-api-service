@@ -9,7 +9,6 @@ import { validateOn_select } from "./on_select";
 import { validateOn_init } from "./on_init";
 import { validateOn_confirm } from "./on_confirm";
 import { validateOn_cancel } from "./on_cancel";
-import { validateOn_update } from "./on_update";
 import { validateOn_status } from "./on_status";
 
 export function performL1Validations(
@@ -40,8 +39,6 @@ export function performL1Validations(
             return validateOn_confirm(payload, externalData);
         case "on_cancel":
             return validateOn_cancel(payload, externalData);
-        case "on_update":
-            return validateOn_update(payload, externalData);
         case "on_status":
             return validateOn_status(payload, externalData);
         default:

@@ -3,12 +3,15 @@ import logger from "../utils/logger";
 import { setAckResponse } from "../utils/ackUtils";
 import { performL0Validations } from "../validations/L0-validations/schemaValidations";
 import { performL1Validations } from "../validations/L1-validations";
-import { saveContextData } from "../utils/data-utils/cache-utils";
 import { performContextValidations } from "../utils/data-utils/validateContext";
 import { getPublicKeys } from "../utils/headerUtils";
 import { isHeaderValid } from "ondc-crypto-sdk-nodejs";
 export class ValidationController {
-	async validateSignature(req: Request, res: Response, next: NextFunction) {
+	validateSignature = async (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
 		try {
 			const header = JSON.stringify(req.headers);
 			const body = JSON.stringify(req.body);
@@ -28,9 +31,13 @@ export class ValidationController {
 			res.status(200).send(setAckResponse(false, "Invalid Signature", "10001"));
 			return;
 		}
-	}
+	};
 	// Middleware: Validate request body
-	async validateRequestBody(req: Request, res: Response, next: NextFunction) {
+	validateRequestBody = async (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
 		const body = req.body;
 
 		if (!body || !body.context || !body.context.action) {
@@ -40,11 +47,11 @@ export class ValidationController {
 		}
 
 		next();
-	}
+	};
 
 	// Middleware: L0 validations
 	validateL0(req: Request, res: Response, next: NextFunction) {
-		const { action } = req.body.context.action;
+		const { action } = req.params;
 		const body = req.body;
 
 		const l0Result = performL0Validations(body, action);
@@ -86,17 +93,6 @@ export class ValidationController {
 			return;
 		}
 
-		next();
-	}
-
-	// Middleware: Save context data
-	async saveTransactionInCache(
-		req: Request,
-		res: Response,
-		next: NextFunction
-	) {
-		const body = req.body;
-		await saveContextData(body.context);
 		next();
 	}
 }

@@ -299,16 +299,13 @@ function validate_enum_2(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_3(payload: any, externalData = {}) {
+function validate_enum_4(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
 
-        const enumList = ["std:080"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.context.location.city.code",
-        );
+        const enumList = ["ONDC:TRV11"];
+        const enumPath = payloadUtils.getJsonPath(testObj, "$.context.domain");
         const skipCheck = false;
         if (skipCheck) continue;
         const output = validations.ALL_IN(enumPath, enumList);
@@ -321,16 +318,19 @@ function validate_enum_3(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_4(payload: any, externalData = {}) {
+function order_id_check(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
 
-        const enumList = ["ONDC:TRV11"];
-        const enumPath = payloadUtils.getJsonPath(testObj, "$.context.domain");
+        const order_id = payloadUtils.getJsonPath(
+            testObj,
+            "$.message.order_id",
+        );
+        const nulls = ["null"];
         const skipCheck = false;
         if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
+        const output = validations.NONE_IN(order_id, nulls);
         if (!output)
             return {
                 valid: false,
@@ -364,15 +364,17 @@ const testFunctions: Array<
     validate_attribute_13,
     validate_enum_1,
     validate_enum_2,
-    validate_enum_3,
     validate_enum_4,
+    order_id_check,
 ];
 
 export function validateStatus(payload: string, externalData = {}) {
     for (const fn of testFunctions) {
         const result = fn(payload, externalData);
         if (result.errorCode && !result.valid) {
-            return { valid: false, error: getError(result.errorCode) };
+            const error = getError(result.errorCode);
+            error.message += " " + fn.name;
+            return { valid: false, error: error };
         }
     }
     return { valid: true };

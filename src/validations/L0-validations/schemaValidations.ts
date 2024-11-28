@@ -5,6 +5,7 @@ import Ajv from "ajv";
 import addFormats from "ajv-formats";
 
 export function performL0Validations(actionPayload: any, action: string) {
+	console.log(action);
 	if (!fs.existsSync(path.resolve(__dirname, `../../schemas/${action}.yaml`))) {
 		return { valid: false, errors: ["INVALID ACTION"] };
 	}

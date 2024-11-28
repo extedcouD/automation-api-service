@@ -4,18 +4,16 @@ function ARE_UNIQUE(operand: string[]) {
 }
 
 function ALL_IN(left: string[], right: string[]) {
-	const leftSet = new Set(left);
-	return right.every((v) => leftSet.has(v));
+	return left.every((v) => right.includes(v));
 }
 
 function ANY_IN(left: string[], right: string[]) {
 	const leftSet = new Set(left);
-	return right.some((v) => leftSet.has(v));
+	return left.some((v) => right.includes(v));
 }
 
 function NONE_IN(left: string[], right: string[]) {
-	const leftSet = new Set(left);
-	return !right.some((v) => leftSet.has(v));
+	return left.every((v) => !right.includes(v));
 }
 
 function EQUAL_TO(left: string[], right: string[]) {

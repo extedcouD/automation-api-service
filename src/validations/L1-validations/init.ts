@@ -390,226 +390,6 @@ function validate_attribute_19(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_attribute_20(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].collected_by",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_21(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].descriptor.name",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_22(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].descriptor.name",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_23(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].collected_by",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_24(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_25(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_26(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_27(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_28(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_29(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].tags[*].list[*].value",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
 function validate_enum_1(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
@@ -692,153 +472,15 @@ function validate_enum_4(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_5(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["SJT", "SFSJT", "RJT", "PASS"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.items[*].descriptor.code",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_6(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["BUS", "METRO"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].vehicle.category",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_7(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["ROUTE", "TRIP"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
 function validate_enum_8(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
 
-        const enumList = ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"];
+        const enumList = ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"];
         const enumPath = payloadUtils.getJsonPath(
             testObj,
             "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_9(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["QR"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_10(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["UNCLAIMED", "CLAIMED"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.status",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_11(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = [
-            "SOFT_CANCEL",
-            "CONFIRM_CANCEL",
-            "ACTIVE",
-            "COMPLETE",
-            "CANCELLED",
-        ];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.status",
         );
         const skipCheck = false;
         if (skipCheck) continue;
@@ -853,6 +495,28 @@ function validate_enum_11(payload: any, externalData = {}) {
 }
 
 function validate_enum_12(payload: any, externalData = {}) {
+    const scope = payloadUtils.getJsonPath(payload, "$");
+    for (const testObj of scope) {
+        testObj._EXTERNAL = externalData;
+
+        const enumList = ["INACTIVE", "ACTIVE"];
+        const enumPath = payloadUtils.getJsonPath(
+            testObj,
+            "$.message.order.fulfillments[*].state.descriptor.code",
+        );
+        const skipCheck = false;
+        if (skipCheck) continue;
+        const output = validations.ALL_IN(enumPath, enumList);
+        if (!output)
+            return {
+                valid: false,
+                errorCode: 30000,
+            };
+    }
+    return { valid: true };
+}
+
+function validate_enum_13(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -908,35 +572,22 @@ const testFunctions: Array<
     validate_attribute_17,
     validate_attribute_18,
     validate_attribute_19,
-    validate_attribute_20,
-    validate_attribute_21,
-    validate_attribute_22,
-    validate_attribute_23,
-    validate_attribute_24,
-    validate_attribute_25,
-    validate_attribute_26,
-    validate_attribute_27,
-    validate_attribute_28,
-    validate_attribute_29,
     validate_enum_1,
     validate_enum_2,
     validate_enum_3,
     validate_enum_4,
-    validate_enum_5,
-    validate_enum_6,
-    validate_enum_7,
     validate_enum_8,
-    validate_enum_9,
-    validate_enum_10,
-    validate_enum_11,
     validate_enum_12,
+    validate_enum_13,
 ];
 
 export function validateInit(payload: string, externalData = {}) {
     for (const fn of testFunctions) {
         const result = fn(payload, externalData);
         if (result.errorCode && !result.valid) {
-            return { valid: false, error: getError(result.errorCode) };
+            const error = getError(result.errorCode);
+            error.message += " " + fn.name;
+            return { valid: false, error: error };
         }
     }
     return { valid: true };

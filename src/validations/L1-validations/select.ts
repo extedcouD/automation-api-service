@@ -365,28 +365,6 @@ function validate_enum_2(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_3(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["std:080"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.context.location.city.code",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
 function validate_enum_4(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
@@ -394,194 +372,6 @@ function validate_enum_4(payload: any, externalData = {}) {
 
         const enumList = ["ONDC:TRV11"];
         const enumPath = payloadUtils.getJsonPath(testObj, "$.context.domain");
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_5(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["SJT", "SFSJT", "RJT", "PASS"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.items[*].descriptor.code",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_6(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["BUS", "METRO"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].vehicle.category",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_7(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["ROUTE", "TRIP"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_8(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_9(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["QR"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_10(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["UNCLAIMED", "CLAIMED"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.status",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_11(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = [
-            "SOFT_CANCEL",
-            "CONFIRM_CANCEL",
-            "ACTIVE",
-            "COMPLETE",
-            "CANCELLED",
-        ];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.status",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 30000,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_12(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = [
-            "BASE_PRICE",
-            "REFUND",
-            "CANCELLATION_CHARGES",
-            "OFFER",
-            "TOLL",
-        ];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.quote.breakup[*].title",
-        );
         const skipCheck = false;
         if (skipCheck) continue;
         const output = validations.ALL_IN(enumPath, enumList);
@@ -621,23 +411,16 @@ const testFunctions: Array<
     validate_attribute_16,
     validate_enum_1,
     validate_enum_2,
-    validate_enum_3,
     validate_enum_4,
-    validate_enum_5,
-    validate_enum_6,
-    validate_enum_7,
-    validate_enum_8,
-    validate_enum_9,
-    validate_enum_10,
-    validate_enum_11,
-    validate_enum_12,
 ];
 
 export function validateSelect(payload: string, externalData = {}) {
     for (const fn of testFunctions) {
         const result = fn(payload, externalData);
         if (result.errorCode && !result.valid) {
-            return { valid: false, error: getError(result.errorCode) };
+            const error = getError(result.errorCode);
+            error.message += " " + fn.name;
+            return { valid: false, error: error };
         }
     }
     return { valid: true };

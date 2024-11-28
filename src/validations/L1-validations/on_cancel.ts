@@ -680,7 +680,7 @@ function validate_attribute_33(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.fulfillments[*].id",
+            "$.message.order.quote.price.value",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -702,7 +702,7 @@ function validate_attribute_34(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.fulfillments[*].type",
+            "$.message.order.quote.price.currency",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -724,7 +724,7 @@ function validate_attribute_35(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.fulfillments[*].stops[*].location.gps",
+            "$.message.order.quote.breakup[*].title",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -746,7 +746,7 @@ function validate_attribute_36(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.fulfillments[*].vehicle.category",
+            "$.message.order.payments[*].id",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -768,7 +768,7 @@ function validate_attribute_37(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.quote.price.value",
+            "$.message.order.payments[*].collected_by",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -790,7 +790,7 @@ function validate_attribute_38(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.quote.price.currency",
+            "$.message.order.payments[*].status",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -812,7 +812,7 @@ function validate_attribute_39(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.quote.breakup[*].title",
+            "$.message.order.payments[*].type",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -834,7 +834,7 @@ function validate_attribute_40(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.payments[*].id",
+            "$.message.order.payments[*].params.bank_code",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -856,7 +856,7 @@ function validate_attribute_41(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.payments[*].collected_by",
+            "$.message.order.payments[*].params.bank_account_number",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -878,7 +878,7 @@ function validate_attribute_42(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.payments[*].status",
+            "$.message.order.cancellation_terms[*].external_ref.url",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -900,7 +900,7 @@ function validate_attribute_43(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.payments[*].type",
+            "$.message.order.cancellation_terms[*].external_ref.mimetype",
         );
         const nulls = ["null"];
         const skipCheck = false;
@@ -922,94 +922,6 @@ function validate_attribute_44(payload: any, externalData = {}) {
 
         const attr = payloadUtils.getJsonPath(
             testObj,
-            "$.message.order.payments[*].params.bank_code",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_45(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.payments[*].params.bank_account_number",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_46(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.cancellation_terms[*].external_ref.url",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_47(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.cancellation_terms[*].external_ref.mimetype",
-        );
-        const nulls = ["null"];
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.NONE_IN(attr, nulls);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_attribute_48(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const attr = payloadUtils.getJsonPath(
-            testObj,
             "$.message.order.cancellation.cancelled_by",
         );
         const nulls = ["null"];
@@ -1025,7 +937,7 @@ function validate_attribute_48(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_attribute_49(payload: any, externalData = {}) {
+function validate_attribute_45(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -1129,34 +1041,12 @@ function validate_enum_4(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_5(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["SJT", "SFSJT", "RJT", "PASS"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.items[*].descriptor.code",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
 function validate_enum_6(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
 
-        const enumList = ["BUS", "METRO"];
+        const enumList = ["METRO"];
         const enumPath = payloadUtils.getJsonPath(
             testObj,
             "$.message.order.fulfillments[*].vehicle.category",
@@ -1173,95 +1063,7 @@ function validate_enum_6(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_7(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["ROUTE", "TRIP"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_8(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_9(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["QR"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.type",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_10(payload: any, externalData = {}) {
-    const scope = payloadUtils.getJsonPath(payload, "$");
-    for (const testObj of scope) {
-        testObj._EXTERNAL = externalData;
-
-        const enumList = ["UNCLAIMED", "CLAIMED"];
-        const enumPath = payloadUtils.getJsonPath(
-            testObj,
-            "$.message.order.fulfillments[*].stops[*].authorization.status",
-        );
-        const skipCheck = false;
-        if (skipCheck) continue;
-        const output = validations.ALL_IN(enumPath, enumList);
-        if (!output)
-            return {
-                valid: false,
-                errorCode: 20006,
-            };
-    }
-    return { valid: true };
-}
-
-function validate_enum_11(payload: any, externalData = {}) {
+function validate_enum_13(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -1283,7 +1085,7 @@ function validate_enum_11(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_12(payload: any, externalData = {}) {
+function validate_enum_14(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -1305,7 +1107,7 @@ function validate_enum_12(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_13(payload: any, externalData = {}) {
+function validate_enum_15(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -1327,7 +1129,7 @@ function validate_enum_13(payload: any, externalData = {}) {
     return { valid: true };
 }
 
-function validate_enum_14(payload: any, externalData = {}) {
+function validate_enum_16(payload: any, externalData = {}) {
     const scope = payloadUtils.getJsonPath(payload, "$");
     for (const testObj of scope) {
         testObj._EXTERNAL = externalData;
@@ -1342,6 +1144,34 @@ function validate_enum_14(payload: any, externalData = {}) {
         const enumPath = payloadUtils.getJsonPath(
             testObj,
             "$.message.order.quote.breakup[*].title",
+        );
+        const skipCheck = false;
+        if (skipCheck) continue;
+        const output = validations.ALL_IN(enumPath, enumList);
+        if (!output)
+            return {
+                valid: false,
+                errorCode: 20006,
+            };
+    }
+    return { valid: true };
+}
+
+function validate_enum_17(payload: any, externalData = {}) {
+    const scope = payloadUtils.getJsonPath(payload, "$");
+    for (const testObj of scope) {
+        testObj._EXTERNAL = externalData;
+
+        const enumList = [
+            "SOFT_CANCEL",
+            "ACTIVE",
+            "COMPLETE",
+            "CANCELLED",
+            "CANCEL_INITIATED",
+        ];
+        const enumPath = payloadUtils.getJsonPath(
+            testObj,
+            "$.message.order.status",
         );
         const skipCheck = false;
         if (skipCheck) continue;
@@ -1409,31 +1239,25 @@ const testFunctions: Array<
     validate_attribute_43,
     validate_attribute_44,
     validate_attribute_45,
-    validate_attribute_46,
-    validate_attribute_47,
-    validate_attribute_48,
-    validate_attribute_49,
     validate_enum_1,
     validate_enum_2,
     validate_enum_3,
     validate_enum_4,
-    validate_enum_5,
     validate_enum_6,
-    validate_enum_7,
-    validate_enum_8,
-    validate_enum_9,
-    validate_enum_10,
-    validate_enum_11,
-    validate_enum_12,
     validate_enum_13,
     validate_enum_14,
+    validate_enum_15,
+    validate_enum_16,
+    validate_enum_17,
 ];
 
 export function validateOn_cancel(payload: string, externalData = {}) {
     for (const fn of testFunctions) {
         const result = fn(payload, externalData);
         if (result.errorCode && !result.valid) {
-            return { valid: false, error: getError(result.errorCode) };
+            const error = getError(result.errorCode);
+            error.message += " " + fn.name;
+            return { valid: false, error: error };
         }
     }
     return { valid: true };
