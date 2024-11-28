@@ -30,3 +30,23 @@ export const setAckResponse = (
 
 	return resp;
 };
+
+export const setIneternalServerNack = {
+	message: {
+		status: "NACK",
+		error: {
+			code: "23001",
+			message: "Internal Server Error",
+		},
+	},
+};
+
+export const setBadRequestNack = {
+	message: {
+		status: "NACK",
+		error: {
+			code: "10000",
+			message: "Bad Request",
+		},
+	},
+};

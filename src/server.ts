@@ -3,6 +3,7 @@ import cors from "cors";
 import logger from "./utils/logger";
 import { config } from "./config/serverConfig";
 import routes from "./routes/public-routes";
+import { setIneternalServerNack } from "./utils/ackUtils";
 
 const createServer = (): Application => {
 	const app = express();
@@ -30,7 +31,7 @@ const createServer = (): Application => {
 	// Error Handling Middleware
 	app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 		logger.error(err.message, { stack: err.stack });
-		res.status(500).json({ message: "Internal Server Error" });
+		res.status(200).send(setIneternalServerNack);
 	});
 
 	return app;

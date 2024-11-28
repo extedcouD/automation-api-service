@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import logger from "../utils/logger";
-import { setAckResponse } from "../utils/ackUtils";
+import { setAckResponse, setBadRequestNack } from "../utils/ackUtils";
 import { performL0Validations } from "../validations/L0-validations/schemaValidations";
 import { performL1Validations } from "../validations/L1-validations";
 import { performContextValidations } from "../utils/data-utils/validateContext";
@@ -42,7 +42,7 @@ export class ValidationController {
 
 		if (!body || !body.context || !body.context.action) {
 			logger.error("Invalid request body", body);
-			res.status(400).send("Bad Request");
+			res.status(200).send(setBadRequestNack);
 			return;
 		}
 
