@@ -3,7 +3,7 @@ import { BecknContext } from "../models/beckn-types";
 import logger from "../utils/logger";
 
 export class DataService {
-	SaveToPresistantDB = async (
+	saveRequestToDB = async (
 		context: BecknContext,
 		payload: any,
 		dbUrl: string
@@ -15,14 +15,18 @@ export class DataService {
 			payload: payload,
 			bppId: context.bpp_id ?? null,
 			bapId: context.bap_id,
+			createdAt: null,
+			updatedAt: null,
+			type: "REQUEST",
+			httpStatus: null,
 		};
 		const url = `${dbUrl}/payload`;
 		console.log("Saving data to DB", url, save_data);
-		const res = await axios.post(url, save_data, {
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		logger.info("Data saved to DB", res.data);
+		// const res = await axios.post(url, save_data, {
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// });
+		// logger.info("Data saved to DB", res.data);
 	};
 }

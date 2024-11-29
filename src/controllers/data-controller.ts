@@ -9,8 +9,8 @@ export class DataController {
 	dbUrl: string;
 	dataService: DataService;
 	constructor() {
-		if (process.env.PERSISTENT_DB_URL) {
-			this.dbUrl = process.env.PERSISTENT_DB_URL;
+		if (process.env.DATA_BASE_URL) {
+			this.dbUrl = process.env.DATA_BASE_URL;
 			this.dataService = new DataService();
 			console.log("Data Controller initialized", this.dbUrl);
 			return;
@@ -26,7 +26,7 @@ export class DataController {
 		try {
 			const payload = Request.body;
 			const context = payload.context as BecknContext;
-			await this.dataService.SaveToPresistantDB(context, payload, this.dbUrl);
+			await this.dataService.saveRequestToDB(context, payload, this.dbUrl);
 			next();
 		} catch (err) {
 			logger.error(err);

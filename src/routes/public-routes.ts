@@ -19,7 +19,7 @@ router.post(
 	validationController.validateL1,
 	validationController.validateContext,
 	dbController.saveTransactionInCache,
-	// dbController.saveDataToDb,
+	dbController.saveDataToDb,
 	commController.forwardToMockServer
 );
 
