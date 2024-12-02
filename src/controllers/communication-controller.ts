@@ -2,6 +2,7 @@ import { setAckResponse, setIneternalServerNack } from "../utils/ackUtils";
 import { Request, Response } from "express";
 import logger from "../utils/logger";
 import { CommunicationService } from "../services/forwarding-service";
+import { createAuthHeader } from "../utils/headerUtils";
 
 export class CommunicationController {
 	communicationServce: CommunicationService;

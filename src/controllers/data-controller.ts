@@ -3,7 +3,7 @@ import { BecknContext } from "../models/beckn-types";
 import logger from "../utils/logger";
 import { saveContextData } from "../utils/data-utils/cache-utils";
 import { DataService } from "../services/data-service";
-import { setAckResponse, setIneternalServerNack } from "../utils/ackUtils";
+import { setIneternalServerNack } from "../utils/ackUtils";
 
 export class DataController {
 	dbUrl: string;
@@ -29,7 +29,7 @@ export class DataController {
 			await this.dataService.saveRequestToDB(context, payload, this.dbUrl);
 			next();
 		} catch (err) {
-			logger.error(err);
+			logger.error("Error in saving data to DB", err);
 			Response.status(200).send(setIneternalServerNack);
 		}
 	};
@@ -44,7 +44,7 @@ export class DataController {
 			await saveContextData(body.context);
 			next();
 		} catch (err) {
-			logger.error(err);
+			logger.error("Error in saving context data to cache", err);
 			res.status(200).send(setIneternalServerNack);
 		}
 	};

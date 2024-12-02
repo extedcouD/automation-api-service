@@ -22,11 +22,11 @@ export class DataService {
 		};
 		const url = `${dbUrl}/payload`;
 		console.log("Saving data to DB", url, save_data);
-		// const res = await axios.post(url, save_data, {
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// });
-		// logger.info("Data saved to DB", res.data);
+		const res = await axios.post(url, save_data, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		logger.info("Data saved to DB", res.data);
 	};
 }
