@@ -8,20 +8,19 @@ export class DataService {
 		payload: any,
 		dbUrl: string
 	) => {
+		console.log(typeof payload);
 		const save_data = {
 			messageId: context.message_id,
-			transactionalId: context.transaction_id,
+			transactionId: context.transaction_id,
 			action: context.action.toUpperCase(),
-			payload: payload,
+			jsonObject: payload,
 			bppId: context.bpp_id ?? null,
 			bapId: context.bap_id,
-			createdAt: null,
-			updatedAt: null,
 			type: "REQUEST",
-			httpStatus: null,
+			httpStatus: 200,
 		};
 		const url = `${dbUrl}/payload`;
-		console.log("Saving data to DB", url, save_data);
+		console.log("Saving data to DB", url, JSON.stringify(payload));
 		const res = await axios.post(url, save_data, {
 			headers: {
 				"Content-Type": "application/json",

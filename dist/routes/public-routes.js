@@ -15,5 +15,12 @@ const commController = new communication_controller_1.CommunicationController();
 const dbController = new data_controller_1.DataController();
 router.post("/:action", 
 // validationController.validateSignature,
-validationController.validateRequestBody, validationController.validateL0, validationController.validateL1, validationController.validateContext, dbController.saveTransactionInCache, dbController.saveDataToDb, commController.forwardToMockServer);
+// validationController.validateRequestBody,
+// validationController.validateL0,
+// validationController.validateL1,
+// validationController.validateContext,
+// dbController.saveTransactionInCache,
+dbController.saveDataToDb
+// commController.forwardToMockServer
+);
 exports.default = router;

@@ -18,19 +18,15 @@ export class DataController {
 		throw new Error("DB_URL not found in environment variables");
 	}
 
-	saveDataToDb = async (
-		Request: Request,
-		Response: Response,
-		next: NextFunction
-	) => {
+	saveDataToDb = async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			const payload = Request.body;
+			const payload = req.body;
 			const context = payload.context as BecknContext;
 			await this.dataService.saveRequestToDB(context, payload, this.dbUrl);
 			next();
 		} catch (err) {
 			logger.error("Error in saving data to DB", err);
-			Response.status(200).send(setIneternalServerNack);
+			res.status(200).send(setIneternalServerNack);
 		}
 	};
 	// Middleware: Save context data

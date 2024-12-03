@@ -19,16 +19,16 @@ const data_service_1 = require("../services/data-service");
 const ackUtils_1 = require("../utils/ackUtils");
 class DataController {
     constructor() {
-        this.saveDataToDb = (Request, Response, next) => __awaiter(this, void 0, void 0, function* () {
+        this.saveDataToDb = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const payload = Request.body;
+                const payload = req.body;
                 const context = payload.context;
                 yield this.dataService.saveRequestToDB(context, payload, this.dbUrl);
                 next();
             }
             catch (err) {
-                logger_1.default.error(err);
-                Response.status(200).send(ackUtils_1.setIneternalServerNack);
+                logger_1.default.error("Error in saving data to DB", err);
+                res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
         // Middleware: Save context data
@@ -39,7 +39,7 @@ class DataController {
                 next();
             }
             catch (err) {
-                logger_1.default.error(err);
+                logger_1.default.error("Error in saving context data to cache", err);
                 res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
