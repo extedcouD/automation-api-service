@@ -20,6 +20,9 @@ export async function saveContextData(context: BecknContext) {
 			bap_uri: context.bap_uri,
 			message_ids: [context.message_id],
 		};
+		if (await RedisService.keyExists(context.transaction_id)) {
+			throw new Error("Transaction ID already exists");
+		}
 		await RedisService.setKey(context.transaction_id, JSON.stringify(saveData));
 	} else {
 		const data = await loadData(context.transaction_id);
