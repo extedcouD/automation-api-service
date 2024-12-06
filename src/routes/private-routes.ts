@@ -16,7 +16,9 @@ router.post(
 	"/:action",
 	validationController.validateRequestBody,
 	validationController.validateL0,
-	dbController.saveTransactionInCache,
-	dbController.saveDataToDb,
-	commController.forwardToNpServer
+	// dbController.saveTransactionInCache,
+	// dbController.saveDataToDb,
+	commController.handleRequestFromMockServer
 );
+
+export default router;

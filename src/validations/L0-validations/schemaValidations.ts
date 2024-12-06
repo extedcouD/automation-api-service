@@ -14,7 +14,6 @@ export function performL0Validations(actionPayload: any, action: string) {
 		"utf-8"
 	);
 	const schema = yaml.load(rawSchema);
-	console.log(schema);
 	const ajv = new Ajv({ allErrors: true });
 	addFormats(ajv);
 	const validate = ajv.compile(schema as any);

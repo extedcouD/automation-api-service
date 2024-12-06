@@ -7,7 +7,7 @@ const createAuthHeader = async (payload: any) => {
 	try {
 		const header = await createAuthorizationHeader({
 			body: JSON.stringify(payload),
-			privateKey: process.env.PRIVATE_KEY || "",
+			privateKey: process.env.SIGN_PRIVATE_KEY || "",
 			subscriberId: process.env.SUBSCRIBER_ID || "", // Subscriber ID that you get after registering to ONDC Network
 			subscriberUniqueKeyId: process.env.UKID || "", // Unique Key Id or uKid that you get after registering to ONDC Network
 		});

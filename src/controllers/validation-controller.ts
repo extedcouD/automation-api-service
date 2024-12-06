@@ -6,6 +6,7 @@ import { performL1Validations } from "../validations/L1-validations";
 import { performContextValidations } from "../utils/data-utils/validateContext";
 import { getPublicKeys } from "../utils/headerUtils";
 import { isHeaderValid } from "ondc-crypto-sdk-nodejs";
+import { log } from "console";
 export class ValidationController {
 	validateSignature = async (
 		req: Request,
@@ -39,7 +40,6 @@ export class ValidationController {
 		next: NextFunction
 	) => {
 		const body = req.body;
-
 		if (!body || !body.context || !body.context.action) {
 			logger.error("Invalid request body", body);
 			res.status(200).send(setBadRequestNack);
@@ -59,7 +59,7 @@ export class ValidationController {
 			res.status(200).send(setAckResponse(false, l0Result.errors, "400"));
 			return;
 		}
-
+		logger.info("L0 validations passed");
 		next();
 	}
 
@@ -76,7 +76,7 @@ export class ValidationController {
 				.send(setAckResponse(false, error?.message, error?.code?.toString()));
 			return;
 		}
-
+		logger.info("L1 validations passed");
 		next();
 	}
 
@@ -92,7 +92,7 @@ export class ValidationController {
 				.send(setAckResponse(false, contextValidations.error, "400"));
 			return;
 		}
-
+		logger.info("Context validations passed");
 		next();
 	}
 }

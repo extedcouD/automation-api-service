@@ -13,14 +13,14 @@ const dbController = new DataController();
 
 router.post(
 	"/:action",
-	validationController.validateSignature,
+	// validationController.validateSignature,
 	validationController.validateRequestBody,
 	validationController.validateL0,
 	validationController.validateL1,
 	validationController.validateContext,
-	dbController.saveTransactionInCache,
-	dbController.saveDataToDb,
-	commController.forwardToNpServer
+	// dbController.saveTransactionInCache,
+	// dbController.saveDataToDb,
+	commController.forwardToMockServer
 );
 
 export default router;

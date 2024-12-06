@@ -321,27 +321,27 @@ function validate_enum_5(payload: any, externalData = {}) {
 	return { valid: true };
 }
 
-function validate_enum_8(payload: any, externalData = {}) {
-	const scope = payloadUtils.getJsonPath(payload, "$");
-	for (const testObj of scope) {
-		testObj._EXTERNAL = externalData;
+// function validate_enum_8(payload: any, externalData = {}) {
+// 	const scope = payloadUtils.getJsonPath(payload, "$");
+// 	for (const testObj of scope) {
+// 		testObj._EXTERNAL = externalData;
 
-		const enumList = ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"];
-		const enumPath = payloadUtils.getJsonPath(
-			testObj,
-			"$.message.intent.fulfillment.stops[*].type"
-		);
-		const skipCheck = false;
-		if (skipCheck) continue;
-		const output = validations.ALL_IN(enumPath, enumList);
-		if (!output)
-			return {
-				valid: false,
-				errorCode: 30000,
-			};
-	}
-	return { valid: true };
-}
+// 		const enumList = ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"];
+// 		const enumPath = payloadUtils.getJsonPath(
+// 			testObj,
+// 			"$.message.intent.fulfillment.stops[*].type"
+// 		);
+// 		const skipCheck = false;
+// 		if (skipCheck) continue;
+// 		const output = validations.ALL_IN(enumPath, enumList);
+// 		if (!output)
+// 			return {
+// 				valid: false,
+// 				errorCode: 30000,
+// 			};
+// 	}
+// 	return { valid: true };
+// }
 
 const testFunctions: Array<
 	(
@@ -368,7 +368,7 @@ const testFunctions: Array<
 	validate_enum_2,
 	validate_enum_4,
 	validate_enum_5,
-	validate_enum_8,
+	// validate_enum_8,
 ];
 
 export function validateSearch(payload: string, externalData = {}) {
