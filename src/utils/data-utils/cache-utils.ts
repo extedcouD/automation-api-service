@@ -1,42 +1,41 @@
 import { RedisService } from "ondc-automation-cache-lib";
 import { BecknContext } from "../../models/beckn-types";
+import { SessionData } from "../../types/session-types";
 
-type TrasactionData = {
-	latestTimestamp: string;
-	latestAction: string;
-	bap_id: string;
-	bap_uri: string;
-	message_ids: string[];
-};
-
-export async function saveContextData(context: BecknContext) {
-	if (context.action === "search") {
-		const action = context.action;
-		const timestamp = context.timestamp;
-		const saveData: TrasactionData = {
-			latestTimestamp: timestamp,
-			latestAction: action,
-			bap_id: context.bap_id,
-			bap_uri: context.bap_uri,
-			message_ids: [context.message_id],
-		};
-		if (await RedisService.keyExists(context.transaction_id)) {
-			throw new Error("Transaction ID already exists");
-		}
-		await RedisService.setKey(context.transaction_id, JSON.stringify(saveData));
-	} else {
-		const data = await loadData(context.transaction_id);
-		data.latestAction = context.action;
-		data.latestTimestamp = context.timestamp;
-		data.message_ids.push(context.message_id);
-		await RedisService.setKey(context.transaction_id, JSON.stringify(data));
-	}
+export async function saveContextData(
+	context: BecknContext,
+	subscriberUrl: string
+) {
+	const sessionData = await loadData(subscriberUrl);
+	const contextdata = sessionData.context_cache;
+	contextdata.latest_action = context.action;
+	contextdata.latest_timestamp = context.timestamp;
+	contextdata.message_ids.push(context.message_id);
+	await RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
 }
 
-export async function loadData(transactionId: string) {
-	if (await RedisService.keyExists(transactionId)) {
-		const data = await RedisService.getKey(transactionId);
-		return JSON.parse(data ?? "{}") as TrasactionData;
+export async function savePayloadData(
+	context: BecknContext,
+	response: any,
+	subscriberUrl: string
+) {
+	const sessionData = await loadData(subscriberUrl);
+	if (
+		!Array.isArray(sessionData.session_payloads[sessionData.current_flow_id])
+	) {
+		sessionData.session_payloads[sessionData.current_flow_id] = [];
 	}
-	throw new Error("Transaction ID not found");
+	sessionData.session_payloads[sessionData.current_flow_id].push({
+		request: JSON.stringify(context),
+		response: JSON.stringify(response),
+	});
+	await RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
+}
+
+export async function loadData(sessionID: string) {
+	if (await RedisService.keyExists(sessionID)) {
+		const data = await RedisService.getKey(sessionID);
+		return JSON.parse(data ?? "{}") as SessionData;
+	}
+	throw new Error("session ID not found");
 }

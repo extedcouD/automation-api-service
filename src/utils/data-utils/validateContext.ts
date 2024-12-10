@@ -1,57 +1,24 @@
-import { RedisService } from "ondc-automation-cache-lib";
+import { BecknContext } from "../../models/beckn-types";
+import { validateAsyncContext } from "./async-validations";
 import { loadData } from "./cache-utils";
 
-export async function performContextValidations(action: string, body: any) {
-	if (action === "search") {
-		return {
-			valid: true,
-		};
-	}
-	console.log(await RedisService.keyExists(body.context.transaction_id));
-	if (!(await RedisService.keyExists(body.context.transaction_id))) {
-		return {
-			valid: false,
-			error: "Transaction ID not found",
-		};
-	}
-	const data = await loadData(body.context.transaction_id);
-	console.log(data);
-
-	if (action.startsWith("on_")) {
-		if ("on_" + data.latestAction != action) {
-			return {
-				valid: false,
-				error: "received action is not the expected action",
-			};
-		}
-	}
-	if (data.bap_id !== body.context.bap_id) {
+export async function performContextValidations(
+	context: BecknContext,
+	subscriberUrl: string
+): Promise<{
+	valid: boolean;
+	error?: string;
+}> {
+	const sessionData = await loadData(subscriberUrl);
+	if (
+		new Date(context.timestamp).getTime() <
+		new Date(sessionData.context_cache.latest_timestamp).getTime()
+	) {
 		return {
 			valid: false,
-			error: "bap_id does not match",
+			error: `Invalid timestamp in context should be greater than ${sessionData.context_cache.latest_timestamp}
+			of last ${sessionData.context_cache.latest_action} action`,
 		};
 	}
-	if (data.bap_uri !== body.context.bap_uri) {
-		return {
-			valid: false,
-			error: "bap_uri does not match",
-		};
-	}
-	if (data.message_ids.includes(body.context.message_id)) {
-		return {
-			valid: false,
-			error: "message_id is not unique",
-		};
-	}
-
-	if (data.latestTimestamp > body.context.timestamp) {
-		return {
-			valid: false,
-			error: "Timestamp is not the latest",
-		};
-	}
-
-	return {
-		valid: true,
-	};
+	return validateAsyncContext(context, sessionData);
 }
