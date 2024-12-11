@@ -2,6 +2,7 @@ import express from "express";
 import {ValidationController} from "../controllers/validation-controller";
 import {CommunicationController} from "../controllers/communication-controller";
 import {DataController} from "../controllers/data-controller";
+import logger from "../utils/logger";
 
 const router = express();
 router.use(express.json());
@@ -14,12 +15,38 @@ const dbController = new DataController();
 router.post(
     "/:action",
     // validationController.validateSignature,
-    validationController.validateRequestBody,
-    validationController.validateL0,
-    validationController.validateL1,
+    validationController.validateRequestBodyNp,
     validationController.validateSessionFromNp,
+    (req, res, next) => {
+        // Ensure `res.send` is wrapped only once
+        if (!res.locals.isSendWrapped) {
+            res.locals.isSendWrapped = true; // Flag to indicate the wrapping is done
+            const originalSend = res.send;
+            res.send = function (body) {
+                // Check if the cache has already been updated
+                if (!res.locals.isCacheUpdated) {
+                    res.locals.isCacheUpdated = true; // Flag to ensure cache update happens only once
+                    const statusCode = res.statusCode;
+                    if (statusCode !== 200) {
+                        logger.info(
+                            "API service response status code is not 200",
+                            statusCode
+                        );
+                    }
+                    // Save the request and response in the cache
+                    dbController.savePayloadInCache(req, body, false);
+                    // Log the response being sent
+                    logger.info("Sending response to: " + JSON.stringify(body));
+                }
+                return originalSend.call(this, body); // Call the original send method
+            };
+        }
+        next(); // Proceed to the next middleware
+    },
+    validationController.validateL0,
+    // validationController.validateL1,
     validationController.validateContextFromNp,
-    dbController.saveTransactionInCacheNp,
+    dbController.saveContextInCacheNp,
     commController.forwardToMockServer
 );
 

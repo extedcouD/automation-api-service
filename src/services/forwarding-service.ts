@@ -3,6 +3,7 @@ import {BecknContext} from "../models/beckn-types";
 import logger from "../utils/logger";
 import {createAuthHeader} from "../utils/headerUtils";
 import {config} from "../config/registryGatewayConfig";
+import {getAxiosErrorMessage} from "../utils/axiosUtils";
 
 export class CommunicationService {
     forwardApiToMock = async (body: any, action: string) => {
@@ -29,12 +30,11 @@ export class CommunicationService {
         } catch (error: any) {
             logger.error(
                 "Error in forwarding request to NP server",
-                error?.response?.data
             );
             const status = error.response?.status || 500;
             return {
                 status,
-                data: error?.response?.data || {},
+                data: getAxiosErrorMessage(error)
             };
         }
     };
@@ -43,7 +43,7 @@ export class CommunicationService {
         const url = config.gateway.STAGING;
         const header = await createAuthHeader(body);
         try {
-            const response = await axios.post(`${url}/search`, body, {
+            const response = await axios.post(`${url}search`, body, {
                 headers: {
                     Authorization: header,
                 },
@@ -54,13 +54,12 @@ export class CommunicationService {
             };
         } catch (error: any) {
             logger.error(
-                "Error in forwarding request to Gateway",
-                error?.response?.data
+                "Error in forwarding request to Gateway server",
             );
             const status = error.response?.status || 500;
             return {
                 status,
-                data: error?.response?.data || {},
+                data: getAxiosErrorMessage(error)
             };
         }
     };

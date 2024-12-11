@@ -1,10 +1,10 @@
 import {NextFunction, Request, Response} from "express";
 import {BecknContext} from "../models/beckn-types";
 import logger from "../utils/logger";
-import {saveContextData} from "../utils/data-utils/cache-utils";
+import {saveContextData, savePayloadData} from "../utils/data-utils/cache-utils";
 import {DataService} from "../services/data-service";
 import {setIneternalServerNack} from "../utils/ackUtils";
-import {computeSubsciberUri} from "../utils/subsciber-utils";
+import {computeSubscriberUri} from "../utils/subsciber-utils";
 
 export class DataController {
     dbUrl: string;
@@ -21,7 +21,7 @@ export class DataController {
     }
 
     // Middleware: Save context data
-    saveTransactionInCacheNp = async (
+    saveContextInCacheNp = async (
         req: Request,
         res: Response,
         next: NextFunction
@@ -29,7 +29,7 @@ export class DataController {
         try {
             const body = req.body;
             const {action} = req.params;
-            const subscriberUrl = computeSubsciberUri(body.context, action, false);
+            const subscriberUrl = computeSubscriberUri(body.context, action, false);
             await saveContextData(body.context, subscriberUrl);
             next();
         } catch (err) {
@@ -38,14 +38,14 @@ export class DataController {
         }
     };
 
-    saveTransactionInCacheMock = async (
+    saveContextInCacheMock = async (
         req: Request,
         res: Response,
         next: NextFunction
     ) => {
         try {
             const body = req.body;
-            const subscriberUrl = req.query.subscriberUrl as string ?? computeSubsciberUri(req.body.context, req.params.action, true);
+            const subscriberUrl = req.query.subscriberUrl as string ?? computeSubscriberUri(req.body.context, req.params.action, true);
             await saveContextData(body.context, subscriberUrl);
             next();
         } catch (err) {
@@ -53,4 +53,26 @@ export class DataController {
             res.status(200).send(setIneternalServerNack);
         }
     };
+
+
+    savePayloadInCache(req: Request, responseBody: any, fromMock: boolean) {
+        logger.info("Saving payload data to cache");
+        let url = computeSubscriberUri(req.body.context, req.params.action, fromMock);
+        if (fromMock) {
+            url = req.query.subscriberUrl as string ?? url;
+        }
+        console.log("sub URL", url);
+        savePayloadData(req.body.context, responseBody, url)
+            .then(() => logger.info("Payload data saved to cache"))
+            .catch((err) => logger.error("Error in saving payload data to cache", err));
+    }
+
+    // savePayloadInDb(req: Request, responseBody: any, fromMock: boolean, code: number) {
+    //     this.dataService.saveSessionToDB(
+    //         computeSubscriberUri(req.body.context, req.params.action, fromMock),
+    //         req.body,
+    //         responseBody,
+    //         code
+    //     ).catch((err) => logger.error("Error in saving payload data to DB", err));
+    // }
 }

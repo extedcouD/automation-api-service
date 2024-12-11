@@ -15,29 +15,69 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DataService = void 0;
 const axios_1 = __importDefault(require("axios"));
 const logger_1 = __importDefault(require("../utils/logger"));
+const ondc_automation_cache_lib_1 = require("ondc-automation-cache-lib");
+const cache_utils_1 = require("../utils/data-utils/cache-utils");
+const axiosUtils_1 = require("../utils/axiosUtils");
 class DataService {
     constructor() {
-        this.saveRequestToDB = (context, payload, dbUrl) => __awaiter(this, void 0, void 0, function* () {
-            var _a;
-            console.log(typeof payload);
-            const save_data = {
-                messageId: context.message_id,
-                transactionId: context.transaction_id,
-                action: context.action.toUpperCase(),
-                jsonObject: payload,
-                bppId: (_a = context.bpp_id) !== null && _a !== void 0 ? _a : null,
-                bapId: context.bap_id,
-                type: "REQUEST",
-                httpStatus: 200,
-            };
-            const url = `${dbUrl}/payload`;
-            console.log("Saving data to DB", url, JSON.stringify(payload));
-            const res = yield axios_1.default.post(url, save_data, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            logger_1.default.info("Data saved to DB", res.data);
+        this.saveSessionToDB = (subscriberUri, payload, response, code) => __awaiter(this, void 0, void 0, function* () {
+            var _a, _b;
+            try {
+                const dbUrl = process.env.DATA_BASE_URL;
+                const sessionData = yield (0, cache_utils_1.loadData)(subscriberUri);
+                const checkSessionUrl = `${dbUrl}/api/sessions/check/${sessionData.active_session_id}`;
+                const postUrl = `${dbUrl}/api/sessions`;
+                const exists = yield axios_1.default.get(checkSessionUrl);
+                if (!exists.data) {
+                    logger_1.default.info("Session does not exist in DB, creating new session");
+                    yield axios_1.default.post(postUrl, {
+                        "sessionId": sessionData.active_session_id,
+                        "npType": sessionData.type,
+                        "npId": sessionData.context_cache.subscriber_id,
+                        "domain": sessionData.domain,
+                        "version": sessionData.version,
+                        "sessionType": "AUTOMATION",
+                        "sessionActive": true
+                    });
+                }
+                const responseBody = {
+                    "messageId": payload.context.message_id,
+                    "transactionId": payload.context.transaction_id,
+                    "action": payload.context.action,
+                    "bppId": (_a = payload.context.bpp_id) !== null && _a !== void 0 ? _a : "",
+                    "bapId": payload.context.bap_id,
+                    "jsonObject": response,
+                    "type": "RESPONSE",
+                    "httpStatus": code,
+                    "flowId": sessionData.current_flow_id,
+                    "sessionDetails": {
+                        "sessionId": sessionData.active_session_id
+                    }
+                };
+                const requestBody = {
+                    "messageId": payload.context.message_id,
+                    "transactionId": payload.context.transaction_id,
+                    "action": payload.context.action,
+                    "bppId": (_b = payload.context.bpp_id) !== null && _b !== void 0 ? _b : "",
+                    "bapId": payload.context.bap_id,
+                    "jsonObject": payload,
+                    "type": "REQUEST",
+                    "httpStatus": code,
+                    "flowId": sessionData.current_flow_id,
+                    "sessionDetails": {
+                        "sessionId": sessionData.active_session_id
+                    }
+                };
+                yield axios_1.default.post(postUrl, responseBody);
+                yield axios_1.default.post(postUrl, requestBody);
+            }
+            catch (error) {
+                console.log(JSON.stringify(error));
+                logger_1.default.error("Error in saving data to DB ", (0, axiosUtils_1.getAxiosErrorMessage)(error));
+            }
+        });
+        this.checkSessionExistence = (subscriberUri) => __awaiter(this, void 0, void 0, function* () {
+            return yield ondc_automation_cache_lib_1.RedisService.keyExists(subscriberUri);
         });
     }
 }

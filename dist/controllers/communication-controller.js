@@ -16,29 +16,42 @@ exports.CommunicationController = void 0;
 const ackUtils_1 = require("../utils/ackUtils");
 const logger_1 = __importDefault(require("../utils/logger"));
 const forwarding_service_1 = require("../services/forwarding-service");
+const subsciber_utils_1 = require("../utils/subsciber-utils");
 class CommunicationController {
     constructor() {
         this.forwardToMockServer = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const context = req.body.context;
+            const action = req.params.action;
+            const subscriberUrl = (0, subsciber_utils_1.computeSubscriberUri)(context, action, false);
             try {
                 yield new forwarding_service_1.CommunicationService().forwardApiToMock(req.body, req.params.action);
                 res.status(200).send((0, ackUtils_1.setAckResponse)(true));
             }
             catch (error) {
-                res.status(200).send(ackUtils_1.setIneternalServerNack);
                 logger_1.default.error("Error in forwarding request to mock server", error);
+                res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
-        this.communicationServce = new forwarding_service_1.CommunicationService();
-    }
-    forwardToNpServer(req, res) {
-        try {
-            this.communicationServce.forwardApiToNp(req.body, req.params.action);
-            res.status(200).send((0, ackUtils_1.setAckResponse)(true));
-        }
-        catch (error) {
-            res.status(200).send(ackUtils_1.setIneternalServerNack);
-            logger_1.default.error("Error in forwarding request to NP server", error);
-        }
+        this.handleRequestFromMockServer = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const context = req.body.context;
+                const bpp_uri = context.bpp_uri;
+                if (bpp_uri) {
+                    const response = yield this.communicationService.forwardApiToNp(req.body, req.params.action);
+                    res
+                        .status(response.status)
+                        .send(response.data);
+                    return;
+                }
+                const response = yield this.communicationService.forwardApiToGateway(req.body);
+                res.status(response.status).send(response.data);
+            }
+            catch (error) {
+                res.status(200).send(ackUtils_1.setIneternalServerNack);
+                logger_1.default.error("Error in handling request from mock server", error);
+            }
+        });
+        this.communicationService = new forwarding_service_1.CommunicationService();
     }
 }
 exports.CommunicationController = CommunicationController;

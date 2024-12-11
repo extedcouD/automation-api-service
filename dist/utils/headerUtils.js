@@ -20,7 +20,7 @@ const createAuthHeader = (payload) => __awaiter(void 0, void 0, void 0, function
     try {
         const header = yield (0, ondc_crypto_sdk_nodejs_1.createAuthorizationHeader)({
             body: JSON.stringify(payload),
-            privateKey: process.env.PRIVATE_KEY || "",
+            privateKey: process.env.SIGN_PRIVATE_KEY || "",
             subscriberId: process.env.SUBSCRIBER_ID || "", // Subscriber ID that you get after registering to ONDC Network
             subscriberUniqueKeyId: process.env.UKID || "", // Unique Key Id or uKid that you get after registering to ONDC Network
         });

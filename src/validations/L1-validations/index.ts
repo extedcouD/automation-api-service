@@ -1,46 +1,119 @@
-import { validateSearch } from "./search";
-import { validateSelect } from "./select";
-import { validateInit } from "./init";
-import { validateConfirm } from "./confirm";
-import { validateStatus } from "./status";
-import { validateCancel } from "./cancel";
-import { validateOn_search } from "./on_search";
-import { validateOn_select } from "./on_select";
-import { validateOn_init } from "./on_init";
-import { validateOn_confirm } from "./on_confirm";
-import { validateOn_cancel } from "./on_cancel";
-import { validateOn_status } from "./on_status";
+import search from "./api-tests/search";
+import select from "./api-tests/select";
+import init from "./api-tests/init";
+import confirm from "./api-tests/confirm";
+import status from "./api-tests/status";
+import cancel from "./api-tests/cancel";
+import on_search from "./api-tests/on_search";
+import on_select from "./api-tests/on_select";
+import on_init from "./api-tests/on_init";
+import on_confirm from "./api-tests/on_confirm";
+import on_cancel from "./api-tests/on_cancel";
+import on_status from "./api-tests/on_status";
 
 export function performL1Validations(
     action: string,
-    payload: string,
+    payload: any,
+    allErrors = false,
     externalData = {},
 ) {
     switch (action) {
         case "search":
-            return validateSearch(payload, externalData);
+            return search({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "select":
-            return validateSelect(payload, externalData);
+            return select({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "init":
-            return validateInit(payload, externalData);
+            return init({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "confirm":
-            return validateConfirm(payload, externalData);
+            return confirm({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "status":
-            return validateStatus(payload, externalData);
+            return status({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "cancel":
-            return validateCancel(payload, externalData);
+            return cancel({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_search":
-            return validateOn_search(payload, externalData);
+            return on_search({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_select":
-            return validateOn_select(payload, externalData);
+            return on_select({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_init":
-            return validateOn_init(payload, externalData);
+            return on_init({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_confirm":
-            return validateOn_confirm(payload, externalData);
+            return on_confirm({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_cancel":
-            return validateOn_cancel(payload, externalData);
+            return on_cancel({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_status":
-            return validateOn_status(payload, externalData);
+            return on_status({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         default:
             throw new Error("Action not found");
     }

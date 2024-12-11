@@ -17,25 +17,29 @@ const logger_1 = __importDefault(require("../utils/logger"));
 const cache_utils_1 = require("../utils/data-utils/cache-utils");
 const data_service_1 = require("../services/data-service");
 const ackUtils_1 = require("../utils/ackUtils");
+const subsciber_utils_1 = require("../utils/subsciber-utils");
 class DataController {
     constructor() {
-        this.saveDataToDb = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+        // Middleware: Save context data
+        this.saveContextInCacheNp = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const payload = req.body;
-                const context = payload.context;
-                yield this.dataService.saveRequestToDB(context, payload, this.dbUrl);
+                const body = req.body;
+                const { action } = req.params;
+                const subscriberUrl = (0, subsciber_utils_1.computeSubscriberUri)(body.context, action, false);
+                yield (0, cache_utils_1.saveContextData)(body.context, subscriberUrl);
                 next();
             }
             catch (err) {
-                logger_1.default.error("Error in saving data to DB", err);
+                logger_1.default.error("Error in saving context data to cache", err);
                 res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
-        // Middleware: Save context data
-        this.saveTransactionInCache = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+        this.saveContextInCacheMock = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            var _a;
             try {
                 const body = req.body;
-                yield (0, cache_utils_1.saveContextData)(body.context);
+                const subscriberUrl = (_a = req.query.subscriberUrl) !== null && _a !== void 0 ? _a : (0, subsciber_utils_1.computeSubscriberUri)(req.body.context, req.params.action, true);
+                yield (0, cache_utils_1.saveContextData)(body.context, subscriberUrl);
                 next();
             }
             catch (err) {
@@ -50,6 +54,18 @@ class DataController {
             return;
         }
         throw new Error("DB_URL not found in environment variables");
+    }
+    savePayloadInCache(req, responseBody, fromMock) {
+        var _a;
+        logger_1.default.info("Saving payload data to cache");
+        let url = (0, subsciber_utils_1.computeSubscriberUri)(req.body.context, req.params.action, fromMock);
+        if (fromMock) {
+            url = (_a = req.query.subscriberUrl) !== null && _a !== void 0 ? _a : url;
+        }
+        console.log("sub URL", url);
+        (0, cache_utils_1.savePayloadData)(req.body.context, responseBody, url)
+            .then(() => logger_1.default.info("Payload data saved to cache"))
+            .catch((err) => logger_1.default.error("Error in saving payload data to cache", err));
     }
 }
 exports.DataController = DataController;

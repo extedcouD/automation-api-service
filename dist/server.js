@@ -9,6 +9,7 @@ const logger_1 = __importDefault(require("./utils/logger"));
 const serverConfig_1 = require("./config/serverConfig");
 const public_routes_1 = __importDefault(require("./routes/public-routes"));
 const ackUtils_1 = require("./utils/ackUtils");
+const private_routes_1 = __importDefault(require("./routes/private-routes"));
 const createServer = () => {
     const app = (0, express_1.default)();
     // Middleware
@@ -23,9 +24,10 @@ const createServer = () => {
     }
     // Routes
     app.use("/api", public_routes_1.default);
+    app.use("/mock", private_routes_1.default);
     // Health Check
     app.get("/health", (req, res) => {
-        res.status(200).send("Server is healthy");
+        res.status(200).send((0, ackUtils_1.setAckResponse)(true));
     });
     // Error Handling Middleware
     app.use((err, req, res, next) => {

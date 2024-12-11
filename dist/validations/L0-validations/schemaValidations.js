@@ -39,7 +39,6 @@ function performL0Validations(actionPayload, action) {
     }
     const rawSchema = (0, fs_1.readFileSync)(path_1.default.resolve(__dirname, `../../schemas/${action}.yaml`), "utf-8");
     const schema = js_yaml_1.default.load(rawSchema);
-    console.log(schema);
     const ajv = new ajv_1.default({ allErrors: true });
     (0, ajv_formats_1.default)(ajv);
     const validate = ajv.compile(schema);

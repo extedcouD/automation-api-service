@@ -3,11 +3,11 @@ import logger from "../utils/logger";
 import {setAckResponse, setBadRequestNack} from "../utils/ackUtils";
 import {performL0Validations} from "../validations/L0-validations/schemaValidations";
 import {performL1Validations} from "../validations/L1-validations";
-import {performContextValidations} from "../utils/data-utils/validateContext";
+import {performContextValidations} from "../utils/data-utils/validate-context";
 import {getPublicKeys} from "../utils/headerUtils";
 import {isHeaderValid} from "ondc-crypto-sdk-nodejs";
 import {DataService} from "../services/data-service";
-import {computeSubsciberUri} from "../utils/subsciber-utils";
+import {computeSubscriberUri} from "../utils/subsciber-utils";
 
 export class ValidationController {
     validateSignature = async (
@@ -36,7 +36,7 @@ export class ValidationController {
         }
     };
     // Middleware: Validate request body
-    validateRequestBody = async (
+    validateRequestBodyNp = async (
         req: Request,
         res: Response,
         next: NextFunction
@@ -47,7 +47,34 @@ export class ValidationController {
             res.status(200).send(setBadRequestNack);
             return;
         }
+        try {
+            computeSubscriberUri(body.context, body.context.action, false);
+        } catch {
+            logger.error("Ambiguous subscriber URL", body);
+            res.status(200).send(setBadRequestNack);
+            return;
+        }
+        next();
+    };
 
+    validateRequestBodyMock = async (
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const body = req.body;
+        if (!body || !body.context || !body.context.action) {
+            logger.error("Invalid request body", body);
+            res.status(200).send(setBadRequestNack);
+            return;
+        }
+        try {
+            computeSubscriberUri(body.context, body.context.action, false);
+        } catch {
+            logger.error("Ambiguous subscriber URL", body);
+            res.status(200).send(setBadRequestNack);
+            return;
+        }
         next();
     };
 
@@ -71,11 +98,12 @@ export class ValidationController {
         const body = req.body;
 
         const l1Result = performL1Validations(action, body);
-        if (!l1Result.valid) {
-            const {error} = l1Result;
+        if (!l1Result[0].valid) {
+            const error = l1Result[0].description as string;
+            const code = l1Result[0].errorCode as number;
             res
                 .status(200)
-                .send(setAckResponse(false, error?.message, error?.code?.toString()));
+                .send(setAckResponse(false, error, code.toString()));
             return;
         }
         logger.info("L1 validations passed");
@@ -86,7 +114,7 @@ export class ValidationController {
     async validateContextFromNp(req: Request, res: Response, next: NextFunction) {
         const {action} = req.params;
         const body = req.body;
-        const subscriberUrl = computeSubsciberUri(body.context, action, false);
+        const subscriberUrl = computeSubscriberUri(body.context, action, false);
         const contextValidations = await performContextValidations(
             body.context,
             subscriberUrl
@@ -106,7 +134,7 @@ export class ValidationController {
         res: Response,
         next: NextFunction
     ) {
-        const subscriberUrl = req.query.subscriberUrl as string ?? computeSubsciberUri(req.body.context, req.params.action, true);
+        const subscriberUrl = req.query.subscriberUrl as string ?? computeSubscriberUri(req.body.context, req.params.action, true);
         const context = req.body.context;
         const contextValidations = await performContextValidations(
             context,
@@ -125,8 +153,8 @@ export class ValidationController {
         const {action} = req.params;
         const body = req.body;
         const context = body.context;
-        const validSession = new DataService().checkSessionExistence(
-            computeSubsciberUri(context, action, false)
+        const validSession = await new DataService().checkSessionExistence(
+            computeSubscriberUri(context, action, false)
         );
         if (!validSession) {
             res.status(200).send(setAckResponse(false, "Invalid Session", "90001"));
@@ -136,9 +164,9 @@ export class ValidationController {
     }
 
     async validateSessionFromMock(req: Request, res: Response, next: NextFunction) {
-        const subscriberUrl = req.query.subscriberUrl as string ?? computeSubsciberUri(req.body.context, req.params.action, true);
+        const subscriberUrl = req.query.subscriberUrl as string ?? computeSubscriberUri(req.body.context, req.params.action, true);
 
-        const validSession = new DataService().checkSessionExistence(subscriberUrl);
+        const validSession = await new DataService().checkSessionExistence(subscriberUrl);
         if (!validSession) {
             res.status(200).send(setAckResponse(false, "Invalid Session", "90001"));
             return;

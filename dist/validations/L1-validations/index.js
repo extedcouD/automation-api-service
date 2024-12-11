@@ -1,44 +1,119 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.performL1Validations = performL1Validations;
-const search_1 = require("./search");
-const select_1 = require("./select");
-const init_1 = require("./init");
-const confirm_1 = require("./confirm");
-const status_1 = require("./status");
-const cancel_1 = require("./cancel");
-const on_search_1 = require("./on_search");
-const on_select_1 = require("./on_select");
-const on_init_1 = require("./on_init");
-const on_confirm_1 = require("./on_confirm");
-const on_cancel_1 = require("./on_cancel");
-const on_status_1 = require("./on_status");
-function performL1Validations(action, payload, externalData = {}) {
+const search_1 = __importDefault(require("./api-tests/search"));
+const select_1 = __importDefault(require("./api-tests/select"));
+const init_1 = __importDefault(require("./api-tests/init"));
+const confirm_1 = __importDefault(require("./api-tests/confirm"));
+const status_1 = __importDefault(require("./api-tests/status"));
+const cancel_1 = __importDefault(require("./api-tests/cancel"));
+const on_search_1 = __importDefault(require("./api-tests/on_search"));
+const on_select_1 = __importDefault(require("./api-tests/on_select"));
+const on_init_1 = __importDefault(require("./api-tests/on_init"));
+const on_confirm_1 = __importDefault(require("./api-tests/on_confirm"));
+const on_cancel_1 = __importDefault(require("./api-tests/on_cancel"));
+const on_status_1 = __importDefault(require("./api-tests/on_status"));
+function performL1Validations(action, payload, allErrors = false, externalData = {}) {
     switch (action) {
         case "search":
-            return (0, search_1.validateSearch)(payload, externalData);
+            return (0, search_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "select":
-            return (0, select_1.validateSelect)(payload, externalData);
+            return (0, select_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "init":
-            return (0, init_1.validateInit)(payload, externalData);
+            return (0, init_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "confirm":
-            return (0, confirm_1.validateConfirm)(payload, externalData);
+            return (0, confirm_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "status":
-            return (0, status_1.validateStatus)(payload, externalData);
+            return (0, status_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "cancel":
-            return (0, cancel_1.validateCancel)(payload, externalData);
+            return (0, cancel_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_search":
-            return (0, on_search_1.validateOn_search)(payload, externalData);
+            return (0, on_search_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_select":
-            return (0, on_select_1.validateOn_select)(payload, externalData);
+            return (0, on_select_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_init":
-            return (0, on_init_1.validateOn_init)(payload, externalData);
+            return (0, on_init_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_confirm":
-            return (0, on_confirm_1.validateOn_confirm)(payload, externalData);
+            return (0, on_confirm_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_cancel":
-            return (0, on_cancel_1.validateOn_cancel)(payload, externalData);
+            return (0, on_cancel_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         case "on_status":
-            return (0, on_status_1.validateOn_status)(payload, externalData);
+            return (0, on_status_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
         default:
             throw new Error("Action not found");
     }
