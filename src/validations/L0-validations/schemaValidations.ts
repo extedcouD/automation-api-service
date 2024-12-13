@@ -62,5 +62,5 @@ function createErrorMessage(validate: any, valid: boolean) {
         }
     });
 
-    return {valid: false, errors: errorMessages};
+    return {valid: false, errors: errorMessages.join(",")};
 }

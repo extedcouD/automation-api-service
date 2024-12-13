@@ -18,53 +18,43 @@ export class DataService {
             const checkSessionUrl = `${dbUrl}/api/sessions/check/${sessionData.active_session_id}`
             const postUrl = `${dbUrl}/api/sessions`;
             const exists = await axios.get(checkSessionUrl);
+            logger.debug("Session exists in DB", exists.data);
             if (!exists.data) {
                 logger.info("Session does not exist in DB, creating new session");
+                const sessionPayload = {
+                    "sessionId": sessionData.active_session_id,
+                    "npType": sessionData.type,
+                    "npId": sessionData.context_cache.subscriber_id,
+                    "domain": sessionData.domain,
+                    "version": sessionData.version,
+                    "sessionType": "AUTOMATION",
+                    "sessionActive": true
+                }
+                console.log("Session payload", sessionPayload);
                 await axios.post(
                     postUrl,
-                    {
-                        "sessionId": sessionData.active_session_id,
-                        "npType": sessionData.type,
-                        "npId": sessionData.context_cache.subscriber_id,
-                        "domain": sessionData.domain,
-                        "version": sessionData.version,
-                        "sessionType": "AUTOMATION",
-                        "sessionActive": true
-                    }
+                    sessionPayload
                 )
             }
-            const responseBody = {
-                "messageId": payload.context.message_id,
-                "transactionId": payload.context.transaction_id,
-                "action": payload.context.action,
-                "bppId": payload.context.bpp_id ?? "",
-                "bapId": payload.context.bap_id,
-                "jsonObject": response,
-                "type": "RESPONSE",
-                "httpStatus": code,
-                "flowId": sessionData.current_flow_id,
-                "sessionDetails": {
-                    "sessionId": sessionData.active_session_id
-                }
-            };
+            const action = payload.context.action as string;
+
             const requestBody = {
                 "messageId": payload.context.message_id,
                 "transactionId": payload.context.transaction_id,
-                "action": payload.context.action,
+                "action": action.toUpperCase(),
                 "bppId": payload.context.bpp_id ?? "",
                 "bapId": payload.context.bap_id,
-                "jsonObject": payload,
-                "type": "REQUEST",
+                "jsonRequest": payload,
+                "jsonResponse": {"response": response},
                 "httpStatus": code,
                 "flowId": sessionData.current_flow_id,
                 "sessionDetails": {
                     "sessionId": sessionData.active_session_id
                 }
             }
-            await axios.post(postUrl, responseBody);
-            await axios.post(postUrl, requestBody);
+            await axios.post(postUrl + "/payload", requestBody);
+            logger.info("Data saved to DB");
         } catch (error) {
-            console.log(JSON.stringify(error));
             logger.error("Error in saving data to DB ", getAxiosErrorMessage(error));
         }
     }

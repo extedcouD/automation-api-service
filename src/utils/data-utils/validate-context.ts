@@ -11,6 +11,7 @@ export async function performContextValidations(
     error?: string;
 }> {
     const sessionData = await loadData(subscriberUrl);
+
     if (
         new Date(context.timestamp).getTime() <
         new Date(sessionData.context_cache.latest_timestamp).getTime()
@@ -22,4 +23,14 @@ export async function performContextValidations(
         };
     }
     return validateAsyncContext(context, sessionData);
+}
+
+
+export function isValidJSON(input: string): boolean {
+    try {
+        JSON.parse(input);
+        return true; // Input is valid JSON
+    } catch (error) {
+        return false; // Input is not valid JSON
+    }
 }

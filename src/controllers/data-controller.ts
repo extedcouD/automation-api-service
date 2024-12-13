@@ -67,12 +67,16 @@ export class DataController {
             .catch((err) => logger.error("Error in saving payload data to cache", err));
     }
 
-    // savePayloadInDb(req: Request, responseBody: any, fromMock: boolean, code: number) {
-    //     this.dataService.saveSessionToDB(
-    //         computeSubscriberUri(req.body.context, req.params.action, fromMock),
-    //         req.body,
-    //         responseBody,
-    //         code
-    //     ).catch((err) => logger.error("Error in saving payload data to DB", err));
-    // }
+    savePayloadInDb(req: Request, responseBody: any, fromMock: boolean, code: number) {
+        let url = computeSubscriberUri(req.body.context, req.params.action, fromMock);
+        if (fromMock) {
+            url = req.query.subscriberUrl as string ?? url;
+        }
+        this.dataService.saveSessionToDB(
+            url,
+            req.body,
+            responseBody,
+            code
+        ).catch((err) => logger.error("Error in saving payload data to DB", err));
+    }
 }

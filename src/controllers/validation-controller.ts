@@ -3,7 +3,7 @@ import logger from "../utils/logger";
 import {setAckResponse, setBadRequestNack} from "../utils/ackUtils";
 import {performL0Validations} from "../validations/L0-validations/schemaValidations";
 import {performL1Validations} from "../validations/L1-validations";
-import {performContextValidations} from "../utils/data-utils/validate-context";
+import {isValidJSON, performContextValidations} from "../utils/data-utils/validate-context";
 import {getPublicKeys} from "../utils/headerUtils";
 import {isHeaderValid} from "ondc-crypto-sdk-nodejs";
 import {DataService} from "../services/data-service";
@@ -42,16 +42,27 @@ export class ValidationController {
         next: NextFunction
     ) => {
         const body = req.body;
-        if (!body || !body.context || !body.context.action) {
+        if (!isValidJSON(JSON.stringify(body))) {
             logger.error("Invalid request body", body);
-            res.status(200).send(setBadRequestNack);
+            res.status(200).send(setBadRequestNack(": Invalid request body is not a valid JSON"));
+            return;
+        }
+        const action = req.params.action;
+        if (!body) {
+            logger.error("Invalid request body", body);
+            res.status(200).send(setBadRequestNack(": Invalid request body"));
+            return;
+        }
+        if (!body.context) {
+            logger.error("Invalid request body", body);
+            res.status(200).send(setBadRequestNack(": Context is missing"));
             return;
         }
         try {
-            computeSubscriberUri(body.context, body.context.action, false);
-        } catch {
-            logger.error("Ambiguous subscriber URL", body);
-            res.status(200).send(setBadRequestNack);
+            computeSubscriberUri(body.context, action, false);
+        } catch (error) {
+            logger.error("Ambiguous subscriber URL", error);
+            res.status(200).send(setBadRequestNack(": Ambiguous subscriber URL inside context"));
             return;
         }
         next();
@@ -65,14 +76,14 @@ export class ValidationController {
         const body = req.body;
         if (!body || !body.context || !body.context.action) {
             logger.error("Invalid request body", body);
-            res.status(200).send(setBadRequestNack);
+            res.status(200).send(setBadRequestNack());
             return;
         }
         try {
             computeSubscriberUri(body.context, body.context.action, false);
         } catch {
             logger.error("Ambiguous subscriber URL", body);
-            res.status(200).send(setBadRequestNack);
+            res.status(200).send(setBadRequestNack());
             return;
         }
         next();
@@ -97,9 +108,11 @@ export class ValidationController {
         const {action} = req.params;
         const body = req.body;
 
+        const apiLayerUrl = process.env.API_SERVICE_URL;
+        const extraMessage = ` /n/n _note: find complete list of [validations](${apiLayerUrl}/test)_`
         const l1Result = performL1Validations(action, body);
         if (!l1Result[0].valid) {
-            const error = l1Result[0].description as string;
+            const error = l1Result[0].description as string + extraMessage;
             const code = l1Result[0].errorCode as number;
             res
                 .status(200)

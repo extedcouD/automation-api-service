@@ -3,6 +3,10 @@ function areUnique(operand: string[]) {
     return valuesSet.size === operand.length;
 }
 
+function arePresent(operand: string[]) {
+    return noneIn(operand, ["", "null", "undefined"]) && operand.length > 0;
+}
+
 function allIn(left: string[], right: string[]) {
     return left.every((v) => right.includes(v));
 }
@@ -101,6 +105,7 @@ function isISO8601(str: string): boolean {
 
 export default {
     areUnique,
+    arePresent,
     allIn,
     anyIn,
     noneIn,

@@ -35,6 +35,8 @@ router.post(
                     }
                     // Save the request and response in the cache
                     dbController.savePayloadInCache(req, body, true);
+                    dbController.savePayloadInDb(req, body, true, statusCode);
+
                     // Log the response being sent
                     logger.info("Sending response to: " + JSON.stringify(body));
                 }

@@ -3,7 +3,8 @@ import cors from "cors";
 import logger from "./utils/logger";
 import {config} from "./config/serverConfig";
 import routes from "./routes/public-routes";
-import {setAckResponse, setIneternalServerNack as setInternalServerNack} from "./utils/ackUtils";
+import testRoutes from "./routes/test-routes";
+import {setAckResponse, setBadRequestNack, setIneternalServerNack as setInternalServerNack} from "./utils/ackUtils";
 import router from "./routes/private-routes";
 
 const createServer = (): Application => {
@@ -24,6 +25,7 @@ const createServer = (): Application => {
     // Routes
     app.use("/api", routes);
     app.use("/mock", router);
+    app.use("/test", testRoutes)
 
     // Health Check
     app.get("/health", (req: Request, res: Response) => {
@@ -33,7 +35,7 @@ const createServer = (): Application => {
     // Error Handling Middleware
     app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
         logger.error(err.message, {stack: err.stack});
-        res.status(200).send(setInternalServerNack);
+        res.status(200).send(setBadRequestNack(err.message));
     });
 
     return app;

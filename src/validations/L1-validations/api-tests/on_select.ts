@@ -21,16 +21,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.location.country.code",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.location.country.code must be in ["null"]`,
+                            description: `- **condition A**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -47,16 +46,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.location.city.code",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.location.city.code must be in ["null"]`,
+                            description: `- **condition A**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
                 }
@@ -73,16 +71,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.domain",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.domain must be in ["null"]`,
+                            description: `- **condition A**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -99,16 +96,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.timestamp",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.timestamp must be in ["null"]`,
+                            description: `- **condition A**: $.context.timestamp must be present in the payload`,
                         },
                     ];
                 }
@@ -125,16 +121,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bap_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bap_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.bap_id must be present in the payload`,
                         },
                     ];
                 }
@@ -151,16 +146,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.transaction_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.transaction_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
                 }
@@ -177,16 +171,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.message_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.message_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.message_id must be present in the payload`,
                         },
                     ];
                 }
@@ -203,16 +196,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.version",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.version must be in ["null"]`,
+                            description: `- **condition A**: $.context.version must be present in the payload`,
                         },
                     ];
                 }
@@ -229,16 +221,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.action",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.action must be in ["null"]`,
+                            description: `- **condition A**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -255,16 +246,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bap_uri",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bap_uri must be in ["null"]`,
+                            description: `- **condition A**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
                 }
@@ -278,16 +268,15 @@ export default function on_select(input: validationInput): validationOutput {
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
                 const attr = payloadUtils.getJsonPath(testObj, "$.context.ttl");
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.ttl must be in ["null"]`,
+                            description: `- **condition A**: $.context.ttl must be present in the payload`,
                         },
                     ];
                 }
@@ -304,16 +293,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bpp_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bpp_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.bpp_id must be present in the payload`,
                         },
                     ];
                 }
@@ -330,16 +318,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bpp_uri",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bpp_uri must be in ["null"]`,
+                            description: `- **condition A**: $.context.bpp_uri must be present in the payload`,
                         },
                     ];
                 }
@@ -356,16 +343,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].id must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].id must be present in the payload`,
                         },
                     ];
                 }
@@ -382,16 +368,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].descriptor.code",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].descriptor.code must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].descriptor.code must be present in the payload`,
                         },
                     ];
                 }
@@ -408,16 +393,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].price.currency",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].price.currency must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].price.currency must be present in the payload`,
                         },
                     ];
                 }
@@ -434,16 +418,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].price.value",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].price.value must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].price.value must be present in the payload`,
                         },
                     ];
                 }
@@ -460,16 +443,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].quantity.selected.count",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].quantity.selected.count must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].quantity.selected.count must be present in the payload`,
                         },
                     ];
                 }
@@ -486,16 +468,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].fulfillment_ids[*]",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].fulfillment_ids[*] must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].fulfillment_ids[*] must be present in the payload`,
                         },
                     ];
                 }
@@ -512,16 +493,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].time.label",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].time.label must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].time.label must be present in the payload`,
                         },
                     ];
                 }
@@ -538,16 +518,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].time.duration",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].time.duration must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].time.duration must be present in the payload`,
                         },
                     ];
                 }
@@ -564,16 +543,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.provider.id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.provider.id must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.provider.id must be present in the payload`,
                         },
                     ];
                 }
@@ -590,16 +568,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.provider.descriptor.name",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.provider.descriptor.name must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.provider.descriptor.name must be present in the payload`,
                         },
                     ];
                 }
@@ -616,16 +593,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.fulfillments[*].id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.fulfillments[*].id must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.fulfillments[*].id must be present in the payload`,
                         },
                     ];
                 }
@@ -642,16 +618,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.price.value",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.price.value must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.price.value must be present in the payload`,
                         },
                     ];
                 }
@@ -668,16 +643,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.price.currency",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.price.currency must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.price.currency must be present in the payload`,
                         },
                     ];
                 }
@@ -694,16 +668,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.breakup[*].title",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.breakup[*].title must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.breakup[*].title must be present in the payload`,
                         },
                     ];
                 }
@@ -720,16 +693,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.items[*].category_ids[*]",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.items[*].category_ids[*] must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.items[*].category_ids[*] must be present in the payload`,
                         },
                     ];
                 }
@@ -746,16 +718,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.provider.time.range.start",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.provider.time.range.start must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.provider.time.range.start must be present in the payload`,
                         },
                     ];
                 }
@@ -772,16 +743,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.provider.time.range.end",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.provider.time.range.end must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.provider.time.range.end must be present in the payload`,
                         },
                     ];
                 }
@@ -798,16 +768,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.fulfillments[*].type",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.fulfillments[*].type must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.fulfillments[*].type must be present in the payload`,
                         },
                     ];
                 }
@@ -824,16 +793,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.breakup[*].item.price.currency",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.breakup[*].item.price.currency must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.breakup[*].item.price.currency must be present in the payload`,
                         },
                     ];
                 }
@@ -850,16 +818,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.breakup[*].item.price.value",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.breakup[*].item.price.value must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.breakup[*].item.price.value must be present in the payload`,
                         },
                     ];
                 }
@@ -876,16 +843,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.quote.breakup[*].item.quantity.selected.count",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.quote.breakup[*].item.quantity.selected.count must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.quote.breakup[*].item.quantity.selected.count must be present in the payload`,
                         },
                     ];
                 }
@@ -902,16 +868,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.cancellation_terms[*].external_ref.url",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.cancellation_terms[*].external_ref.url must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.cancellation_terms[*].external_ref.url must be present in the payload`,
                         },
                     ];
                 }
@@ -928,16 +893,15 @@ export default function on_select(input: validationInput): validationOutput {
                     testObj,
                     "$.message.order.cancellation_terms[*].external_ref.mimetype",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order.cancellation_terms[*].external_ref.mimetype must be in ["null"]`,
+                            description: `- **condition A**: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload`,
                         },
                     ];
                 }
@@ -954,6 +918,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.context.action",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -961,7 +928,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.action must be in ["on_select"]`,
+                            description: `- **condition A**: every element of $.context.action must be in ["on_select"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.action must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -978,6 +949,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.context.location.country.code",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -985,7 +959,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]`,
+                            description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.location.country.code must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1002,6 +980,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.context.domain",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1009,7 +990,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]`,
+                            description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.domain must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1026,6 +1011,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.items[*].descriptor.code",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1033,7 +1021,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]`,
+                            description: `- **condition A**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.items[*].descriptor.code must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1050,6 +1042,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].vehicle.category",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1057,7 +1052,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].vehicle.category must be in ["METRO"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].vehicle.category must be in ["METRO"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].vehicle.category must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1074,6 +1073,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].type",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1081,7 +1083,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].type must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1100,8 +1106,11 @@ export default function on_select(input: validationInput): validationOutput {
                 ];
                 const enumPath = payloadUtils.getJsonPath(
                     testObj,
-                    "$.message.order.fulfillments[*].type",
+                    "$.message.order.fulfillments[*].stops[*].type",
                 );
+
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
 
                 const validate = validations.allIn(enumPath, enumList);
 
@@ -1110,7 +1119,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].type must be in ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].type must be in ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].stops[*].type must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1127,6 +1140,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].stops[*].authorization.type",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1134,7 +1150,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.type must be in ["QR"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.type must be in ["QR"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].stops[*].authorization.type must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1151,6 +1171,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].stops[*].authorization.status",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1158,7 +1181,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED", "EXPIRED"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED", "EXPIRED"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].stops[*].authorization.status must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1175,6 +1202,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].state.descriptor.code",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1182,7 +1212,11 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.fulfillments[*].state.descriptor.code must be in ["INACTIVE", "ACTIVE"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].state.descriptor.code must be in ["INACTIVE", "ACTIVE"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -1194,7 +1228,7 @@ export default function on_select(input: validationInput): validationOutput {
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
                 const enumList = [
-                    "BASE_PRICE",
+                    "BASE_FARE",
                     "REFUND",
                     "CANCELLATION_CHARGES",
                     "OFFER",
@@ -1205,6 +1239,9 @@ export default function on_select(input: validationInput): validationOutput {
                     "$.message.order.quote.breakup[*].title",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -1212,7 +1249,221 @@ export default function on_select(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_PRICE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]`,
+                            description: `- **condition A**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_FARE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.quote.breakup[*].title must **not** be present in the payload`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_0(input: validationInput): validationOutput {
+            const scope = payloadUtils.getJsonPath(input.payload, "$");
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const validTags = [
+                    "ROUTE_INFO",
+                    "TICKET_INFO",
+                    "TRIP_DETAILS",
+                    "INFO",
+                ];
+                const tagPath = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.message.order.fulfillments[*].state.descriptor.code",
+                );
+
+                const skipCheck = !validations.arePresent(tagPath);
+                if (skipCheck) continue;
+
+                const validate = validations.allIn(tagPath, validTags);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].state.descriptor.code must be in ["ROUTE_INFO", "TICKET_INFO", "TRIP_DETAILS", "INFO"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_0_ROUTE_INFO(
+            input: validationInput,
+        ): validationOutput {
+            const scope = payloadUtils.getJsonPath(
+                input.payload,
+                "$.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')]",
+            );
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const subTags = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.list[*].descriptor.code",
+                );
+                const validValues = ["ROUTE_ID", "ROUTE_DIRECTION"];
+
+                const validate = validations.allIn(subTags, validValues);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_0_TICKET_INFO(
+            input: validationInput,
+        ): validationOutput {
+            const scope = payloadUtils.getJsonPath(
+                input.payload,
+                "$.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')]",
+            );
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const subTags = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.list[*].descriptor.code",
+                );
+                const validValues = ["NUMBER"];
+
+                const validate = validations.allIn(subTags, validValues);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["NUMBER"]`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_0_TRIP_DETAILS(
+            input: validationInput,
+        ): validationOutput {
+            const scope = payloadUtils.getJsonPath(
+                input.payload,
+                "$.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')]",
+            );
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const subTags = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.list[*].descriptor.code",
+                );
+                const validValues = ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"];
+
+                const validate = validations.allIn(subTags, validValues);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_0_INFO(input: validationInput): validationOutput {
+            const scope = payloadUtils.getJsonPath(
+                input.payload,
+                "$.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')]",
+            );
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const subTags = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.list[*].descriptor.code",
+                );
+                const validValues = ["PARENT_ITEM_ID"];
+
+                const validate = validations.allIn(subTags, validValues);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_1(input: validationInput): validationOutput {
+            const scope = payloadUtils.getJsonPath(input.payload, "$");
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const validTags = ["FARE_POLICY"];
+                const tagPath = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.message.order.items[*].tags[*].descriptor.code",
+                );
+
+                const skipCheck = !validations.arePresent(tagPath);
+                if (skipCheck) continue;
+
+                const validate = validations.allIn(tagPath, validTags);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload`,
+                        },
+                    ];
+                }
+            }
+            return [{ valid: true }];
+        }
+        function validate_tag_1_FARE_POLICY(
+            input: validationInput,
+        ): validationOutput {
+            const scope = payloadUtils.getJsonPath(
+                input.payload,
+                "$.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')]",
+            );
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const subTags = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.list[*].descriptor.code",
+                );
+                const validValues = ["RESTRICTED_PERSON", "RESTRICTION_PROOF"];
+
+                const validate = validations.allIn(subTags, validValues);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            errorCode: 30000,
+                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
                         },
                     ];
                 }
@@ -1268,6 +1519,13 @@ export default function on_select(input: validationInput): validationOutput {
             validate_enum_11,
             validate_enum_12,
             validate_enum_13,
+            validate_tag_0,
+            validate_tag_0_ROUTE_INFO,
+            validate_tag_0_TICKET_INFO,
+            validate_tag_0_TRIP_DETAILS,
+            validate_tag_0_INFO,
+            validate_tag_1,
+            validate_tag_1_FARE_POLICY,
         ];
 
         let invalidResults: validationOutput = [];

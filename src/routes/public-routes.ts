@@ -35,7 +35,7 @@ router.post(
                     }
                     // Save the request and response in the cache
                     dbController.savePayloadInCache(req, body, false);
-                    // Log the response being sent
+                    dbController.savePayloadInDb(req, body, false, statusCode);
                     logger.info("Sending response to: " + JSON.stringify(body));
                 }
                 return originalSend.call(this, body); // Call the original send method
@@ -44,7 +44,7 @@ router.post(
         next(); // Proceed to the next middleware
     },
     validationController.validateL0,
-    // validationController.validateL1,
+    validationController.validateL1,
     validationController.validateContextFromNp,
     dbController.saveContextInCacheNp,
     commController.forwardToMockServer

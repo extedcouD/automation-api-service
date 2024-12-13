@@ -21,16 +21,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.location.country.code",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.location.country.code must be in ["null"]`,
+                            description: `- **condition A**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -47,16 +46,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.location.city.code",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.location.city.code must be in ["null"]`,
+                            description: `- **condition A**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
                 }
@@ -73,16 +71,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.domain",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.domain must be in ["null"]`,
+                            description: `- **condition A**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -99,16 +96,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.timestamp",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.timestamp must be in ["null"]`,
+                            description: `- **condition A**: $.context.timestamp must be present in the payload`,
                         },
                     ];
                 }
@@ -125,16 +121,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bap_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bap_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.bap_id must be present in the payload`,
                         },
                     ];
                 }
@@ -151,16 +146,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.transaction_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.transaction_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
                 }
@@ -177,16 +171,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.message_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.message_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.message_id must be present in the payload`,
                         },
                     ];
                 }
@@ -203,16 +196,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.version",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.version must be in ["null"]`,
+                            description: `- **condition A**: $.context.version must be present in the payload`,
                         },
                     ];
                 }
@@ -229,16 +221,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.action",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.action must be in ["null"]`,
+                            description: `- **condition A**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -255,16 +246,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bap_uri",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bap_uri must be in ["null"]`,
+                            description: `- **condition A**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
                 }
@@ -278,16 +268,15 @@ export default function status(input: validationInput): validationOutput {
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
                 const attr = payloadUtils.getJsonPath(testObj, "$.context.ttl");
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.ttl must be in ["null"]`,
+                            description: `- **condition A**: $.context.ttl must be present in the payload`,
                         },
                     ];
                 }
@@ -304,16 +293,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bpp_id",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bpp_id must be in ["null"]`,
+                            description: `- **condition A**: $.context.bpp_id must be present in the payload`,
                         },
                     ];
                 }
@@ -330,16 +318,15 @@ export default function status(input: validationInput): validationOutput {
                     testObj,
                     "$.context.bpp_uri",
                 );
-                const nulls = ["null"];
 
-                const validate = validations.noneIn(attr, nulls);
+                const validate = validations.arePresent(attr);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: no element of $.context.bpp_uri must be in ["null"]`,
+                            description: `- **condition A**: $.context.bpp_uri must be present in the payload`,
                         },
                     ];
                 }
@@ -356,6 +343,9 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.action",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -363,7 +353,11 @@ export default function status(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.action must be in ["status"]`,
+                            description: `- **condition A**: every element of $.context.action must be in ["status"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.action must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -380,6 +374,9 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.location.country.code",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -387,7 +384,11 @@ export default function status(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]`,
+                            description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]
+
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.location.country.code must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -404,6 +405,9 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.domain",
                 );
 
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
                 const validate = validations.allIn(enumPath, enumList);
 
                 if (!validate) {
@@ -411,31 +415,11 @@ export default function status(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]`,
-                        },
-                    ];
-                }
-            }
-            return [{ valid: true }];
-        }
-        function order_id_check(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const order_id = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.message.order_id",
-                );
-                const nulls = ["null"];
+                            description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]
 
-                const validate = validations.noneIn(order_id, nulls);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            errorCode: 30000,
-                            description: `- **condition A**: no element of $.message.order_id must be in ["null"]`,
+	> Note: **Condition A** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.context.domain must **not** be present in the payload`,
                         },
                     ];
                 }
@@ -460,7 +444,6 @@ export default function status(input: validationInput): validationOutput {
             validate_enum_1,
             validate_enum_2,
             validate_enum_4,
-            order_id_check,
         ];
 
         let invalidResults: validationOutput = [];

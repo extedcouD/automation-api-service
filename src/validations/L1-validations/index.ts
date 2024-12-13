@@ -9,6 +9,7 @@ import on_select from "./api-tests/on_select";
 import on_init from "./api-tests/on_init";
 import on_confirm from "./api-tests/on_confirm";
 import on_cancel from "./api-tests/on_cancel";
+import on_update from "./api-tests/on_update";
 import on_status from "./api-tests/on_status";
 
 export function performL1Validations(
@@ -100,6 +101,14 @@ export function performL1Validations(
             });
         case "on_cancel":
             return on_cancel({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
+        case "on_update":
+            return on_update({
                 payload: payload,
                 externalData: externalData,
                 config: {
