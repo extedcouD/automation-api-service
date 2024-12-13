@@ -11,9 +11,7 @@ export default function on_status(input: validationInput): validationOutput {
     for (const testObj of scope) {
         testObj._EXTERNAL = input.externalData;
 
-        function validate_attribute_1(
-            input: validationInput,
-        ): validationOutput {
+        function validate_code_0(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -36,9 +34,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_2(
-            input: validationInput,
-        ): validationOutput {
+        function validate_code_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -61,9 +57,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_3(
-            input: validationInput,
-        ): validationOutput {
+        function validate_domain_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -86,7 +80,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_4(
+        function validate_timestamp_3(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -111,9 +105,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_5(
-            input: validationInput,
-        ): validationOutput {
+        function validate_bap_id_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -136,7 +128,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_6(
+        function validate_transaction_id_5(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -161,7 +153,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_7(
+        function validate_message_id_6(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -186,9 +178,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_8(
-            input: validationInput,
-        ): validationOutput {
+        function validate_version_7(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -211,9 +201,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_9(
-            input: validationInput,
-        ): validationOutput {
+        function validate_action_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -236,9 +224,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_10(
-            input: validationInput,
-        ): validationOutput {
+        function validate_bap_uri_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -261,9 +247,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_11(
-            input: validationInput,
-        ): validationOutput {
+        function validate_ttl_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -283,9 +267,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_12(
-            input: validationInput,
-        ): validationOutput {
+        function validate_bpp_id_11(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -308,9 +290,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_13(
-            input: validationInput,
-        ): validationOutput {
+        function validate_bpp_uri_12(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -333,9 +313,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_14(
-            input: validationInput,
-        ): validationOutput {
+        function validate_id_13(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -358,9 +336,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_15(
-            input: validationInput,
-        ): validationOutput {
+        function validate_status_14(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -383,9 +359,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_16(
-            input: validationInput,
-        ): validationOutput {
+        function validate_id_15(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -408,9 +382,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_17(
-            input: validationInput,
-        ): validationOutput {
+        function validate_name_16(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -433,9 +405,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_18(
-            input: validationInput,
-        ): validationOutput {
+        function validate_code_17(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -458,7 +428,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_19(
+        function validate_currency_18(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -483,9 +453,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_20(
-            input: validationInput,
-        ): validationOutput {
+        function validate_value_19(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -508,9 +476,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_21(
-            input: validationInput,
-        ): validationOutput {
+        function validate_count_20(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -533,7 +499,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_22(
+        function validate_fulfillment_ids_21(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -558,9 +524,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_23(
-            input: validationInput,
-        ): validationOutput {
+        function validate_label_22(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -583,7 +547,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_24(
+        function validate_duration_23(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -608,9 +572,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_25(
-            input: validationInput,
-        ): validationOutput {
+        function validate_id_24(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -633,9 +595,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_26(
-            input: validationInput,
-        ): validationOutput {
+        function validate_name_25(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -658,9 +618,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_27(
-            input: validationInput,
-        ): validationOutput {
+        function validate_id_26(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -683,9 +641,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_28(
-            input: validationInput,
-        ): validationOutput {
+        function validate_value_27(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -708,7 +664,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_29(
+        function validate_currency_28(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -733,9 +689,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_30(
-            input: validationInput,
-        ): validationOutput {
+        function validate_title_29(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -758,9 +712,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_31(
-            input: validationInput,
-        ): validationOutput {
+        function validate_id_30(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -783,7 +735,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_32(
+        function validate_collected_by_31(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -808,9 +760,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_33(
-            input: validationInput,
-        ): validationOutput {
+        function validate_status_32(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -833,9 +783,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_34(
-            input: validationInput,
-        ): validationOutput {
+        function validate_type_33(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -858,7 +806,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_35(
+        function validate_transaction_id_34(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -883,7 +831,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_36(
+        function validate_currency_35(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -908,9 +856,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_37(
-            input: validationInput,
-        ): validationOutput {
+        function validate_amount_36(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -933,7 +879,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_38(
+        function validate_bank_code_37(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -958,7 +904,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_39(
+        function validate_bank_account_number_38(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -983,7 +929,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_40(
+        function validate_virtual_payment_address_39(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1008,7 +954,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_42(
+        function validate_category_ids_40(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1033,9 +979,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_43(
-            input: validationInput,
-        ): validationOutput {
+        function validate_start_41(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1058,9 +1002,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_44(
-            input: validationInput,
-        ): validationOutput {
+        function validate_end_42(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1083,9 +1025,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_45(
-            input: validationInput,
-        ): validationOutput {
+        function validate_type_43(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1108,7 +1048,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_46(
+        function validate_currency_44(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1133,9 +1073,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_47(
-            input: validationInput,
-        ): validationOutput {
+        function validate_value_45(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1158,9 +1096,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_48(
-            input: validationInput,
-        ): validationOutput {
+        function validate_count_46(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1183,9 +1119,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_49(
-            input: validationInput,
-        ): validationOutput {
+        function validate_url_47(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
@@ -1208,7 +1142,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_50(
+        function validate_mimetype_48(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1233,7 +1167,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_51(
+        function validate_created_at_49(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1258,7 +1192,7 @@ export default function on_status(input: validationInput): validationOutput {
             }
             return [{ valid: true }];
         }
-        function validate_attribute_52(
+        function validate_updated_at_50(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -2082,57 +2016,57 @@ export default function on_status(input: validationInput): validationOutput {
         }
 
         const testFunctions: testFunctionArray = [
-            validate_attribute_1,
-            validate_attribute_2,
-            validate_attribute_3,
-            validate_attribute_4,
-            validate_attribute_5,
-            validate_attribute_6,
-            validate_attribute_7,
-            validate_attribute_8,
-            validate_attribute_9,
-            validate_attribute_10,
-            validate_attribute_11,
-            validate_attribute_12,
-            validate_attribute_13,
-            validate_attribute_14,
-            validate_attribute_15,
-            validate_attribute_16,
-            validate_attribute_17,
-            validate_attribute_18,
-            validate_attribute_19,
-            validate_attribute_20,
-            validate_attribute_21,
-            validate_attribute_22,
-            validate_attribute_23,
-            validate_attribute_24,
-            validate_attribute_25,
-            validate_attribute_26,
-            validate_attribute_27,
-            validate_attribute_28,
-            validate_attribute_29,
-            validate_attribute_30,
-            validate_attribute_31,
-            validate_attribute_32,
-            validate_attribute_33,
-            validate_attribute_34,
-            validate_attribute_35,
-            validate_attribute_36,
-            validate_attribute_37,
-            validate_attribute_38,
-            validate_attribute_39,
-            validate_attribute_40,
-            validate_attribute_42,
-            validate_attribute_43,
-            validate_attribute_44,
-            validate_attribute_45,
-            validate_attribute_46,
-            validate_attribute_47,
-            validate_attribute_48,
-            validate_attribute_49,
-            validate_attribute_50,
-            validate_attribute_51,
-            validate_attribute_52,
+            validate_code_0,
+            validate_code_1,
+            validate_domain_2,
+            validate_timestamp_3,
+            validate_bap_id_4,
+            validate_transaction_id_5,
+            validate_message_id_6,
+            validate_version_7,
+            validate_action_8,
+            validate_bap_uri_9,
+            validate_ttl_10,
+            validate_bpp_id_11,
+            validate_bpp_uri_12,
+            validate_id_13,
+            validate_status_14,
+            validate_id_15,
+            validate_name_16,
+            validate_code_17,
+            validate_currency_18,
+            validate_value_19,
+            validate_count_20,
+            validate_fulfillment_ids_21,
+            validate_label_22,
+            validate_duration_23,
+            validate_id_24,
+            validate_name_25,
+            validate_id_26,
+            validate_value_27,
+            validate_currency_28,
+            validate_title_29,
+            validate_id_30,
+            validate_collected_by_31,
+            validate_status_32,
+            validate_type_33,
+            validate_transaction_id_34,
+            validate_currency_35,
+            validate_amount_36,
+            validate_bank_code_37,
+            validate_bank_account_number_38,
+            validate_virtual_payment_address_39,
+            validate_category_ids_40,
+            validate_start_41,
+            validate_end_42,
+            validate_type_43,
+            validate_currency_44,
+            validate_value_45,
+            validate_count_46,
+            validate_url_47,
+            validate_mimetype_48,
+            validate_created_at_49,
+            validate_updated_at_50,
             validate_enum_1,
             validate_enum_2,
             validate_enum_4,
