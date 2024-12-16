@@ -117,9 +117,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_0_BUYER_FINDER_FEES</strong>: every element of $.message.intent.payment.tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_0_SETTLEMENT_TERMS</strong>: every element of $.message.intent.payment.tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.intent.tags[*].descriptor.code must be in [&quot;PAGINATION&quot;]</p>
 <blockquote>
@@ -129,7 +129,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_PAGINATION</strong>: every element of $.list[*].descriptor.code must be in [&quot;PAGINATION_ID&quot;, &quot;REQUESTED_PAGE_NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_1_PAGINATION</strong>: every element of $.message.intent.tags[?(@.descriptor.code==&#39;PAGINATION&#39;)].list[*].descriptor.code must be in [&quot;PAGINATION_ID&quot;, &quot;REQUESTED_PAGE_NUMBER&quot;]</p>
 </li>
 </ul>
 </li>
@@ -263,13 +263,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 </ul>
 </li>
@@ -409,9 +409,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_0_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_0_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 </ul>
 </li>
@@ -871,7 +871,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_0_FARE_POLICY</strong>: every element of $.message.catalog.providers[<em>].items[</em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
@@ -881,13 +881,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_1_ROUTE_INFO</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_1_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_1_TICKET_INFO</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_1_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_1_TRIP_DETAILS</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_1_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_1_INFO</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].tags[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;, &quot;SETTLEMENT_TERMS&quot;]</p>
 <blockquote>
@@ -897,9 +897,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_3</strong>: every element of $.message.catalog.providers[*].descriptor.code must be in [&quot;SCHEDULED_INFO&quot;]</p>
 <blockquote>
@@ -909,7 +909,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_3_SCHEDULED_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;GTFS&quot;]</p>
+<li><p><strong>condition validate_tag_3_SCHEDULED_INFO</strong>: every element of $.message.catalog.providers[<em>].tags[?(@.descriptor.code==&#39;SCHEDULED_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;GTFS&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_4</strong>: every element of $.message.catalog.tags[*].descriptor.code must be in [&quot;PAGINATION&quot;]</p>
 <blockquote>
@@ -919,7 +919,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_4_PAGINATION</strong>: every element of $.list[*].descriptor.code must be in [&quot;PAGINATION_ID&quot;, &quot;CURRENT_PAGE_NUMBER&quot;, &quot;MAX_PAGE_NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_4_PAGINATION</strong>: every element of $.message.catalog.tags[?(@.descriptor.code==&#39;PAGINATION&#39;)].list[*].descriptor.code must be in [&quot;PAGINATION_ID&quot;, &quot;CURRENT_PAGE_NUMBER&quot;, &quot;MAX_PAGE_NUMBER&quot;]</p>
 </li>
 </ul>
 </li>
@@ -1093,13 +1093,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -1109,7 +1109,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 </ul>
 </li>
@@ -1315,13 +1315,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -1331,7 +1331,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2</strong>: every element of $.message.order.payments[<em>].tags[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;, &quot;SETTLEMENT_TERMS&quot;]</p>
 <blockquote>
@@ -1341,9 +1341,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 </ul>
 </li>
@@ -1573,13 +1573,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -1589,7 +1589,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2</strong>: every element of $.message.order.payments[<em>].tags[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;, &quot;SETTLEMENT_TERMS&quot;]</p>
 <blockquote>
@@ -1599,9 +1599,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 </ul>
 </li>
@@ -1825,13 +1825,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -1841,7 +1841,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2</strong>: every element of $.message.order.payments[<em>].tags[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;, &quot;SETTLEMENT_TERMS&quot;]</p>
 <blockquote>
@@ -1851,9 +1851,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 </ul>
 </li>
@@ -2063,13 +2063,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -2079,7 +2079,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 </ul>
 </li>
@@ -2315,13 +2315,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
+<li><p><strong>condition validate_tag_0_ROUTE_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;ROUTE_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;ROUTE_ID&quot;, &quot;ROUTE_DIRECTION&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;NUMBER&quot;]</p>
+<li><p><strong>condition validate_tag_0_TICKET_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TICKET_INFO&#39;)].list[</em>].descriptor.code must be in [&quot;NUMBER&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.list[*].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
+<li><p><strong>condition validate_tag_0_TRIP_DETAILS</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;TRIP_DETAILS&#39;)].list[</em>].descriptor.code must be in [&quot;AVAILABLE_TRIPS&quot;, &quot;UTILIZED_TRIPS&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.list[*].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
+<li><p><strong>condition validate_tag_0_INFO</strong>: every element of $.message.order.fulfillments[<em>].tags[?(@.state.descriptor.code==&#39;INFO&#39;)].list[</em>].descriptor.code must be in [&quot;PARENT_ITEM_ID&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_1</strong>: every element of $.message.order.items[<em>].tags[</em>].descriptor.code must be in [&quot;FARE_POLICY&quot;]</p>
 <blockquote>
@@ -2331,7 +2331,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.list[*].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
+<li><p><strong>condition validate_tag_1_FARE_POLICY</strong>: every element of $.message.order.items[<em>].tags[?(@.descriptor.code==&#39;FARE_POLICY&#39;)].list[</em>].descriptor.code must be in [&quot;RESTRICTED_PERSON&quot;, &quot;RESTRICTION_PROOF&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2</strong>: every element of $.message.order.payments[<em>].tags[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES&quot;, &quot;SETTLEMENT_TERMS&quot;]</p>
 <blockquote>
@@ -2341,9 +2341,9 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.list[*].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
-<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.list[*].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+<li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
 </li>
 </ul>
 </li>

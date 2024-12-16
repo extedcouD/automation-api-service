@@ -632,7 +632,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
+                            description: `- **condition A**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
                         },
                     ];
                 }
@@ -670,7 +670,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
+                            description: `- **condition A**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
                         },
                     ];
                 }
@@ -730,7 +730,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]`,
+                            description: `- **condition A**: every element of $.message.intent.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]`,
                         },
                     ];
                 }

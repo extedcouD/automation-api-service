@@ -1448,7 +1448,7 @@ export default function on_update(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
                         },
                     ];
                 }
@@ -1477,7 +1477,7 @@ export default function on_update(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["NUMBER"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]`,
                         },
                     ];
                 }
@@ -1506,7 +1506,7 @@ export default function on_update(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
                         },
                     ];
                 }
@@ -1533,7 +1533,7 @@ export default function on_update(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
+                            description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
                         },
                     ];
                 }
@@ -1593,7 +1593,7 @@ export default function on_update(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
+                            description: `- **condition A**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
                         },
                     ];
                 }

@@ -1070,7 +1070,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
                         },
                     ];
                 }
@@ -1135,7 +1135,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
                         },
                     ];
                 }
@@ -1164,7 +1164,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["NUMBER"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]`,
                         },
                     ];
                 }
@@ -1193,7 +1193,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
                         },
                     ];
                 }
@@ -1220,7 +1220,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
                         },
                     ];
                 }
@@ -1283,7 +1283,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
                         },
                     ];
                 }
@@ -1321,7 +1321,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
                         },
                     ];
                 }
@@ -1381,7 +1381,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["GTFS"]`,
+                            description: `- **condition A**: every element of $.message.catalog.providers[*].tags[?(@.descriptor.code=='SCHEDULED_INFO')].list[*].descriptor.code must be in ["GTFS"]`,
                         },
                     ];
                 }
@@ -1445,7 +1445,7 @@ export default function on_search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             errorCode: 30000,
-                            description: `- **condition A**: every element of $.list[*].descriptor.code must be in ["PAGINATION_ID", "CURRENT_PAGE_NUMBER", "MAX_PAGE_NUMBER"]`,
+                            description: `- **condition A**: every element of $.message.catalog.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "CURRENT_PAGE_NUMBER", "MAX_PAGE_NUMBER"]`,
                         },
                     ];
                 }

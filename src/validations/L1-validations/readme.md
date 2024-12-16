@@ -86,9 +86,9 @@
 		>
 		> - **condition B**: $.message.intent.payment.tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_0_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_0_SETTLEMENT_TERMS**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 	
 	- **condition validate_tag_1**: every element of $.message.intent.tags[*].descriptor.code must be in ["PAGINATION"]
 	
@@ -96,7 +96,7 @@
 		>
 		> - **condition B**: $.message.intent.tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_PAGINATION**: every element of $.list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]
+	- **condition validate_tag_1_PAGINATION**: every element of $.message.intent.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]
 
 - **select** : All the following sub conditions must pass as per the api requirement
 
@@ -204,13 +204,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 
 - **init** : All the following sub conditions must pass as per the api requirement
 
@@ -324,9 +324,9 @@
 		>
 		> - **condition B**: $.message.order.payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_0_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_0_SETTLEMENT_TERMS**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 
 - **confirm** : All the following sub conditions must pass as per the api requirement
 
@@ -706,7 +706,7 @@
 		>
 		> - **condition B**: $.message.catalog.providers[*].items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_0_FARE_POLICY**: every element of $.message.catalog.providers[*].items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 	
 	- **condition validate_tag_1**: every element of $.message.catalog.providers[*].fulfillments[*].state.descriptor.code must be in ["ROUTE_INFO", "TICKET_INFO", "TRIP_DETAILS", "INFO"]
 	
@@ -714,13 +714,13 @@
 		>
 		> - **condition B**: $.message.catalog.providers[*].fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_1_ROUTE_INFO**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_1_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_1_TICKET_INFO**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_1_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_1_TRIP_DETAILS**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_1_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_1_INFO**: every element of $.message.catalog.providers[*].fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_2**: every element of $.message.catalog.providers[*].payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 	
@@ -728,9 +728,9 @@
 		>
 		> - **condition B**: $.message.catalog.providers[*].payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.message.catalog.providers[*].payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 	
 	- **condition validate_tag_3**: every element of $.message.catalog.providers[*].descriptor.code must be in ["SCHEDULED_INFO"]
 	
@@ -738,7 +738,7 @@
 		>
 		> - **condition B**: $.message.catalog.providers[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_3_SCHEDULED_INFO**: every element of $.list[*].descriptor.code must be in ["GTFS"]
+	- **condition validate_tag_3_SCHEDULED_INFO**: every element of $.message.catalog.providers[*].tags[?(@.descriptor.code=='SCHEDULED_INFO')].list[*].descriptor.code must be in ["GTFS"]
 	
 	- **condition validate_tag_4**: every element of $.message.catalog.tags[*].descriptor.code must be in ["PAGINATION"]
 	
@@ -746,7 +746,7 @@
 		>
 		> - **condition B**: $.message.catalog.tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_4_PAGINATION**: every element of $.list[*].descriptor.code must be in ["PAGINATION_ID", "CURRENT_PAGE_NUMBER", "MAX_PAGE_NUMBER"]
+	- **condition validate_tag_4_PAGINATION**: every element of $.message.catalog.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "CURRENT_PAGE_NUMBER", "MAX_PAGE_NUMBER"]
 
 - **on_select** : All the following sub conditions must pass as per the api requirement
 
@@ -894,13 +894,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -908,7 +908,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 
 - **on_init** : All the following sub conditions must pass as per the api requirement
 
@@ -1082,13 +1082,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -1096,7 +1096,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 	
 	- **condition validate_tag_2**: every element of $.message.order.payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 	
@@ -1104,9 +1104,9 @@
 		>
 		> - **condition B**: $.message.order.payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 
 - **on_confirm** : All the following sub conditions must pass as per the api requirement
 
@@ -1302,13 +1302,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -1316,7 +1316,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 	
 	- **condition validate_tag_2**: every element of $.message.order.payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 	
@@ -1324,9 +1324,9 @@
 		>
 		> - **condition B**: $.message.order.payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 
 - **on_cancel** : All the following sub conditions must pass as per the api requirement
 
@@ -1516,13 +1516,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -1530,7 +1530,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 	
 	- **condition validate_tag_2**: every element of $.message.order.payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 	
@@ -1538,9 +1538,9 @@
 		>
 		> - **condition B**: $.message.order.payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
 
 - **on_update** : All the following sub conditions must pass as per the api requirement
 
@@ -1716,13 +1716,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -1730,7 +1730,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 
 - **on_status** : All the following sub conditions must pass as per the api requirement
 
@@ -1932,13 +1932,13 @@
 		>
 		> - **condition B**: $.message.order.fulfillments[*].state.descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_0_ROUTE_INFO**: every element of $.list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
+	- **condition validate_tag_0_ROUTE_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]
 	
-	- **condition validate_tag_0_TICKET_INFO**: every element of $.list[*].descriptor.code must be in ["NUMBER"]
+	- **condition validate_tag_0_TICKET_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]
 	
-	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
+	- **condition validate_tag_0_TRIP_DETAILS**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]
 	
-	- **condition validate_tag_0_INFO**: every element of $.list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
+	- **condition validate_tag_0_INFO**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]
 	
 	- **condition validate_tag_1**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 	
@@ -1946,7 +1946,7 @@
 		>
 		> - **condition B**: $.message.order.items[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_1_FARE_POLICY**: every element of $.list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
+	- **condition validate_tag_1_FARE_POLICY**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]
 	
 	- **condition validate_tag_2**: every element of $.message.order.payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 	
@@ -1954,6 +1954,6 @@
 		>
 		> - **condition B**: $.message.order.payments[*].tags[*].descriptor.code must **not** be present in the payload
 	
-	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
+	- **condition validate_tag_2_BUYER_FINDER_FEES**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]
 	
-	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
+	- **condition validate_tag_2_SETTLEMENT_TERMS**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]
