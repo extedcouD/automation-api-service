@@ -12,6 +12,15 @@ export interface SessionData {
 	current_flow_id: string;
 	session_payloads: Record<string, any>;
 	context_cache: ContextCache;
+	difficulty_cache: {
+		sensitiveTTL: boolean;
+		useGateway: boolean;
+
+		stopAfterFirstNack: boolean;
+		protocolValidations: boolean;
+		timeValidations: boolean;
+		headerValidaton: boolean;
+	};
 }
 
 export interface ContextCache {

@@ -11,14 +11,23 @@ import { getPublicKeys } from "../utils/headerUtils";
 import { isHeaderValid } from "ondc-crypto-sdk-nodejs";
 import { DataService } from "../services/data-service";
 import { computeSubscriberUri } from "../utils/subsciber-utils";
+import { loadData } from "../utils/data-utils/cache-utils";
 
 export class ValidationController {
-	validateSignature = async (
+	validateSignatureNp = async (
 		req: Request,
 		res: Response,
 		next: NextFunction
 	) => {
 		try {
+			const sessionData = await loadData(
+				computeSubscriberUri(req.body.context, req.params.action, false)
+			);
+			if (sessionData.difficulty_cache.headerValidaton === false) {
+				logger.info("Signature validations are disabled");
+				next();
+				return;
+			}
 			const auth = req.headers.authorization;
 			if (!auth) {
 				logger.info("Responding with invalid signature");
@@ -125,12 +134,22 @@ export class ValidationController {
 	}
 
 	// Middleware: L1 validations
-	validateL1(req: Request, res: Response, next: NextFunction) {
+	validateL1 = async (req: Request, res: Response, next: NextFunction) => {
 		const { action } = req.params;
 		const body = req.body;
+		const suburl = computeSubscriberUri(body.context, action, false);
+		const sessionData = await loadData(suburl);
+		if (
+			sessionData.difficulty_cache.protocolValidations &&
+			!sessionData.difficulty_cache.protocolValidations
+		) {
+			logger.info("L1 validations are disabled");
+			next();
+			return;
+		}
 
 		const apiLayerUrl = process.env.API_SERVICE_URL;
-		const extraMessage = ` /n/n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
+		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
 		const l1Result = performL1Validations(action, body);
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
@@ -140,7 +159,27 @@ export class ValidationController {
 		}
 		logger.info("L1 validations passed");
 		next();
-	}
+	};
+
+	validateSingleL1 = async (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
+		const { action } = req.params;
+		const body = req.body;
+		const apiLayerUrl = process.env.API_SERVICE_URL;
+		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
+		const l1Result = performL1Validations(action, body);
+		if (!l1Result[0].valid) {
+			const error = (l1Result[0].description as string) + extraMessage;
+			const code = l1Result[0].errorCode as number;
+			res.status(200).send(setAckResponse(false, error, code.toString()));
+			return;
+		}
+		logger.info("L1 validations passed");
+		next();
+	};
 
 	// Middleware: Context validations
 	async validateContextFromNp(req: Request, res: Response, next: NextFunction) {

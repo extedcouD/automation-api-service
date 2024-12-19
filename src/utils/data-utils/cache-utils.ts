@@ -41,10 +41,10 @@ export async function savePayloadData(
 	await RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
 }
 
-export async function loadData(sessionID: string) {
-	if (await RedisService.keyExists(sessionID)) {
-		const data = await RedisService.getKey(sessionID);
+export async function loadData(subscriberUrl: string) {
+	if (await RedisService.keyExists(subscriberUrl)) {
+		const data = await RedisService.getKey(subscriberUrl);
 		return JSON.parse(data ?? "{}") as SessionData;
 	}
-	throw new Error("session ID not found " + sessionID);
+	throw new Error("session ID not found " + subscriberUrl);
 }

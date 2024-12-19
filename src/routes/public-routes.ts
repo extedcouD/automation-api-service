@@ -15,8 +15,8 @@ const dbController = new DataController();
 router.post(
 	"/:action",
 	validationController.validateRequestBodyNp,
-	validationController.validateSignature,
 	validationController.validateSessionFromNp,
+	validationController.validateSignatureNp,
 	(req, res, next) => {
 		// Ensure `res.send` is wrapped only once
 		if (!res.locals.isSendWrapped) {

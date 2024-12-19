@@ -20,6 +20,15 @@ export function validateAsyncContext(
 		flowPayloads = [];
 	}
 
+	const allResponse = flowPayloads.map((payload) => payload.response);
+
+	if (!checkAllAck(allResponse)) {
+		return {
+			valid: false,
+			error: `flow history already has a failed response`,
+		};
+	}
+
 	const sortedContexts = flowPayloads
 		.map((payload) => payload.request)
 		.sort(
@@ -142,4 +151,11 @@ function findFirstMatches(
 	}
 
 	return result;
+}
+
+export function checkAllAck(responses: any[]) {
+	return responses.every(
+		(response) =>
+			response.message.ack.status && response.message.ack.status === "ACK"
+	);
 }
