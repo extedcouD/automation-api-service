@@ -21,7 +21,7 @@ export class CommunicationController {
 			);
 			res.status(200).send(setAckResponse(true));
 		} catch (error) {
-			logger.error("Error in forwarding request to mock server");
+			logger.error("Error in forwarding request to mock server", e);
 			res.status(200).send(setIneternalServerNack);
 		}
 	};
