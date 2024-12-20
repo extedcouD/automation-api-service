@@ -103,6 +103,7 @@ export class ValidationController {
 		res: Response,
 		next: NextFunction
 	) => {
+		logger.info("recived request from mock server");
 		const body = req.body;
 		if (!body || !body.context || !body.context.action) {
 			logger.error("Invalid request body", body);

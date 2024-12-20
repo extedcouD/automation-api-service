@@ -43,6 +43,7 @@ export async function savePayloadData(
 
 export async function loadData(subscriberUrl: string) {
 	if (await RedisService.keyExists(subscriberUrl)) {
+		logger.info("Loading data from cache " + subscriberUrl);
 		const data = await RedisService.getKey(subscriberUrl);
 		return JSON.parse(data ?? "{}") as SessionData;
 	}

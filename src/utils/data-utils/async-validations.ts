@@ -22,7 +22,10 @@ export function validateAsyncContext(
 
 	const allResponse = flowPayloads.map((payload) => payload.response);
 
-	if (!checkAllAck(allResponse)) {
+	if (
+		sessionData.difficulty_cache.stopAfterFirstNack &&
+		!checkAllAck(allResponse)
+	) {
 		return {
 			valid: false,
 			error: `flow history already has a failed response`,
@@ -154,8 +157,10 @@ function findFirstMatches(
 }
 
 export function checkAllAck(responses: any[]) {
-	return responses.every(
-		(response) =>
-			response.message.ack.status && response.message.ack.status === "ACK"
-	);
+	return responses.every((response) => {
+		if (response?.message?.ack?.status === "ACK") {
+			return true;
+		}
+		return false;
+	});
 }

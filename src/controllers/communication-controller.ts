@@ -1,9 +1,10 @@
 import { setAckResponse, setIneternalServerNack } from "../utils/ackUtils";
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import logger from "../utils/logger";
 import { CommunicationService } from "../services/forwarding-service";
 import { BecknContext } from "../models/beckn-types";
 import { computeSubscriberUri } from "../utils/subsciber-utils";
+import { loadData } from "../utils/data-utils/cache-utils";
 
 export class CommunicationController {
 	communicationService: CommunicationService;
@@ -13,9 +14,6 @@ export class CommunicationController {
 	}
 
 	forwardToMockServer = async (req: Request, res: Response) => {
-		const context = req.body.context;
-		const action = req.params.action;
-		const subscriberUrl = computeSubscriberUri(context, action, false);
 		try {
 			await new CommunicationService().forwardApiToMock(
 				req.body,
@@ -33,6 +31,7 @@ export class CommunicationController {
 			const context: BecknContext = req.body.context;
 			const bpp_uri = context.bpp_uri;
 			if (bpp_uri) {
+				logger.info("Forwarding request to NP server");
 				const response = await this.communicationService.forwardApiToNp(
 					req.body,
 					req.params.action
@@ -40,13 +39,32 @@ export class CommunicationController {
 				res.status(response.status).send(response.data);
 				return;
 			}
-			const response = await this.communicationService.forwardApiToGateway(
-				req.body
-			);
-			res.status(response.status).send(response.data);
+			const subUrl =
+				(req.query.subscriberUrl as string) ??
+				computeSubscriberUri(context, req.params.action, true);
+			const sessionData = await loadData(subUrl);
+			logger.debug(sessionData.difficulty_cache);
+			const useGateway = sessionData.difficulty_cache.useGateway ?? true;
+			if (useGateway) {
+				logger.info("Forwarding request to Gateway server");
+				const response = await this.communicationService.forwardApiToGateway(
+					req.body
+				);
+				res.status(response.status).send(response.data);
+				return;
+			} else {
+				logger.info("Forwarding request to NP server");
+				const response = await this.communicationService.forwardApiToNp(
+					req.body,
+					req.params.action,
+					subUrl
+				);
+				res.status(response.status).send(response.data);
+				return;
+			}
 		} catch (error) {
 			res.status(200).send(setIneternalServerNack);
-			logger.error("Error in handling request from mock server");
+			logger.error("Error in handling request from mock server", error);
 		}
 	};
 }

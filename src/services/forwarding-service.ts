@@ -8,14 +8,15 @@ import { getAxiosErrorMessage } from "../utils/axiosUtils";
 export class CommunicationService {
 	forwardApiToMock = async (body: any, action: string) => {
 		const url = process.env.MOCK_SERVER_URL;
-		logger.debug("Forwarding request to mock server", url, action);
+		logger.debug("Forwarding request to mock server " + url + action);
 		return await axios.post(`${url}/${action}`, body);
 	};
-	forwardApiToNp = async (body: any, action: string) => {
+	forwardApiToNp = async (body: any, action: string, overriteUrl?: string) => {
 		const context: BecknContext = body.context;
-		const finalUri = context.action.startsWith("on_")
+		let finalUri = context.action.startsWith("on_")
 			? context.bap_uri
 			: context.bpp_uri;
+		if (overriteUrl) finalUri = overriteUrl;
 		logger.info("Forwarding request to NP server", finalUri);
 
 		const header = await createAuthHeader(body);
