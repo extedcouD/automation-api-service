@@ -7,6 +7,8 @@ import logger from "../../utils/logger";
 
 export function performL0Validations(actionPayload: any, action: string) {
 	logger.info("Performing L0 validations", action);
+	const pathC = path.resolve(__dirname, `../../schemas/${action}.yaml`);
+	logger.info(`path ${pathC}`);
 	if (!fs.existsSync(path.resolve(__dirname, `../../schemas/${action}.yaml`))) {
 		return { valid: false, errors: ["INVALID ACTION"] };
 	}
