@@ -4,25 +4,22 @@ import yaml from "js-yaml";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 import logger from "../../utils/logger";
+import getSchema from "../L0-schemas";
 
 export function performL0Validations(actionPayload: any, action: string) {
 	logger.info("Performing L0 validations", action);
-	const pathC = path.resolve(__dirname, `../../schemas/${action}.yaml`);
-	logger.info(`path ${pathC}`);
-	if (!fs.existsSync(path.resolve(__dirname, `../../schemas/${action}.yaml`))) {
-		return { valid: false, errors: ["INVALID ACTION"] };
+	try {
+		const schema = getSchema(action);
+		const ajv = new Ajv({ allErrors: true });
+		addFormats(ajv);
+		const validate = ajv.compile(schema as any);
+		const valid = validate(actionPayload);
+		if (!valid) return createErrorMessage(validate, valid);
+		return { valid: valid, errors: validate.errors };
+	} catch (e) {
+		logger.error("Error in L0 validations", e);
+		return { valid: false, errors: "invalid action" };
 	}
-	const rawSchema = readFileSync(
-		path.resolve(__dirname, `../../schemas/${action}.yaml`),
-		"utf-8"
-	);
-	const schema = yaml.load(rawSchema);
-	const ajv = new Ajv({ allErrors: true });
-	addFormats(ajv);
-	const validate = ajv.compile(schema as any);
-	const valid = validate(actionPayload);
-	if (!valid) return createErrorMessage(validate, valid);
-	return { valid: valid, errors: validate.errors };
 }
 
 function createErrorMessage(validate: any, valid: boolean) {
