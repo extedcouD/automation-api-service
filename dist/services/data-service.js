@@ -21,7 +21,7 @@ const axiosUtils_1 = require("../utils/axiosUtils");
 class DataService {
     constructor() {
         this.saveSessionToDB = (subscriberUri, payload, response, code) => __awaiter(this, void 0, void 0, function* () {
-            var _a, _b;
+            var _a;
             try {
                 const dbUrl = process.env.DATA_BASE_URL;
                 const sessionData = yield (0, cache_utils_1.loadData)(subscriberUri);
@@ -30,49 +30,36 @@ class DataService {
                 const exists = yield axios_1.default.get(checkSessionUrl);
                 if (!exists.data) {
                     logger_1.default.info("Session does not exist in DB, creating new session");
-                    yield axios_1.default.post(postUrl, {
-                        "sessionId": sessionData.active_session_id,
-                        "npType": sessionData.type,
-                        "npId": sessionData.context_cache.subscriber_id,
-                        "domain": sessionData.domain,
-                        "version": sessionData.version,
-                        "sessionType": "AUTOMATION",
-                        "sessionActive": true
-                    });
+                    const sessionPayload = {
+                        sessionId: sessionData.active_session_id,
+                        npType: sessionData.type,
+                        npId: sessionData.context_cache.subscriber_id,
+                        domain: sessionData.domain,
+                        version: sessionData.version,
+                        sessionType: "AUTOMATION",
+                        sessionActive: true,
+                    };
+                    yield axios_1.default.post(postUrl, sessionPayload);
                 }
-                const responseBody = {
-                    "messageId": payload.context.message_id,
-                    "transactionId": payload.context.transaction_id,
-                    "action": payload.context.action,
-                    "bppId": (_a = payload.context.bpp_id) !== null && _a !== void 0 ? _a : "",
-                    "bapId": payload.context.bap_id,
-                    "jsonObject": response,
-                    "type": "RESPONSE",
-                    "httpStatus": code,
-                    "flowId": sessionData.current_flow_id,
-                    "sessionDetails": {
-                        "sessionId": sessionData.active_session_id
-                    }
-                };
+                const action = payload.context.action;
                 const requestBody = {
-                    "messageId": payload.context.message_id,
-                    "transactionId": payload.context.transaction_id,
-                    "action": payload.context.action,
-                    "bppId": (_b = payload.context.bpp_id) !== null && _b !== void 0 ? _b : "",
-                    "bapId": payload.context.bap_id,
-                    "jsonObject": payload,
-                    "type": "REQUEST",
-                    "httpStatus": code,
-                    "flowId": sessionData.current_flow_id,
-                    "sessionDetails": {
-                        "sessionId": sessionData.active_session_id
-                    }
+                    messageId: payload.context.message_id,
+                    transactionId: payload.context.transaction_id,
+                    action: action.toUpperCase(),
+                    bppId: (_a = payload.context.bpp_id) !== null && _a !== void 0 ? _a : "",
+                    bapId: payload.context.bap_id,
+                    jsonRequest: payload,
+                    jsonResponse: { response: response },
+                    httpStatus: code,
+                    flowId: sessionData.current_flow_id,
+                    sessionDetails: {
+                        sessionId: sessionData.active_session_id,
+                    },
                 };
-                yield axios_1.default.post(postUrl, responseBody);
-                yield axios_1.default.post(postUrl, requestBody);
+                yield axios_1.default.post(postUrl + "/payload", requestBody);
+                logger_1.default.info("Data saved to DB");
             }
             catch (error) {
-                console.log(JSON.stringify(error));
                 logger_1.default.error("Error in saving data to DB ", (0, axiosUtils_1.getAxiosErrorMessage)(error));
             }
         });

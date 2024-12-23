@@ -32,8 +32,11 @@ const path_1 = __importDefault(require("path"));
 const js_yaml_1 = __importDefault(require("js-yaml"));
 const ajv_1 = __importDefault(require("ajv"));
 const ajv_formats_1 = __importDefault(require("ajv-formats"));
+const logger_1 = __importDefault(require("../../utils/logger"));
 function performL0Validations(actionPayload, action) {
-    console.log(action);
+    logger_1.default.info("Performing L0 validations", action);
+    const pathC = path_1.default.resolve(__dirname, `../../schemas/${action}.yaml`);
+    logger_1.default.info(`path ${pathC}`);
     if (!fs_1.default.existsSync(path_1.default.resolve(__dirname, `../../schemas/${action}.yaml`))) {
         return { valid: false, errors: ["INVALID ACTION"] };
     }
@@ -77,5 +80,5 @@ function createErrorMessage(validate, valid) {
                 return `${instancePath} ${message}`;
         }
     });
-    return { valid: false, errors: errorMessages };
+    return { valid: false, errors: errorMessages.join(",") };
 }

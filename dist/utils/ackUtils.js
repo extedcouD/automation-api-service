@@ -27,12 +27,15 @@ exports.setIneternalServerNack = {
         },
     },
 };
-exports.setBadRequestNack = {
-    message: {
-        status: "NACK",
-        error: {
-            code: "10000",
-            message: "Bad Request",
-        },
-    },
+const setBadRequestNack = (message = "") => {
+    return {
+        message: {
+            status: "NACK",
+            error: {
+                code: "10000",
+                message: "Bad Request " + message,
+            },
+        }
+    };
 };
+exports.setBadRequestNack = setBadRequestNack;

@@ -9,7 +9,7 @@ function getJsonPath(payload, path) {
     if (isListOfStringsOrNull(output)) {
         output = output.map((o) => (o === null ? "null" : o));
     }
-    return output.length === 0 ? ["null"] : output;
+    return output.length === 0 ? [] : output;
 }
 function isListOfStringsOrNull(variable) {
     return (Array.isArray(variable) &&

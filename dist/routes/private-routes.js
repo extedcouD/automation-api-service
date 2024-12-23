@@ -29,6 +29,7 @@ router.post("/:action", validationController.validateRequestBodyMock, validation
                 }
                 // Save the request and response in the cache
                 dbController.savePayloadInCache(req, body, true);
+                dbController.savePayloadInDb(req, body, true, statusCode);
                 // Log the response being sent
                 logger_1.default.info("Sending response to: " + JSON.stringify(body));
             }

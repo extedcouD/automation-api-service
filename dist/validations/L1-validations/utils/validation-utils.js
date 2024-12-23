@@ -4,6 +4,9 @@ function areUnique(operand) {
     const valuesSet = new Set(operand);
     return valuesSet.size === operand.length;
 }
+function arePresent(operand) {
+    return noneIn(operand, ["", "null", "undefined"]) && operand.length > 0;
+}
 function allIn(left, right) {
     return left.every((v) => right.includes(v));
 }
@@ -79,6 +82,7 @@ function isISO8601(str) {
 }
 exports.default = {
     areUnique,
+    arePresent,
     allIn,
     anyIn,
     noneIn,

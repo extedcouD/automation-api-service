@@ -22,15 +22,18 @@ class CommunicationService {
     constructor() {
         this.forwardApiToMock = (body, action) => __awaiter(this, void 0, void 0, function* () {
             const url = process.env.MOCK_SERVER_URL;
-            logger_1.default.debug("Forwarding request to mock server", url, action);
+            logger_1.default.debug("Forwarding request to mock server " + url + action);
             return yield axios_1.default.post(`${url}/${action}`, body);
         });
-        this.forwardApiToNp = (body, action) => __awaiter(this, void 0, void 0, function* () {
+        this.forwardApiToNp = (body, action, overriteUrl) => __awaiter(this, void 0, void 0, function* () {
             var _a;
             const context = body.context;
-            const finalUri = context.action.startsWith("on_")
+            let finalUri = context.action.startsWith("on_")
                 ? context.bap_uri
                 : context.bpp_uri;
+            if (overriteUrl)
+                finalUri = overriteUrl;
+            logger_1.default.info("Forwarding request to NP server", finalUri);
             const header = yield (0, headerUtils_1.createAuthHeader)(body);
             try {
                 const response = yield axios_1.default.post(`${finalUri}/${action}`, body, {
@@ -48,7 +51,7 @@ class CommunicationService {
                 const status = ((_a = error.response) === null || _a === void 0 ? void 0 : _a.status) || 500;
                 return {
                     status,
-                    data: (0, axiosUtils_1.getAxiosErrorMessage)(error)
+                    data: (0, axiosUtils_1.getAxiosErrorMessage)(error),
                 };
             }
         });
@@ -57,11 +60,13 @@ class CommunicationService {
             const url = registryGatewayConfig_1.config.gateway.STAGING;
             const header = yield (0, headerUtils_1.createAuthHeader)(body);
             try {
+                logger_1.default.info("Forwarding request to Gateway server", url);
                 const response = yield axios_1.default.post(`${url}search`, body, {
                     headers: {
                         Authorization: header,
                     },
                 });
+                logger_1.default.info(JSON.stringify(response.data));
                 return {
                     status: response.status,
                     data: response.data,
@@ -72,7 +77,7 @@ class CommunicationService {
                 const status = ((_a = error.response) === null || _a === void 0 ? void 0 : _a.status) || 500;
                 return {
                     status,
-                    data: (0, axiosUtils_1.getAxiosErrorMessage)(error)
+                    data: (0, axiosUtils_1.getAxiosErrorMessage)(error),
                 };
             }
         });

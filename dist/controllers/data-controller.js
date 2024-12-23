@@ -30,7 +30,7 @@ class DataController {
                 next();
             }
             catch (err) {
-                logger_1.default.error("Error in saving context data to cache", err);
+                logger_1.default.error("Error in saving context data to cache");
                 res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
@@ -43,7 +43,7 @@ class DataController {
                 next();
             }
             catch (err) {
-                logger_1.default.error("Error in saving context data to cache", err);
+                logger_1.default.error("Error in saving context data to cache");
                 res.status(200).send(ackUtils_1.setIneternalServerNack);
             }
         });
@@ -65,7 +65,17 @@ class DataController {
         console.log("sub URL", url);
         (0, cache_utils_1.savePayloadData)(req.body.context, responseBody, url)
             .then(() => logger_1.default.info("Payload data saved to cache"))
-            .catch((err) => logger_1.default.error("Error in saving payload data to cache", err));
+            .catch((err) => logger_1.default.error("Error in saving payload data to cache"));
+    }
+    savePayloadInDb(req, responseBody, fromMock, code) {
+        var _a;
+        let url = (0, subsciber_utils_1.computeSubscriberUri)(req.body.context, req.params.action, fromMock);
+        if (fromMock) {
+            url = (_a = req.query.subscriberUrl) !== null && _a !== void 0 ? _a : url;
+        }
+        this.dataService
+            .saveSessionToDB(url, req.body, responseBody, code)
+            .catch((err) => logger_1.default.error("Error in saving payload data to DB", err));
     }
 }
 exports.DataController = DataController;

@@ -14,9 +14,7 @@ router.use(express_1.default.urlencoded({ extended: true }));
 const validationController = new validation_controller_1.ValidationController();
 const commController = new communication_controller_1.CommunicationController();
 const dbController = new data_controller_1.DataController();
-router.post("/:action", 
-// validationController.validateSignature,
-validationController.validateRequestBodyNp, validationController.validateSessionFromNp, (req, res, next) => {
+router.post("/:action", validationController.validateRequestBodyNp, validationController.validateSessionFromNp, validationController.validateSignatureNp, (req, res, next) => {
     // Ensure `res.send` is wrapped only once
     if (!res.locals.isSendWrapped) {
         res.locals.isSendWrapped = true; // Flag to indicate the wrapping is done
@@ -30,15 +28,13 @@ validationController.validateRequestBodyNp, validationController.validateSession
                     logger_1.default.info("API service response status code is not 200", statusCode);
                 }
                 // Save the request and response in the cache
-                dbController.savePayloadInCache(req, body, true);
-                // Log the response being sent
+                dbController.savePayloadInCache(req, body, false);
+                dbController.savePayloadInDb(req, body, false, statusCode);
                 logger_1.default.info("Sending response to: " + JSON.stringify(body));
             }
             return originalSend.call(this, body); // Call the original send method
         };
     }
     next(); // Proceed to the next middleware
-}, validationController.validateL0, 
-// validationController.validateL1,
-validationController.validateContextFromNp, dbController.saveContextInCacheNp, commController.forwardToMockServer);
+}, validationController.validateL0, validationController.validateL1, validationController.validateContextFromNp, dbController.saveContextInCacheNp, commController.forwardToMockServer);
 exports.default = router;

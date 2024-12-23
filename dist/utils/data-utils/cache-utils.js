@@ -23,6 +23,7 @@ function saveContextData(context, subscriberUrl) {
         sessionData.context_cache.latest_action = context.action;
         sessionData.context_cache.latest_timestamp = context.timestamp;
         sessionData.context_cache.message_ids.push(context.message_id);
+        logger_1.default.info("Saving context data to cache latest action", context.action);
         yield ondc_automation_cache_lib_1.RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
     });
 }
@@ -30,7 +31,6 @@ function savePayloadData(context, response, subscriberUrl) {
     return __awaiter(this, void 0, void 0, function* () {
         const sessionData = yield loadData(subscriberUrl);
         if (!sessionData.current_flow_id) {
-            console.log(JSON.stringify(sessionData, null, 2));
             logger_1.default.error("Current flow id not found in session data");
             return;
         }
@@ -40,7 +40,6 @@ function savePayloadData(context, response, subscriberUrl) {
         if (!sessionData.session_payloads[sessionData.current_flow_id]) {
             sessionData.session_payloads[sessionData.current_flow_id] = [];
         }
-        console.log(sessionData.current_flow_id, sessionData.session_payloads, "payloads");
         sessionData.session_payloads[sessionData.current_flow_id].push({
             request: context,
             response: response,
@@ -48,12 +47,13 @@ function savePayloadData(context, response, subscriberUrl) {
         yield ondc_automation_cache_lib_1.RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
     });
 }
-function loadData(sessionID) {
+function loadData(subscriberUrl) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (yield ondc_automation_cache_lib_1.RedisService.keyExists(sessionID)) {
-            const data = yield ondc_automation_cache_lib_1.RedisService.getKey(sessionID);
+        if (yield ondc_automation_cache_lib_1.RedisService.keyExists(subscriberUrl)) {
+            logger_1.default.info("Loading data from cache " + subscriberUrl);
+            const data = yield ondc_automation_cache_lib_1.RedisService.getKey(subscriberUrl);
             return JSON.parse(data !== null && data !== void 0 ? data : "{}");
         }
-        throw new Error("session ID not found " + sessionID);
+        throw new Error("session ID not found " + subscriberUrl);
     });
 }

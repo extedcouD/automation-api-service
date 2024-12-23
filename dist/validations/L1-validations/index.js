@@ -15,6 +15,7 @@ const on_select_1 = __importDefault(require("./api-tests/on_select"));
 const on_init_1 = __importDefault(require("./api-tests/on_init"));
 const on_confirm_1 = __importDefault(require("./api-tests/on_confirm"));
 const on_cancel_1 = __importDefault(require("./api-tests/on_cancel"));
+const on_update_1 = __importDefault(require("./api-tests/on_update"));
 const on_status_1 = __importDefault(require("./api-tests/on_status"));
 function performL1Validations(action, payload, allErrors = false, externalData = {}) {
     switch (action) {
@@ -100,6 +101,14 @@ function performL1Validations(action, payload, allErrors = false, externalData =
             });
         case "on_cancel":
             return (0, on_cancel_1.default)({
+                payload: payload,
+                externalData: externalData,
+                config: {
+                    runAllValidations: allErrors,
+                },
+            });
+        case "on_update":
+            return (0, on_update_1.default)({
                 payload: payload,
                 externalData: externalData,
                 config: {

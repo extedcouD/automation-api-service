@@ -4,15 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateAsyncContext = validateAsyncContext;
+exports.checkAllAck = checkAllAck;
 const supported_actions_1 = require("../../config/supported-actions");
 const logger_1 = __importDefault(require("../logger"));
 function validateAsyncContext(subject, sessionData) {
-    console.log(JSON.stringify(sessionData, null, 2));
     const currentFlow = sessionData.current_flow_id;
     let flowPayloads = sessionData.session_payloads[currentFlow];
     if (!Array.isArray(flowPayloads)) {
         logger_1.default.error("Invalid flow payloads please correct the session data!!");
         flowPayloads = [];
+    }
+    const allResponse = flowPayloads.map((payload) => payload.response);
+    if (sessionData.difficulty_cache.stopAfterFirstNack &&
+        !checkAllAck(allResponse)) {
+        return {
+            valid: false,
+            error: `flow history already has a failed response`,
+        };
     }
     const sortedContexts = flowPayloads
         .map((payload) => payload.request)
@@ -20,9 +28,7 @@ function validateAsyncContext(subject, sessionData) {
         .reverse();
     const subjectAction = subject.action;
     const predecesorName = getAsyncPredecesor(subjectAction);
-    logger_1.default.debug(`Validating ${subjectAction} with predecesor ${predecesorName}`);
     if (predecesorName) {
-        logger_1.default.debug(JSON.stringify((sortedContexts)));
         const predecesor = sortedContexts.find((context) => context.action === predecesorName);
         if (!predecesor) {
             return {
@@ -33,7 +39,9 @@ function validateAsyncContext(subject, sessionData) {
         if (predecesor.message_id != subject.message_id) {
             return {
                 valid: false,
-                error: `message_id mismatch between ${predecesorName} and ${subjectAction}`,
+                error: `message_id mismatch between ${predecesorName} and ${subjectAction}
+                expteced ${predecesor.message_id} but found ${subject.message_id}
+                `,
             };
         }
         const filteredContexts = sortedContexts
@@ -74,11 +82,15 @@ function validateTrasactionId(action, transId, sortedContexts) {
 }
 function getAsyncPredecesor(action) {
     if (action in supported_actions_1.apiProperties) {
-        return supported_actions_1.apiProperties[action].async_predecessor;
+        return supported_actions_1.apiProperties[action]
+            .async_predecessor;
     }
     return null;
 }
 function getSupporedActions(action) {
+    if (action === "") {
+        action = "null";
+    }
     if (action in supported_actions_1.supportedActions) {
         return supported_actions_1.supportedActions[action];
     }
@@ -105,4 +117,13 @@ function findFirstMatches(array, actions) {
         }
     }
     return result;
+}
+function checkAllAck(responses) {
+    return responses.every((response) => {
+        var _a, _b;
+        if (((_b = (_a = response === null || response === void 0 ? void 0 : response.message) === null || _a === void 0 ? void 0 : _a.ack) === null || _b === void 0 ? void 0 : _b.status) === "ACK") {
+            return true;
+        }
+        return false;
+    });
 }

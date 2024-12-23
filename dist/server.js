@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const logger_1 = __importDefault(require("./utils/logger"));
 const serverConfig_1 = require("./config/serverConfig");
 const public_routes_1 = __importDefault(require("./routes/public-routes"));
+const test_routes_1 = __importDefault(require("./routes/test-routes"));
 const ackUtils_1 = require("./utils/ackUtils");
 const private_routes_1 = __importDefault(require("./routes/private-routes"));
 const createServer = () => {
@@ -25,6 +26,7 @@ const createServer = () => {
     // Routes
     app.use("/api", public_routes_1.default);
     app.use("/mock", private_routes_1.default);
+    app.use("/test", test_routes_1.default);
     // Health Check
     app.get("/health", (req, res) => {
         res.status(200).send((0, ackUtils_1.setAckResponse)(true));
@@ -32,7 +34,7 @@ const createServer = () => {
     // Error Handling Middleware
     app.use((err, req, res, next) => {
         logger_1.default.error(err.message, { stack: err.stack });
-        res.status(200).send(ackUtils_1.setIneternalServerNack);
+        res.status(200).send((0, ackUtils_1.setBadRequestNack)(err.message));
     });
     return app;
 };

@@ -22,26 +22,46 @@ const headerUtils_1 = require("../utils/headerUtils");
 const ondc_crypto_sdk_nodejs_1 = require("ondc-crypto-sdk-nodejs");
 const data_service_1 = require("../services/data-service");
 const subsciber_utils_1 = require("../utils/subsciber-utils");
+const cache_utils_1 = require("../utils/data-utils/cache-utils");
 class ValidationController {
     constructor() {
-        this.validateSignature = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+        this.validateSignatureNp = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const header = JSON.stringify(req.headers);
-                const body = JSON.stringify(req.body);
-                const valid = yield (0, ondc_crypto_sdk_nodejs_1.isHeaderValid)({
-                    header: header,
-                    body: body,
-                    publicKey: yield (0, headerUtils_1.getPublicKeys)(header, body),
-                });
-                if (!valid) {
+                const sessionData = yield (0, cache_utils_1.loadData)((0, subsciber_utils_1.computeSubscriberUri)(req.body.context, req.params.action, false));
+                if (sessionData.difficulty_cache.headerValidaton === false) {
+                    logger_1.default.info("Signature validations are disabled");
+                    next();
+                    return;
+                }
+                const auth = req.headers.authorization;
+                if (!auth) {
+                    logger_1.default.info("Responding with invalid signature");
                     res
                         .status(200)
                         .send((0, ackUtils_1.setAckResponse)(false, "Invalid Signature", "10001"));
                     return;
                 }
+                const header = JSON.stringify(req.headers);
+                const key = yield (0, headerUtils_1.getPublicKeys)(header, req.body);
+                logger_1.default.info("Validating signature");
+                const valid = yield (0, ondc_crypto_sdk_nodejs_1.isHeaderValid)({
+                    header: auth,
+                    body: JSON.stringify(req.body),
+                    publicKey: key,
+                });
+                logger_1.default.info("Signature validation result " + valid);
+                if (!valid) {
+                    logger_1.default.info("Responding with invalid signature");
+                    res
+                        .status(200)
+                        .send((0, ackUtils_1.setAckResponse)(false, "Invalid Signature", "10001"));
+                    return;
+                }
+                logger_1.default.info("Signature validated");
                 next();
             }
             catch (error) {
+                logger_1.default.info("Responding with invalid signature");
                 res.status(200).send((0, ackUtils_1.setAckResponse)(false, "Invalid Signature", "10001"));
                 return;
             }
@@ -49,26 +69,42 @@ class ValidationController {
         // Middleware: Validate request body
         this.validateRequestBodyNp = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             const body = req.body;
-            if (!body || !body.context || !body.context.action) {
+            if (!(0, validate_context_1.isValidJSON)(JSON.stringify(body))) {
                 logger_1.default.error("Invalid request body", body);
-                res.status(200).send(ackUtils_1.setBadRequestNack);
+                res
+                    .status(200)
+                    .send((0, ackUtils_1.setBadRequestNack)(": Invalid request body is not a valid JSON"));
+                return;
+            }
+            const action = req.params.action;
+            if (!body) {
+                logger_1.default.error("Invalid request body", body);
+                res.status(200).send((0, ackUtils_1.setBadRequestNack)(": Invalid request body"));
+                return;
+            }
+            if (!body.context) {
+                logger_1.default.error("Invalid request body", body);
+                res.status(200).send((0, ackUtils_1.setBadRequestNack)(": Context is missing"));
                 return;
             }
             try {
-                (0, subsciber_utils_1.computeSubscriberUri)(body.context, body.context.action, false);
+                (0, subsciber_utils_1.computeSubscriberUri)(body.context, action, false);
             }
-            catch (_a) {
-                logger_1.default.error("Ambiguous subscriber URL", body);
-                res.status(200).send(ackUtils_1.setBadRequestNack);
+            catch (error) {
+                logger_1.default.error("Ambiguous subscriber URL", error);
+                res
+                    .status(200)
+                    .send((0, ackUtils_1.setBadRequestNack)(": Ambiguous subscriber URL inside context"));
                 return;
             }
             next();
         });
         this.validateRequestBodyMock = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            logger_1.default.info("recived request from mock server");
             const body = req.body;
             if (!body || !body.context || !body.context.action) {
                 logger_1.default.error("Invalid request body", body);
-                res.status(200).send(ackUtils_1.setBadRequestNack);
+                res.status(200).send((0, ackUtils_1.setBadRequestNack)());
                 return;
             }
             try {
@@ -76,9 +112,48 @@ class ValidationController {
             }
             catch (_a) {
                 logger_1.default.error("Ambiguous subscriber URL", body);
-                res.status(200).send(ackUtils_1.setBadRequestNack);
+                res.status(200).send((0, ackUtils_1.setBadRequestNack)());
                 return;
             }
+            next();
+        });
+        // Middleware: L1 validations
+        this.validateL1 = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            const { action } = req.params;
+            const body = req.body;
+            const suburl = (0, subsciber_utils_1.computeSubscriberUri)(body.context, action, false);
+            const sessionData = yield (0, cache_utils_1.loadData)(suburl);
+            if (sessionData.difficulty_cache.protocolValidations &&
+                !sessionData.difficulty_cache.protocolValidations) {
+                logger_1.default.info("L1 validations are disabled");
+                next();
+                return;
+            }
+            const apiLayerUrl = process.env.API_SERVICE_URL;
+            const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
+            const l1Result = (0, L1_validations_1.performL1Validations)(action, body);
+            if (!l1Result[0].valid) {
+                const error = l1Result[0].description + extraMessage;
+                const code = l1Result[0].errorCode;
+                res.status(200).send((0, ackUtils_1.setAckResponse)(false, error, code.toString()));
+                return;
+            }
+            logger_1.default.info("L1 validations passed");
+            next();
+        });
+        this.validateSingleL1 = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            const { action } = req.params;
+            const body = req.body;
+            const apiLayerUrl = process.env.API_SERVICE_URL;
+            const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
+            const l1Result = (0, L1_validations_1.performL1Validations)(action, body);
+            if (!l1Result[0].valid) {
+                const error = l1Result[0].description + extraMessage;
+                const code = l1Result[0].errorCode;
+                res.status(200).send((0, ackUtils_1.setAckResponse)(false, error, code.toString()));
+                return;
+            }
+            logger_1.default.info("L1 validations passed");
             next();
         });
     }
@@ -92,22 +167,6 @@ class ValidationController {
             return;
         }
         logger_1.default.info("L0 validations passed");
-        next();
-    }
-    // Middleware: L1 validations
-    validateL1(req, res, next) {
-        const { action } = req.params;
-        const body = req.body;
-        const l1Result = (0, L1_validations_1.performL1Validations)(action, body);
-        if (!l1Result[0].valid) {
-            const error = l1Result[0].description;
-            const code = l1Result[0].errorCode;
-            res
-                .status(200)
-                .send((0, ackUtils_1.setAckResponse)(false, error, code.toString()));
-            return;
-        }
-        logger_1.default.info("L1 validations passed");
         next();
     }
     // Middleware: Context validations
@@ -149,9 +208,11 @@ class ValidationController {
             const context = body.context;
             const validSession = yield new data_service_1.DataService().checkSessionExistence((0, subsciber_utils_1.computeSubscriberUri)(context, action, false));
             if (!validSession) {
+                logger_1.default.info("Responing with invalid session");
                 res.status(200).send((0, ackUtils_1.setAckResponse)(false, "Invalid Session", "90001"));
                 return;
             }
+            logger_1.default.info("Session validated");
             next();
         });
     }
