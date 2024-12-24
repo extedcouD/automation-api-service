@@ -111,7 +111,7 @@ export class ValidationController {
 			return;
 		}
 		try {
-			computeSubscriberUri(body.context, body.context.action, false);
+			computeSubscriberUri(body.context, body.context.action, true);
 		} catch {
 			logger.error("Ambiguous subscriber URL", body);
 			res.status(200).send(setBadRequestNack());
