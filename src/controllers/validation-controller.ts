@@ -140,10 +140,7 @@ export class ValidationController {
 		const body = req.body;
 		const suburl = computeSubscriberUri(body.context, action, false);
 		const sessionData = await loadData(suburl);
-		if (
-			sessionData.difficulty_cache.protocolValidations &&
-			!sessionData.difficulty_cache.protocolValidations
-		) {
+		if (!sessionData.difficulty_cache.protocolValidations) {
 			logger.info("L1 validations are disabled");
 			next();
 			return;
