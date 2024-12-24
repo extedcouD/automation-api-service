@@ -16,7 +16,6 @@ router.post(
 	"/:action",
 	validationController.validateRequestBodyNp,
 	validationController.validateSessionFromNp,
-	validationController.validateSignatureNp,
 	(req, res, next) => {
 		// Ensure `res.send` is wrapped only once
 		if (!res.locals.isSendWrapped) {
@@ -43,6 +42,7 @@ router.post(
 		}
 		next(); // Proceed to the next middleware
 	},
+	validationController.validateSignatureNp,
 	validationController.validateL0,
 	validationController.validateL1,
 	validationController.validateContextFromNp,
