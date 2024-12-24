@@ -76,3 +76,4 @@ web_modules/
 .pnp.*
 
 package-lock.json
+dist/
