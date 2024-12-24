@@ -71,7 +71,7 @@ export class DataController {
 		}
 		console.log("sub URL", url);
 		// add .context
-		savePayloadData(req.body, responseBody, url)
+		savePayloadData(req.body.context, responseBody, url)
 			.then(() => logger.info("Payload data saved to cache"))
 			.catch((err) => logger.error("Error in saving payload data to cache"));
 	}
