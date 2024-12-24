@@ -8,9 +8,17 @@ export async function saveContextData(
 	subscriberUrl: string
 ) {
 	const sessionData = await loadData(subscriberUrl);
-	sessionData.context_cache.latest_action = context.action;
-	sessionData.context_cache.latest_timestamp = context.timestamp;
-	sessionData.context_cache.message_ids.push(context.message_id);
+	if (!sessionData.current_flow_id) {
+		logger.error("Current flow id not found in session data");
+		return;
+	}
+	sessionData.context_cache[sessionData.current_flow_id].latest_action =
+		context.action;
+	sessionData.context_cache[sessionData.current_flow_id].latest_timestamp =
+		context.timestamp;
+	sessionData.context_cache[sessionData.current_flow_id].message_ids.push(
+		context.message_id
+	);
 	logger.info("Saving context data to cache latest action", context.action);
 	await RedisService.setKey(subscriberUrl, JSON.stringify(sessionData));
 }
