@@ -11,10 +11,18 @@ export async function performContextValidations(
 	error?: string;
 }> {
 	const sessionData = await loadData(subscriberUrl);
+	const current_flow_id = sessionData.current_flow_id;
+	if (!current_flow_id) {
+		return {
+			valid: false,
+			error: "Current flow id not found in session data",
+		};
+	}
+	const cacheData = sessionData.context_cache[current_flow_id];
 	if (sessionData.difficulty_cache.timeValidations) {
 		if (
 			new Date(context.timestamp).getTime() <
-			new Date(sessionData.context_cache.latest_timestamp).getTime()
+			new Date(cacheData.latest_timestamp).getTime()
 		) {
 			return {
 				valid: false,

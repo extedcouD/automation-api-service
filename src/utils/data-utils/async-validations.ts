@@ -71,7 +71,7 @@ export function validateAsyncContext(
 		}
 	} else {
 		const supporteActions = getSupporedActions(
-			sessionData.context_cache.latest_action
+			sessionData.context_cache[sessionData.current_flow_id].latest_action
 		);
 		if (!supporteActions.includes(subjectAction)) {
 			return {
