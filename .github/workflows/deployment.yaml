@@ -61,6 +61,7 @@ jobs:
           echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> \$REPO_DIR/.env
           echo "MOCK_SERVER_URL=${{ secrets.MOCK_SERVER_URL }}" >> \$REPO_DIR/.env
           echo "DATA_BASE_URL=${{ secrets.DATA_BASE_URL }}" >> \$REPO_DIR/.env
+          echo "API_SERVICE_URL=${{ secrets.API_SERVICE_URL }}" >> \$REPO_DIR/.env
           EOF
 
       - name: Verify .env and docker-compose.yml files
