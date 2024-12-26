@@ -31,6 +31,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -54,6 +56,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -77,6 +81,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -102,6 +108,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -125,6 +133,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -150,6 +160,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -175,6 +187,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -198,6 +212,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -221,6 +237,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -244,6 +262,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -264,6 +284,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -287,6 +309,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -310,6 +334,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -333,6 +359,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -356,6 +384,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -381,6 +411,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -404,6 +436,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -427,6 +461,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -452,6 +488,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -475,6 +513,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -500,6 +540,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -523,6 +565,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -546,6 +590,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -569,6 +615,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -592,6 +640,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -617,6 +667,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -640,6 +692,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -663,6 +717,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -688,6 +744,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -711,6 +769,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -734,6 +794,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -759,6 +821,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -782,6 +846,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -805,6 +871,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -828,6 +896,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -851,6 +921,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -874,6 +946,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -899,6 +973,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -922,6 +998,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -947,6 +1025,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -978,6 +1058,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1009,6 +1091,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1040,6 +1124,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1071,6 +1157,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1102,6 +1190,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1133,6 +1223,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1169,6 +1261,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1200,6 +1294,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1231,6 +1327,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1262,6 +1360,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1293,6 +1393,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1324,6 +1426,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1359,6 +1463,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1396,6 +1502,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1432,6 +1540,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1461,6 +1571,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1490,6 +1602,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1519,6 +1633,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1546,6 +1662,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1577,6 +1695,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1606,6 +1726,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1637,6 +1759,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1669,6 +1793,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1707,6 +1833,8 @@ export default function on_init(input: validationInput): validationOutput {
                         },
                     ];
                 }
+
+                delete testObj._EXTERNAL;
             }
             return [{ valid: true }];
         }
@@ -1789,6 +1917,8 @@ export default function on_init(input: validationInput): validationOutput {
         if (invalidResults.length > 0) {
             return invalidResults;
         }
+
+        delete testObj._EXTERNAL;
     }
     return [{ valid: true }];
 }
