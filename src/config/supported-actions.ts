@@ -1,3 +1,5 @@
+import on_cancel from "../validations/L1-validations/api-tests/on_cancel";
+
 export const supportedActions = {
 	null: ["search"],
 	search: ["on_search"],
@@ -7,9 +9,11 @@ export const supportedActions = {
 	init: ["on_init"],
 	on_init: ["confirm"],
 	confirm: ["on_confirm"],
-	on_confirm: ["status"],
+	on_confirm: ["status", "cancel"],
 	status: ["on_status"],
-	on_status: [] as string[],
+	on_status: ["cancel"],
+	cancel: ["on_cancel"],
+	on_cancel: [] as string[],
 };
 
 export const apiProperties = {
@@ -85,6 +89,32 @@ export const apiProperties = {
 			"confirm",
 			"on_confirm",
 			"status",
+		],
+	},
+	cancel: {
+		async_predecessor: null,
+		transaction_partner: [
+			"search",
+			"on_search",
+			"select",
+			"on_select",
+			"init",
+			"on_init",
+			"confirm",
+			"on_confirm",
+		],
+	},
+	on_cancel: {
+		async_predecessor: "cancel",
+		transaction_partner: [
+			"search",
+			"on_search",
+			"select",
+			"on_select",
+			"init",
+			"on_init",
+			"confirm",
+			"on_confirm",
 		],
 	},
 };
