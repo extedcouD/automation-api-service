@@ -8,9 +8,13 @@ export type validationOutput = {
     description?: string;
 }[];
 
-export type ExternalData = {
+/*
+{% comment %} export type ExternalData = {
     transaction_id?: string[];
-};
+}; {% endcomment %}
+*/
+
+export type ExternalData = {};
 
 export type validationInput = {
     payload: any;

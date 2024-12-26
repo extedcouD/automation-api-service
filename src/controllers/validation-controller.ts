@@ -168,7 +168,7 @@ export class ValidationController {
 		const body = req.body;
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
-		const l1Result = performL1Validations(action, body);
+		const l1Result = performL1Validations(action, { ...body });
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
 			const code = l1Result[0].errorCode as number;
