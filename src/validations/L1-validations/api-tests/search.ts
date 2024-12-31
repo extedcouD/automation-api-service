@@ -26,7 +26,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
@@ -34,7 +34,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_code_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -51,7 +51,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
@@ -59,7 +59,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_domain_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -76,7 +76,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.domain must be present in the payload`,
                         },
                     ];
@@ -84,7 +84,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_timestamp_3(
             input: validationInput,
@@ -103,7 +103,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.timestamp must be present in the payload`,
                         },
                     ];
@@ -111,7 +111,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_id_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -128,7 +128,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_id must be present in the payload`,
                         },
                     ];
@@ -136,7 +136,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_transaction_id_5(
             input: validationInput,
@@ -155,7 +155,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
@@ -163,7 +163,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_message_id_6(
             input: validationInput,
@@ -182,7 +182,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.message_id must be present in the payload`,
                         },
                     ];
@@ -190,7 +190,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_version_7(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -207,7 +207,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.version must be present in the payload`,
                         },
                     ];
@@ -215,7 +215,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_action_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -232,7 +232,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.action must be present in the payload`,
                         },
                     ];
@@ -240,7 +240,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_uri_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -257,7 +257,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
@@ -265,7 +265,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_ttl_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -279,7 +279,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.ttl must be present in the payload`,
                         },
                     ];
@@ -287,7 +287,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_category_11(
             input: validationInput,
@@ -306,7 +306,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.intent.fulfillment.vehicle.category must be present in the payload`,
                         },
                     ];
@@ -314,7 +314,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -335,7 +335,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.action must be in ["search"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -347,7 +347,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -368,7 +368,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -380,7 +380,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -401,7 +401,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -413,7 +413,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_5(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -434,7 +434,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.vehicle.category must be in ["METRO"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -446,7 +446,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_7(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -467,7 +467,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -479,7 +479,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -505,7 +505,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.stops[*].type must be in ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -517,7 +517,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -538,7 +538,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.stops[*].authorization.type must be in ["QR"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -550,7 +550,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -571,7 +571,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED", "EXPIRED"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -583,7 +583,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_11(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -604,7 +604,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.fulfillment.state.descriptor.code must be in ["INACTIVE", "ACTIVE"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -616,7 +616,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -637,7 +637,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.payment.tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -649,7 +649,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_BUYER_FINDER_FEES(
             input: validationInput,
@@ -675,7 +675,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
                         },
                     ];
@@ -683,7 +683,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_SETTLEMENT_TERMS(
             input: validationInput,
@@ -715,7 +715,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
                         },
                     ];
@@ -723,7 +723,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -744,7 +744,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.tags[*].descriptor.code must be in ["PAGINATION"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -756,7 +756,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_1_PAGINATION(
             input: validationInput,
@@ -779,7 +779,7 @@ export default function search(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.intent.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]`,
                         },
                     ];
@@ -787,7 +787,7 @@ export default function search(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
 
         const testFunctions: testFunctionArray = [
@@ -833,5 +833,5 @@ export default function search(input: validationInput): validationOutput {
 
         delete testObj._EXTERNAL;
     }
-    return [{ valid: true }];
+    return [{ valid: true, code: 200 }];
 }

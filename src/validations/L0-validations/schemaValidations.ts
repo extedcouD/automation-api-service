@@ -1,6 +1,3 @@
-import fs, { readFileSync } from "fs";
-import path from "path";
-import yaml from "js-yaml";
 import Ajv from "ajv";
 import addFormats from "ajv-formats";
 import logger from "../../utils/logger";

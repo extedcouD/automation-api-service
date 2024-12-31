@@ -26,7 +26,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
@@ -34,7 +34,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_code_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -51,7 +51,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
@@ -59,7 +59,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_domain_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -76,7 +76,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.domain must be present in the payload`,
                         },
                     ];
@@ -84,7 +84,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_timestamp_3(
             input: validationInput,
@@ -103,7 +103,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.timestamp must be present in the payload`,
                         },
                     ];
@@ -111,7 +111,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_id_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -128,7 +128,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_id must be present in the payload`,
                         },
                     ];
@@ -136,7 +136,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_transaction_id_5(
             input: validationInput,
@@ -155,7 +155,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
@@ -163,7 +163,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_message_id_6(
             input: validationInput,
@@ -182,7 +182,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.message_id must be present in the payload`,
                         },
                     ];
@@ -190,7 +190,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_version_7(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -207,7 +207,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.version must be present in the payload`,
                         },
                     ];
@@ -215,7 +215,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_action_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -232,7 +232,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.action must be present in the payload`,
                         },
                     ];
@@ -240,7 +240,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_uri_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -257,7 +257,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
@@ -265,7 +265,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_ttl_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -279,7 +279,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.ttl must be present in the payload`,
                         },
                     ];
@@ -287,7 +287,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bpp_id_11(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -304,7 +304,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bpp_id must be present in the payload`,
                         },
                     ];
@@ -312,7 +312,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bpp_uri_12(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -329,7 +329,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bpp_uri must be present in the payload`,
                         },
                     ];
@@ -337,7 +337,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_id_13(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -354,7 +354,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.id must be present in the payload`,
                         },
                     ];
@@ -362,7 +362,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_status_14(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -379,7 +379,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.status must be present in the payload`,
                         },
                     ];
@@ -387,7 +387,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_id_15(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -404,7 +404,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].id must be present in the payload`,
                         },
                     ];
@@ -412,7 +412,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_name_16(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -429,7 +429,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].descriptor.name must be present in the payload`,
                         },
                     ];
@@ -437,7 +437,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_code_17(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -454,7 +454,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].descriptor.code must be present in the payload`,
                         },
                     ];
@@ -462,7 +462,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_currency_18(
             input: validationInput,
@@ -481,7 +481,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].price.currency must be present in the payload`,
                         },
                     ];
@@ -489,7 +489,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_value_19(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -506,7 +506,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].price.value must be present in the payload`,
                         },
                     ];
@@ -514,7 +514,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_count_20(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -531,7 +531,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].quantity.selected.count must be present in the payload`,
                         },
                     ];
@@ -539,7 +539,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_fulfillment_ids_21(
             input: validationInput,
@@ -558,7 +558,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].fulfillment_ids[*] must be present in the payload`,
                         },
                     ];
@@ -566,7 +566,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_category_ids_22(
             input: validationInput,
@@ -585,7 +585,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].category_ids[*] must be present in the payload`,
                         },
                     ];
@@ -593,7 +593,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_label_23(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -610,7 +610,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].time.label must be present in the payload`,
                         },
                     ];
@@ -618,7 +618,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_duration_24(
             input: validationInput,
@@ -637,7 +637,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.items[*].time.duration must be present in the payload`,
                         },
                     ];
@@ -645,7 +645,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_id_25(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -662,7 +662,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.provider.id must be present in the payload`,
                         },
                     ];
@@ -670,7 +670,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_name_26(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -687,7 +687,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.provider.descriptor.name must be present in the payload`,
                         },
                     ];
@@ -695,7 +695,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_url_27(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -712,7 +712,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.provider.descriptor.images[*].url must be present in the payload`,
                         },
                     ];
@@ -720,7 +720,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_start_28(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -737,7 +737,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.provider.time.range.start must be present in the payload`,
                         },
                     ];
@@ -745,7 +745,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_end_29(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -762,7 +762,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.provider.time.range.end must be present in the payload`,
                         },
                     ];
@@ -770,7 +770,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_id_30(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -787,7 +787,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.fulfillments[*].id must be present in the payload`,
                         },
                     ];
@@ -795,7 +795,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_type_31(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -812,7 +812,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.fulfillments[*].type must be present in the payload`,
                         },
                     ];
@@ -820,7 +820,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_value_32(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -837,7 +837,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.quote.price.value must be present in the payload`,
                         },
                     ];
@@ -845,7 +845,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_currency_33(
             input: validationInput,
@@ -864,7 +864,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.quote.price.currency must be present in the payload`,
                         },
                     ];
@@ -872,7 +872,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_title_34(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -889,7 +889,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.quote.breakup[*].title must be present in the payload`,
                         },
                     ];
@@ -897,7 +897,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_id_35(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -914,7 +914,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].id must be present in the payload`,
                         },
                     ];
@@ -922,7 +922,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_collected_by_36(
             input: validationInput,
@@ -941,7 +941,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].collected_by must be present in the payload`,
                         },
                     ];
@@ -949,7 +949,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_status_37(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -966,7 +966,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].status must be present in the payload`,
                         },
                     ];
@@ -974,7 +974,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_type_38(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -991,7 +991,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].type must be present in the payload`,
                         },
                     ];
@@ -999,7 +999,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bank_code_39(
             input: validationInput,
@@ -1018,7 +1018,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].params.bank_code must be present in the payload`,
                         },
                     ];
@@ -1026,7 +1026,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bank_account_number_40(
             input: validationInput,
@@ -1045,7 +1045,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.payments[*].params.bank_account_number must be present in the payload`,
                         },
                     ];
@@ -1053,7 +1053,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_url_41(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1070,7 +1070,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.cancellation_terms[*].external_ref.url must be present in the payload`,
                         },
                     ];
@@ -1078,7 +1078,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_mimetype_42(
             input: validationInput,
@@ -1097,7 +1097,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload`,
                         },
                     ];
@@ -1105,7 +1105,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_cancelled_by_43(
             input: validationInput,
@@ -1124,7 +1124,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.cancellation.cancelled_by must be present in the payload`,
                         },
                     ];
@@ -1132,7 +1132,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_time_44(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1149,7 +1149,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.message.order.cancellation.time must be present in the payload`,
                         },
                     ];
@@ -1157,7 +1157,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1178,7 +1178,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.action must be in ["on_cancel"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1190,7 +1190,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1211,7 +1211,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1223,7 +1223,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1244,7 +1244,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1256,7 +1256,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_5(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1277,7 +1277,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1289,7 +1289,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_6(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1310,7 +1310,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].vehicle.category must be in ["METRO"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1322,7 +1322,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1343,7 +1343,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1355,7 +1355,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1381,7 +1381,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].type must be in ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1393,7 +1393,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1414,7 +1414,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.type must be in ["QR"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1426,7 +1426,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_11(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1447,7 +1447,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED", "EXPIRED"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1459,7 +1459,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_12(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1480,7 +1480,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].state.descriptor.code must be in ["INACTIVE", "ACTIVE"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1492,7 +1492,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_13(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1513,7 +1513,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].status must be in ["NOT-PAID", "PAID"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1525,7 +1525,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_14(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1546,7 +1546,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].collected_by must be in ["BPP", "BAP"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1558,7 +1558,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_15(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1583,7 +1583,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].type must be in ["PRE-ORDER", "ON-FULFILLMENT", "POST-FULFILLMENT"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1595,7 +1595,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_16(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1622,7 +1622,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_FARE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1634,7 +1634,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_17(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1661,7 +1661,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.status must be in ["SOFT_CANCEL", "ACTIVE", "COMPLETE", "CANCELLED", "CANCEL_INITIATED"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1673,7 +1673,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1699,7 +1699,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].state.descriptor.code must be in ["ROUTE_INFO", "TICKET_INFO", "TRIP_DETAILS", "INFO"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1711,7 +1711,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_ROUTE_INFO(
             input: validationInput,
@@ -1734,7 +1734,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='ROUTE_INFO')].list[*].descriptor.code must be in ["ROUTE_ID", "ROUTE_DIRECTION"]`,
                         },
                     ];
@@ -1742,7 +1742,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_TICKET_INFO(
             input: validationInput,
@@ -1765,7 +1765,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TICKET_INFO')].list[*].descriptor.code must be in ["NUMBER"]`,
                         },
                     ];
@@ -1773,7 +1773,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_TRIP_DETAILS(
             input: validationInput,
@@ -1796,7 +1796,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='TRIP_DETAILS')].list[*].descriptor.code must be in ["AVAILABLE_TRIPS", "UTILIZED_TRIPS"]`,
                         },
                     ];
@@ -1804,7 +1804,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_0_INFO(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(
@@ -1825,7 +1825,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.fulfillments[*].tags[?(@.state.descriptor.code=='INFO')].list[*].descriptor.code must be in ["PARENT_ITEM_ID"]`,
                         },
                     ];
@@ -1833,7 +1833,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1854,7 +1854,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.items[*].tags[*].descriptor.code must be in ["FARE_POLICY"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1866,7 +1866,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_1_FARE_POLICY(
             input: validationInput,
@@ -1889,7 +1889,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.items[*].tags[?(@.descriptor.code=='FARE_POLICY')].list[*].descriptor.code must be in ["RESTRICTED_PERSON", "RESTRICTION_PROOF"]`,
                         },
                     ];
@@ -1897,7 +1897,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -1918,7 +1918,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -1930,7 +1930,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_2_BUYER_FINDER_FEES(
             input: validationInput,
@@ -1956,7 +1956,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
                         },
                     ];
@@ -1964,7 +1964,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_tag_2_SETTLEMENT_TERMS(
             input: validationInput,
@@ -1996,7 +1996,7 @@ export default function on_cancel(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.message.order.payments[*].tags[?(@.descriptor.code=='SETTLEMENT_TERMS')].list[*].descriptor.code must be in ["SETTLEMENT_WINDOW", "SETTLEMENT_BASIS", "SETTLEMENT_TYPE", "MANDATORY_ARBITRATION", "COURT_JURISDICTION", "DELAY_INTEREST", "STATIC_TERMS", "SETTLEMENT_AMOUNT"]`,
                         },
                     ];
@@ -2004,7 +2004,7 @@ export default function on_cancel(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
 
         const testFunctions: testFunctionArray = [
@@ -2094,5 +2094,5 @@ export default function on_cancel(input: validationInput): validationOutput {
 
         delete testObj._EXTERNAL;
     }
-    return [{ valid: true }];
+    return [{ valid: true, code: 200 }];
 }

@@ -4,7 +4,7 @@ export interface ValidationConfig {
 
 export type validationOutput = {
     valid: boolean;
-    errorCode?: number;
+    code: number;
     description?: string;
 }[];
 

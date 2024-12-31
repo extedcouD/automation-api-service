@@ -151,7 +151,7 @@ export class ValidationController {
 		const l1Result = performL1Validations(action, body);
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
-			const code = l1Result[0].errorCode as number;
+			const code = l1Result[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
@@ -171,7 +171,7 @@ export class ValidationController {
 		const l1Result = performL1Validations(action, { ...body });
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
-			const code = l1Result[0].errorCode as number;
+			const code = l1Result[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
