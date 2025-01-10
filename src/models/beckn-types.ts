@@ -1,5 +1,5 @@
 export type BecknContext = {
-	action: string; // ! extepected action
+	action: string;
 	bap_id: string;
 	bap_uri: string;
 	bpp_id?: string;
@@ -13,9 +13,9 @@ export type BecknContext = {
 			code: string;
 		};
 	};
-	message_id: string; // ! should be unique
-	timestamp: string; // ISO 8601 format
+	message_id: string;
+	timestamp: string;
 	transaction_id: string;
-	ttl: string; // Duration in ISO 8601 format (e.g., PT30S)
+	ttl: string;
 	version: string;
 };

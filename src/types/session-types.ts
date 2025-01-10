@@ -15,7 +15,6 @@ export interface SessionData {
 	difficulty_cache: {
 		sensitiveTTL: boolean;
 		useGateway: boolean;
-
 		stopAfterFirstNack: boolean;
 		protocolValidations: boolean;
 		timeValidations: boolean;

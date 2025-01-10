@@ -6,7 +6,7 @@ import {
 	savePayloadData,
 } from "../utils/data-utils/cache-utils";
 import { DataService } from "../services/data-service";
-import { setIneternalServerNack } from "../utils/ackUtils";
+import { setInternalServerNack } from "../utils/ackUtils";
 import { computeSubscriberUri } from "../utils/subsciber-utils";
 
 export class DataController {
@@ -37,7 +37,7 @@ export class DataController {
 			next();
 		} catch (err) {
 			logger.error("Error in saving context data to cache");
-			res.status(200).send(setIneternalServerNack);
+			res.status(200).send(setInternalServerNack);
 		}
 	};
 
@@ -49,13 +49,13 @@ export class DataController {
 		try {
 			const body = req.body;
 			const subscriberUrl =
-				(req.query.subscriberUrl as string) ??
+				(req.query.subscriber_url as string) ??
 				computeSubscriberUri(req.body.context, req.params.action, true);
 			await saveContextData(body.context, subscriberUrl);
 			next();
 		} catch (err) {
 			logger.error("Error in saving context data to cache");
-			res.status(200).send(setIneternalServerNack);
+			res.status(200).send(setInternalServerNack);
 		}
 	};
 
@@ -67,7 +67,7 @@ export class DataController {
 			fromMock
 		);
 		if (fromMock) {
-			url = (req.query.subscriberUrl as string) ?? url;
+			url = (req.query.subscriber_url as string) ?? url;
 		}
 		console.log("sub URL", url);
 		// add .context
@@ -88,7 +88,7 @@ export class DataController {
 			fromMock
 		);
 		if (fromMock) {
-			url = (req.query.subscriberUrl as string) ?? url;
+			url = (req.query.subscriber_url as string) ?? url;
 		}
 		this.dataService
 			.saveSessionToDB(url, req.body, responseBody, code)
