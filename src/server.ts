@@ -4,11 +4,7 @@ import logger from "./utils/logger";
 import { config } from "./config/serverConfig";
 import routes from "./routes/public-routes";
 import testRoutes from "./routes/test-routes";
-import {
-	setAckResponse,
-	setBadRequestNack,
-	setIneternalServerNack as setInternalServerNack,
-} from "./utils/ackUtils";
+import { setAckResponse, setBadRequestNack } from "./utils/ackUtils";
 import router from "./routes/private-routes";
 
 const createServer = (): Application => {

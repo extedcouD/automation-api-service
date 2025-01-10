@@ -145,13 +145,12 @@ export class ValidationController {
 			next();
 			return;
 		}
-
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
 		const l1Result = performL1Validations(action, body);
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
-			const code = l1Result[0].errorCode as number;
+			const code = l1Result[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
@@ -171,7 +170,7 @@ export class ValidationController {
 		const l1Result = performL1Validations(action, { ...body });
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
-			const code = l1Result[0].errorCode as number;
+			const code = l1Result[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
@@ -204,7 +203,7 @@ export class ValidationController {
 		next: NextFunction
 	) {
 		const subscriberUrl =
-			(req.query.subscriberUrl as string) ??
+			(req.query.subscriber_url as string) ??
 			computeSubscriberUri(req.body.context, req.params.action, true);
 		const context = req.body.context;
 		const contextValidations = await performContextValidations(
@@ -242,7 +241,7 @@ export class ValidationController {
 		next: NextFunction
 	) {
 		const subscriberUrl =
-			(req.query.subscriberUrl as string) ??
+			(req.query.subscriber_url as string) ??
 			computeSubscriberUri(req.body.context, req.params.action, true);
 
 		const validSession = await new DataService().checkSessionExistence(

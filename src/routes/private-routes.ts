@@ -23,7 +23,6 @@ router.post(
 			res.locals.isSendWrapped = true; // Flag to indicate the wrapping is done
 			const originalSend = res.send;
 			res.send = function (body) {
-				// Check if the cache has already been updated
 				if (!res.locals.isCacheUpdated) {
 					res.locals.isCacheUpdated = true; // Flag to ensure cache update happens only once
 					const statusCode = res.statusCode;
@@ -33,17 +32,14 @@ router.post(
 							statusCode
 						);
 					}
-					// Save the request and response in the cache
 					dbController.savePayloadInCache(req, body, true);
-					dbController.savePayloadInDb(req, body, true, statusCode);
-
-					// Log the response being sent
+					// dbController.savePayloadInDb(req, body, true, statusCode);
 					logger.info("Sending response to: " + JSON.stringify(body));
 				}
 				return originalSend.call(this, body); // Call the original send method
 			};
 		}
-		next(); // Proceed to the next middleware
+		next();
 	},
 	validationController.validateL0,
 	validationController.validateContextFromMock,

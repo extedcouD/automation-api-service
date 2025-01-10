@@ -26,7 +26,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
@@ -34,7 +34,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_code_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -51,7 +51,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
@@ -59,7 +59,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_domain_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -76,7 +76,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.domain must be present in the payload`,
                         },
                     ];
@@ -84,7 +84,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_timestamp_3(
             input: validationInput,
@@ -103,7 +103,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.timestamp must be present in the payload`,
                         },
                     ];
@@ -111,7 +111,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_id_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -128,7 +128,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_id must be present in the payload`,
                         },
                     ];
@@ -136,7 +136,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_transaction_id_5(
             input: validationInput,
@@ -155,7 +155,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
@@ -163,7 +163,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_message_id_6(
             input: validationInput,
@@ -182,7 +182,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.message_id must be present in the payload`,
                         },
                     ];
@@ -190,7 +190,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_version_7(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -207,7 +207,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.version must be present in the payload`,
                         },
                     ];
@@ -215,7 +215,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_action_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -232,7 +232,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.action must be present in the payload`,
                         },
                     ];
@@ -240,7 +240,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bap_uri_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -257,7 +257,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
@@ -265,7 +265,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_ttl_10(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -279,7 +279,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.ttl must be present in the payload`,
                         },
                     ];
@@ -287,7 +287,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bpp_id_11(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -304,7 +304,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bpp_id must be present in the payload`,
                         },
                     ];
@@ -312,7 +312,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_bpp_uri_12(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -329,7 +329,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: $.context.bpp_uri must be present in the payload`,
                         },
                     ];
@@ -337,7 +337,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -358,7 +358,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.action must be in ["status"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -370,7 +370,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -391,7 +391,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.location.country.code must be in ["IND"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -403,7 +403,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
         function validate_enum_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -424,7 +424,7 @@ export default function status(input: validationInput): validationOutput {
                     return [
                         {
                             valid: false,
-                            errorCode: 30000,
+                            code: 30000,
                             description: `- **condition A**: every element of $.context.domain must be in ["ONDC:TRV11"]
 
 	> Note: **Condition A** can be skipped if the following conditions are met:
@@ -436,7 +436,7 @@ export default function status(input: validationInput): validationOutput {
 
                 delete testObj._EXTERNAL;
             }
-            return [{ valid: true }];
+            return [{ valid: true, code: 200 }];
         }
 
         const testFunctions: testFunctionArray = [
@@ -472,5 +472,5 @@ export default function status(input: validationInput): validationOutput {
 
         delete testObj._EXTERNAL;
     }
-    return [{ valid: true }];
+    return [{ valid: true, code: 200 }];
 }

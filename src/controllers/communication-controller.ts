@@ -1,4 +1,4 @@
-import { setAckResponse, setIneternalServerNack } from "../utils/ackUtils";
+import { setAckResponse, setInternalServerNack } from "../utils/ackUtils";
 import e, { Request, Response } from "express";
 import logger from "../utils/logger";
 import { CommunicationService } from "../services/forwarding-service";
@@ -22,7 +22,7 @@ export class CommunicationController {
 			res.status(200).send(setAckResponse(true));
 		} catch (error) {
 			logger.error("Error in forwarding request to mock server", e);
-			res.status(200).send(setIneternalServerNack);
+			res.status(200).send(setInternalServerNack);
 		}
 	};
 
@@ -40,7 +40,7 @@ export class CommunicationController {
 				return;
 			}
 			const subUrl =
-				(req.query.subscriberUrl as string) ??
+				(req.query.subscriber_url as string) ??
 				computeSubscriberUri(context, req.params.action, true);
 			const sessionData = await loadData(subUrl);
 			logger.debug(sessionData.difficulty_cache);
@@ -63,7 +63,7 @@ export class CommunicationController {
 				return;
 			}
 		} catch (error) {
-			res.status(200).send(setIneternalServerNack);
+			res.status(200).send(setInternalServerNack);
 			logger.error("Error in handling request from mock server", error);
 		}
 	};
