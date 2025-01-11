@@ -147,7 +147,7 @@ export class ValidationController {
 		}
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
-		const l1Result = performL1Validations(action, body);
+		const l1Result = performL1Validations(action, body, true);
 		if (!l1Result[0].valid) {
 			const error = (l1Result[0].description as string) + extraMessage;
 			const code = l1Result[0].code as number;
@@ -167,11 +167,15 @@ export class ValidationController {
 		const body = req.body;
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
-		const l1Result = performL1Validations(action, { ...body });
-		if (!l1Result[0].valid) {
-			const error = (l1Result[0].description as string) + extraMessage;
+		const l1Result = performL1Validations(action, { ...body }, true);
+		const isValid = l1Result.every((result) => result.valid);
+		if (!isValid) {
+			const allErrors = l1Result
+				.filter((result) => !result.valid)
+				.map((result) => result.description)
+				.join("\n");
 			const code = l1Result[0].code as number;
-			res.status(200).send(setAckResponse(false, error, code.toString()));
+			res.status(200).send(setAckResponse(false, allErrors, code.toString()));
 			return;
 		}
 		logger.info("L1 validations passed");

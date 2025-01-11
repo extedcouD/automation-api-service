@@ -2,8 +2,6 @@
 
 - **search** : All the following sub conditions must pass as per the api requirement
 
-	- **condition validate_code_0**: $.context.location.country.code must be present in the payload
-	
 	- **condition validate_code_1**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_domain_2**: $.context.domain must be present in the payload
