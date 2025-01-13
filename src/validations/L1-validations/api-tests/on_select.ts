@@ -13,33 +13,6 @@ export default function on_select(input: validationInput): validationOutput {
     for (const testObj of scope) {
         testObj._EXTERNAL = input.externalData;
 
-        function validate_code_0(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.context.location.country.code",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_code_0**: $.context.location.country.code must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
         function validate_code_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
@@ -59,33 +32,6 @@ export default function on_select(input: validationInput): validationOutput {
                             valid: false,
                             code: 30000,
                             description: `- **condition validate_code_1**: $.context.location.city.code must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
-        function validate_domain_2(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.context.domain",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_domain_2**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -235,33 +181,6 @@ export default function on_select(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function validate_action_8(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.context.action",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_action_8**: $.context.action must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
         function validate_bap_uri_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
@@ -386,33 +305,6 @@ export default function on_select(input: validationInput): validationOutput {
                             valid: false,
                             code: 30000,
                             description: `- **condition validate_id_13**: $.message.order.items[*].id must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
-        function validate_code_14(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.message.order.items[*].descriptor.code",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_code_14**: $.message.order.items[*].descriptor.code must be present in the payload`,
                         },
                     ];
                 }
@@ -726,33 +618,6 @@ export default function on_select(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function validate_title_26(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.message.order.quote.breakup[*].title",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_title_26**: $.message.order.quote.breakup[*].title must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
         function validate_category_ids_27(
             input: validationInput,
         ): validationOutput {
@@ -828,33 +693,6 @@ export default function on_select(input: validationInput): validationOutput {
                             valid: false,
                             code: 30000,
                             description: `- **condition validate_end_29**: $.message.order.provider.time.range.end must be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
-        function validate_type_30(input: validationInput): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const attr = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.message.order.fulfillments[*].type",
-                );
-
-                const validate = validations.arePresent(attr);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_type_30**: $.message.order.fulfillments[*].type must be present in the payload`,
                         },
                     ];
                 }
@@ -1017,14 +855,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_1**: every element of $.context.action must be in ["on_select"]
+                            description: `- **condition validate_enum_1**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_1.1**: every element of $.context.action must be in ["on_select"]
+  - **condition validate_enum_1.2**: $.context.action must be present in the payload
 
 	> Note: **Condition validate_enum_1** can be skipped if the following conditions are met:
 	>
@@ -1052,14 +895,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_2**: every element of $.context.location.country.code must be in ["IND"]
+                            description: `- **condition validate_enum_2**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
+  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 
 	> Note: **Condition validate_enum_2** can be skipped if the following conditions are met:
 	>
@@ -1087,14 +935,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_4**: every element of $.context.domain must be in ["ONDC:TRV11"]
+                            description: `- **condition validate_enum_4**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_4.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
+  - **condition validate_enum_4.2**: $.context.domain must be present in the payload
 
 	> Note: **Condition validate_enum_4** can be skipped if the following conditions are met:
 	>
@@ -1122,14 +975,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_5**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]
+                            description: `- **condition validate_enum_5**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_5.1**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]
+  - **condition validate_enum_5.2**: $.message.order.items[*].descriptor.code must be present in the payload
 
 	> Note: **Condition validate_enum_5** can be skipped if the following conditions are met:
 	>
@@ -1192,14 +1050,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_8**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
+                            description: `- **condition validate_enum_8**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_8.1**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
+  - **condition validate_enum_8.2**: $.message.order.fulfillments[*].type must be present in the payload
 
 	> Note: **Condition validate_enum_8** can be skipped if the following conditions are met:
 	>
@@ -1378,14 +1241,19 @@ export default function on_select(input: validationInput): validationOutput {
                 const skipCheck = !validations.arePresent(enumPath);
                 if (skipCheck) continue;
 
-                const validate = validations.allIn(enumPath, enumList);
+                const validate =
+                    validations.allIn(enumPath, enumList) &&
+                    validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_13**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_FARE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]
+                            description: `- **condition validate_enum_13**: all of the following sub conditions must be met:
+
+  - **condition validate_enum_13.1**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_FARE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]
+  - **condition validate_enum_13.2**: $.message.order.quote.breakup[*].title must be present in the payload
 
 	> Note: **Condition validate_enum_13** can be skipped if the following conditions are met:
 	>
@@ -1638,21 +1506,17 @@ export default function on_select(input: validationInput): validationOutput {
         }
 
         const testFunctions: testFunctionArray = [
-            validate_code_0,
             validate_code_1,
-            validate_domain_2,
             validate_timestamp_3,
             validate_bap_id_4,
             validate_transaction_id_5,
             validate_message_id_6,
             validate_version_7,
-            validate_action_8,
             validate_bap_uri_9,
             validate_ttl_10,
             validate_bpp_id_11,
             validate_bpp_uri_12,
             validate_id_13,
-            validate_code_14,
             validate_currency_15,
             validate_value_16,
             validate_count_17,
@@ -1664,11 +1528,9 @@ export default function on_select(input: validationInput): validationOutput {
             validate_id_23,
             validate_value_24,
             validate_currency_25,
-            validate_title_26,
             validate_category_ids_27,
             validate_start_28,
             validate_end_29,
-            validate_type_30,
             validate_currency_31,
             validate_value_32,
             validate_count_33,

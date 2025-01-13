@@ -15,8 +15,6 @@
 <ul>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_id_4</strong>: $.context.bap_id must be present in the payload</p>
@@ -27,21 +25,23 @@
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_ttl_10</strong>: $.context.ttl must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_category_11</strong>: $.message.intent.fulfillment.vehicle.category must be present in the payload</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;search&quot;]</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;search&quot;]</p>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.context.action must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
 <blockquote>
@@ -51,7 +51,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -59,13 +63,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.intent.fulfillment.vehicle.category must be in [&quot;METRO&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.intent.fulfillment.vehicle.category must be in [&quot;METRO&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.intent.fulfillment.vehicle.category must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.intent.fulfillment.vehicle.category must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_7</strong>: every element of $.message.intent.fulfillment.type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
 <blockquote>
@@ -133,11 +145,7 @@
 </li>
 <li><p><strong>select</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -148,8 +156,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -165,7 +171,11 @@
 </li>
 <li><p><strong>condition validate_id_15</strong>: $.message.order.provider.id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;select&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;select&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -173,7 +183,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -181,13 +197,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.context.domain must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
 <blockquote>
@@ -273,11 +297,7 @@
 </li>
 <li><p><strong>init</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -288,8 +308,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -311,7 +329,11 @@
 </li>
 <li><p><strong>condition validate_type_18</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;init&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;init&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -319,7 +341,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -327,13 +355,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.context.domain must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
 <blockquote>
@@ -415,11 +451,7 @@
 </li>
 <li><p><strong>confirm</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -430,8 +462,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -449,19 +479,17 @@
 </li>
 <li><p><strong>condition validate_id_16</strong>: $.message.order.payments[*].id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_collected_by_17</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_18</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_19</strong>: $.message.order.payments[*].type must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_transaction_id_20</strong>: $.message.order.payments[*].params.transaction_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_21</strong>: $.message.order.payments[*].params.currency must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_amount_22</strong>: $.message.order.payments[*].params.amount must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;confirm&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;confirm&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -469,7 +497,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -477,13 +511,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.context.domain must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
 <blockquote>
@@ -541,7 +583,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -549,7 +595,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -557,13 +609,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.payments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
 <blockquote>
@@ -577,11 +637,7 @@
 </li>
 <li><p><strong>status</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -592,8 +648,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -603,7 +657,11 @@
 </li>
 <li><p><strong>condition validate_bpp_uri_12</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;status&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;status&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -611,7 +669,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -619,7 +683,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -629,13 +699,11 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>cancel</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -646,8 +714,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -661,11 +727,13 @@
 </li>
 <li><p><strong>condition validate_cancellation_reason_id_14</strong>: $.message.cancellation_reason_id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_code_15</strong>: $.message.descriptor.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_name_16</strong>: $.message.descriptor.name must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;cancel&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;cancel&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -673,7 +741,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -681,7 +755,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -689,7 +769,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.descriptor.code must be in [&quot;SOFT-CANCEL&quot;, &quot;CONFIRM-CANCEL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.descriptor.code must be in [&quot;SOFT-CANCEL&quot;, &quot;CONFIRM-CANCEL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -699,13 +785,11 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_search</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -716,8 +800,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -735,21 +817,19 @@
 </li>
 <li><p><strong>condition validate_id_16</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_type_17</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].type must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_18</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_id_19</strong>: $.message.catalog.providers[<em>].categories[</em>].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_20</strong>: $.message.catalog.providers[<em>].categories[</em>].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_start_21</strong>: $.message.catalog.providers[*].time.range.start must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_end_22</strong>: $.message.catalog.providers[*].time.range.end must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_collected_by_23</strong>: $.message.catalog.providers[<em>].payments[</em>].collected_by must be present in the payload</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_search&quot;]</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_search&quot;]</p>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -757,7 +837,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -765,7 +851,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -773,13 +865,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.catalog.providers[<em>].categories[</em>].descriptor.code must be in [&quot;SEATER&quot;, &quot;SLEEPER&quot;, &quot;SEMI_SLEEPER&quot;, &quot;TICKET&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.catalog.providers[<em>].categories[</em>].descriptor.code must be in [&quot;SEATER&quot;, &quot;SLEEPER&quot;, &quot;SEMI_SLEEPER&quot;, &quot;TICKET&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.catalog.providers[<em>].categories[</em>].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.catalog.providers[<em>].categories[</em>].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.catalog.providers[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
 <blockquote>
@@ -797,13 +897,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_9</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_9</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_9.1</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_9.2</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_9</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_10</strong>: every element of $.message.catalog.providers[<em>].fulfillments[</em>].stops[*].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -845,13 +951,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.catalog.providers[<em>].payments[</em>].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.catalog.providers[<em>].payments[</em>].collected_by must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_16</strong>: every element of $.message.catalog.providers[<em>].payments[</em>].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
 <blockquote>
@@ -923,11 +1035,7 @@
 </li>
 <li><p><strong>on_select</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -939,8 +1047,6 @@
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_ttl_10</strong>: $.context.ttl must be present in the payload</p>
@@ -950,8 +1056,6 @@
 <li><p><strong>condition validate_bpp_uri_12</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_id_13</strong>: $.message.order.items[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_14</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_15</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -975,15 +1079,11 @@
 </li>
 <li><p><strong>condition validate_currency_25</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_26</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_category_ids_27</strong>: $.message.order.items[<em>].category_ids[</em>] must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_start_28</strong>: $.message.order.provider.time.range.start must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_end_29</strong>: $.message.order.provider.time.range.end must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_30</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_31</strong>: $.message.order.quote.breakup[*].item.price.currency must be present in the payload</p>
 </li>
@@ -995,7 +1095,11 @@
 </li>
 <li><p><strong>condition validate_mimetype_35</strong>: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_select&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_select&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1003,7 +1107,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1011,7 +1121,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1019,13 +1135,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -1035,13 +1159,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_8</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_8</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_8.1</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_8.2</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_8</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.fulfillments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_9</strong>: every element of $.message.order.fulfillments[<em>].stops[</em>].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -1075,13 +1205,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.quote.breakup[*].title must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_tag_0</strong>: every element of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
@@ -1113,11 +1249,7 @@
 </li>
 <li><p><strong>on_init</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -1129,8 +1261,6 @@
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_ttl_10</strong>: $.context.ttl must be present in the payload</p>
@@ -1140,8 +1270,6 @@
 <li><p><strong>condition validate_bpp_uri_12</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_id_13</strong>: $.message.order.items[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_14</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_15</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -1165,23 +1293,13 @@
 </li>
 <li><p><strong>condition validate_currency_25</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_26</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_27</strong>: $.message.order.payments[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_collected_by_28</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_29</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_30</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_category_ids_31</strong>: $.message.order.items[<em>].category_ids[</em>] must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_start_32</strong>: $.message.order.provider.time.range.start must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_end_33</strong>: $.message.order.provider.time.range.end must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_34</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_count_35</strong>: $.message.order.quote.breakup[*].item.quantity.selected.count must be present in the payload</p>
 </li>
@@ -1193,7 +1311,11 @@
 </li>
 <li><p><strong>condition validate_mimetype_39</strong>: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_init&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_init&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1201,7 +1323,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1209,7 +1337,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1217,13 +1351,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -1233,13 +1375,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_8</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_8</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_8.1</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_8.2</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_8</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.fulfillments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_9</strong>: every element of $.message.order.fulfillments[<em>].stops[</em>].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -1273,7 +1421,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1281,7 +1433,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1289,7 +1447,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1297,13 +1461,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_16</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_16.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_16.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_16</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.quote.breakup[*].title must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_tag_0</strong>: every element of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
@@ -1347,11 +1519,7 @@
 </li>
 <li><p><strong>on_confirm</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -1362,8 +1530,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -1378,8 +1544,6 @@
 <li><p><strong>condition validate_id_14</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_name_15</strong>: $.message.order.items[*].descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_16</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_17</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -1403,15 +1567,7 @@
 </li>
 <li><p><strong>condition validate_currency_27</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_28</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_29</strong>: $.message.order.payments[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_collected_by_30</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_31</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_32</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_transaction_id_33</strong>: $.message.order.payments[*].params.transaction_id must be present in the payload</p>
 </li>
@@ -1419,15 +1575,11 @@
 </li>
 <li><p><strong>condition validate_amount_35</strong>: $.message.order.payments[*].params.amount must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_status_36</strong>: $.message.order.status must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_category_ids_37</strong>: $.message.order.items[<em>].category_ids[</em>] must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_start_38</strong>: $.message.order.provider.time.range.start must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_end_39</strong>: $.message.order.provider.time.range.end must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_40</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_value_41</strong>: $.message.order.quote.breakup[*].item.price.value must be present in the payload</p>
 </li>
@@ -1443,7 +1595,11 @@
 </li>
 <li><p><strong>condition validate_updated_at_47</strong>: $.message.order.updated_at must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_confirm&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_confirm&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1451,7 +1607,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1459,7 +1621,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1467,13 +1635,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -1483,13 +1659,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_8</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_8</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_8.1</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_8.2</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_8</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.fulfillments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_9</strong>: every element of $.message.order.fulfillments[<em>].stops[</em>].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -1523,7 +1705,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1531,7 +1717,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1539,7 +1731,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1547,7 +1745,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_16</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_16.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_16.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_16</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1555,13 +1759,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_17</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_17</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_17.1</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_17.2</strong>: $.message.order.status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_17</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.status must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_tag_0</strong>: every element of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
@@ -1605,11 +1817,7 @@
 </li>
 <li><p><strong>on_cancel</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -1621,8 +1829,6 @@
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_ttl_10</strong>: $.context.ttl must be present in the payload</p>
@@ -1633,13 +1839,9 @@
 </li>
 <li><p><strong>condition validate_id_13</strong>: $.message.order.id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_status_14</strong>: $.message.order.status must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_15</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_name_16</strong>: $.message.order.items[*].descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_17</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_18</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -1667,21 +1869,11 @@
 </li>
 <li><p><strong>condition validate_id_30</strong>: $.message.order.fulfillments[*].id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_type_31</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_value_32</strong>: $.message.order.quote.price.value must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_33</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_34</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_35</strong>: $.message.order.payments[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_collected_by_36</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_37</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_38</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bank_code_39</strong>: $.message.order.payments[*].params.bank_code must be present in the payload</p>
 </li>
@@ -1695,7 +1887,11 @@
 </li>
 <li><p><strong>condition validate_time_44</strong>: $.message.order.cancellation.time must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1703,7 +1899,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1711,7 +1913,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1719,13 +1927,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -1735,13 +1951,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_8</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_8</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_8.1</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_8.2</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_8</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.fulfillments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_9</strong>: every element of $.message.order.fulfillments[<em>].stops[</em>].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -1775,7 +1997,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1783,7 +2009,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1791,7 +2023,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1799,7 +2037,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_16</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_16.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_16.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_16</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1807,13 +2051,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_17</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_17</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_17.1</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_17.2</strong>: $.message.order.status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_17</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.status must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_tag_0</strong>: every element of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
@@ -1857,11 +2109,7 @@
 </li>
 <li><p><strong>on_update</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -1872,8 +2120,6 @@
 <li><p><strong>condition validate_message_id_6</strong>: $.context.message_id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
@@ -1888,8 +2134,6 @@
 <li><p><strong>condition validate_id_14</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_name_15</strong>: $.message.order.items[*].descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_16</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_17</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -1913,19 +2157,11 @@
 </li>
 <li><p><strong>condition validate_currency_27</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_28</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_currency_29</strong>: $.message.order.quote.breakup[*].price.currency must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_value_30</strong>: $.message.order.quote.breakup[*].price.value must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_id_31</strong>: $.message.order.payments[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_collected_by_32</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_33</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_34</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_transaction_id_35</strong>: $.message.order.payments[*].params.transaction_id must be present in the payload</p>
 </li>
@@ -1933,7 +2169,11 @@
 </li>
 <li><p><strong>condition validate_amount_37</strong>: $.message.order.payments[*].params.amount must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1941,7 +2181,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1949,7 +2195,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -1957,13 +2209,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -2013,7 +2273,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2021,7 +2285,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2029,7 +2299,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2037,13 +2313,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_16</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_16.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_16.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_16</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.quote.breakup[*].title must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_17</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
 <blockquote>
@@ -2083,11 +2367,7 @@
 </li>
 <li><p><strong>on_status</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
-<li><p><strong>condition validate_code_0</strong>: $.context.location.country.code must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_code_1</strong>: $.context.location.city.code must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_domain_2</strong>: $.context.domain must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_timestamp_3</strong>: $.context.timestamp must be present in the payload</p>
 </li>
@@ -2099,8 +2379,6 @@
 </li>
 <li><p><strong>condition validate_version_7</strong>: $.context.version must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_action_8</strong>: $.context.action must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_bap_uri_9</strong>: $.context.bap_uri must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_ttl_10</strong>: $.context.ttl must be present in the payload</p>
@@ -2111,13 +2389,9 @@
 </li>
 <li><p><strong>condition validate_id_13</strong>: $.message.order.id must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_status_14</strong>: $.message.order.status must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_15</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_name_16</strong>: $.message.order.items[*].descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_code_17</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_currency_18</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
 </li>
@@ -2141,15 +2415,7 @@
 </li>
 <li><p><strong>condition validate_currency_28</strong>: $.message.order.quote.price.currency must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_title_29</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_id_30</strong>: $.message.order.payments[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_collected_by_31</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_status_32</strong>: $.message.order.payments[*].status must be present in the payload</p>
-</li>
-<li><p><strong>condition validate_type_33</strong>: $.message.order.payments[*].type must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_transaction_id_34</strong>: $.message.order.payments[*].params.transaction_id must be present in the payload</p>
 </li>
@@ -2169,8 +2435,6 @@
 </li>
 <li><p><strong>condition validate_end_42</strong>: $.message.order.provider.time.range.end must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_type_43</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
-</li>
 <li><p><strong>condition validate_currency_44</strong>: $.message.order.quote.breakup[*].item.price.currency must be present in the payload</p>
 </li>
 <li><p><strong>condition validate_value_45</strong>: $.message.order.quote.breakup[*].item.price.value must be present in the payload</p>
@@ -2185,7 +2449,11 @@
 </li>
 <li><p><strong>condition validate_updated_at_50</strong>: $.message.order.updated_at must be present in the payload</p>
 </li>
-<li><p><strong>condition validate_enum_1</strong>: every element of $.context.action must be in [&quot;on_status&quot;]</p>
+<li><p><strong>condition validate_enum_1</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_1.1</strong>: every element of $.context.action must be in [&quot;on_status&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_1.2</strong>: $.context.action must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_1</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2193,7 +2461,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_2</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_2</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_2.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_2.2</strong>: $.context.location.country.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_2</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2201,7 +2475,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_4</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_4</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_4.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_4.2</strong>: $.context.domain must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_4</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2209,13 +2489,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_5</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_5</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_5.1</strong>: every element of $.message.order.items[*].descriptor.code must be in [&quot;SJT&quot;, &quot;SFSJT&quot;, &quot;RJT&quot;, &quot;PASS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_5.2</strong>: $.message.order.items[*].descriptor.code must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_5</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.items[*].descriptor.code must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_6</strong>: every element of $.message.order.fulfillments[*].vehicle.category must be in [&quot;METRO&quot;]</p>
 <blockquote>
@@ -2225,13 +2513,19 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_8</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+<li><p><strong>condition validate_enum_8</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_8.1</strong>: every element of $.message.order.fulfillments[*].type must be in [&quot;ROUTE&quot;, &quot;TRIP&quot;, &quot;TICKET&quot;, &quot;PASS&quot;, &quot;STOPS&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_8.2</strong>: $.message.order.fulfillments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_8</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.fulfillments[*].type must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_enum_9</strong>: every element of $.message.order.fulfillments[<em>].stops[</em>].type must be in [&quot;START&quot;, &quot;END&quot;, &quot;INTERMEDIATE_STOP&quot;, &quot;TRANSIT_STOP&quot;]</p>
 <blockquote>
@@ -2265,7 +2559,11 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_13</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+<li><p><strong>condition validate_enum_13</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_13.1</strong>: every element of $.message.order.payments[*].status must be in [&quot;NOT-PAID&quot;, &quot;PAID&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_13.2</strong>: $.message.order.payments[*].status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_13</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2273,7 +2571,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_14</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_14</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_14.1</strong>: every element of $.message.order.payments[*].collected_by must be in [&quot;BPP&quot;, &quot;BAP&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_14.2</strong>: $.message.order.payments[*].collected_by must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_14</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2281,7 +2585,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_15</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_15</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_15.1</strong>: every element of $.message.order.payments[*].type must be in [&quot;PRE-ORDER&quot;, &quot;ON-FULFILLMENT&quot;, &quot;POST-FULFILLMENT&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_15.2</strong>: $.message.order.payments[*].type must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_15</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2289,7 +2599,13 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_16</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_16</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_16.1</strong>: every element of $.message.order.quote.breakup[*].title must be in [&quot;BASE_FARE&quot;, &quot;REFUND&quot;, &quot;CANCELLATION_CHARGES&quot;, &quot;OFFER&quot;, &quot;TOLL&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_16.2</strong>: $.message.order.quote.breakup[*].title must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_16</strong> can be skipped if the following conditions are met:</p>
 <ul>
@@ -2297,13 +2613,21 @@
 </ul>
 </blockquote>
 </li>
-<li><p><strong>condition validate_enum_17</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</ul>
+</li>
+<li><p><strong>condition validate_enum_17</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><p><strong>condition validate_enum_17.1</strong>: every element of $.message.order.status must be in [&quot;SOFT_CANCEL&quot;, &quot;ACTIVE&quot;, &quot;COMPLETE&quot;, &quot;CANCELLED&quot;, &quot;CANCEL_INITIATED&quot;]</p>
+</li>
+<li><p><strong>condition validate_enum_17.2</strong>: $.message.order.status must be present in the payload</p>
 <blockquote>
 <p>Note: <strong>Condition validate_enum_17</strong> can be skipped if the following conditions are met:</p>
 <ul>
 <li><strong>condition B</strong>: $.message.order.status must <strong>not</strong> be present in the payload</li>
 </ul>
 </blockquote>
+</li>
+</ul>
 </li>
 <li><p><strong>condition validate_tag_0</strong>: every element of $.message.order.fulfillments[*].state.descriptor.code must be in [&quot;ROUTE_INFO&quot;, &quot;TICKET_INFO&quot;, &quot;TRIP_DETAILS&quot;, &quot;INFO&quot;]</p>
 <blockquote>
