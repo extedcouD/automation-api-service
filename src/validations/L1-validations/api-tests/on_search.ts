@@ -514,9 +514,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.context.action",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -529,11 +526,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_1**: all of the following sub conditions must be met:
 
   - **condition validate_enum_1.1**: every element of $.context.action must be in ["on_search"]
-  - **condition validate_enum_1.2**: $.context.action must be present in the payload
-
-	> Note: **Condition validate_enum_1** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.action must **not** be present in the payload`,
+  - **condition validate_enum_1.2**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -554,9 +547,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.context.location.country.code",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -569,11 +559,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_2**: all of the following sub conditions must be met:
 
   - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
-  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
-
-	> Note: **Condition validate_enum_2** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.location.country.code must **not** be present in the payload`,
+  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -594,9 +580,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.context.domain",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -609,11 +592,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_4**: all of the following sub conditions must be met:
 
   - **condition validate_enum_4.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
-  - **condition validate_enum_4.2**: $.context.domain must be present in the payload
-
-	> Note: **Condition validate_enum_4** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.domain must **not** be present in the payload`,
+  - **condition validate_enum_4.2**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -640,9 +619,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.message.catalog.providers[*].categories[*].descriptor.code",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -655,11 +631,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_5**: all of the following sub conditions must be met:
 
   - **condition validate_enum_5.1**: every element of $.message.catalog.providers[*].categories[*].descriptor.code must be in ["SEATER", "SLEEPER", "SEMI_SLEEPER", "TICKET", "PASS"]
-  - **condition validate_enum_5.2**: $.message.catalog.providers[*].categories[*].descriptor.code must be present in the payload
-
-	> Note: **Condition validate_enum_5** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.catalog.providers[*].categories[*].descriptor.code must **not** be present in the payload`,
+  - **condition validate_enum_5.2**: $.message.catalog.providers[*].categories[*].descriptor.code must be present in the payload`,
                         },
                     ];
                 }
@@ -750,9 +722,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.message.catalog.providers[*].fulfillments[*].type",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -765,11 +734,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_9**: all of the following sub conditions must be met:
 
   - **condition validate_enum_9.1**: every element of $.message.catalog.providers[*].fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
-  - **condition validate_enum_9.2**: $.message.catalog.providers[*].fulfillments[*].type must be present in the payload
-
-	> Note: **Condition validate_enum_9** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.catalog.providers[*].fulfillments[*].type must **not** be present in the payload`,
+  - **condition validate_enum_9.2**: $.message.catalog.providers[*].fulfillments[*].type must be present in the payload`,
                         },
                     ];
                 }
@@ -970,9 +935,6 @@ export default function on_search(input: validationInput): validationOutput {
                     "$.message.catalog.providers[*].payments[*].collected_by",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -985,11 +947,7 @@ export default function on_search(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_15**: all of the following sub conditions must be met:
 
   - **condition validate_enum_15.1**: every element of $.message.catalog.providers[*].payments[*].collected_by must be in ["BPP", "BAP"]
-  - **condition validate_enum_15.2**: $.message.catalog.providers[*].payments[*].collected_by must be present in the payload
-
-	> Note: **Condition validate_enum_15** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.catalog.providers[*].payments[*].collected_by must **not** be present in the payload`,
+  - **condition validate_enum_15.2**: $.message.catalog.providers[*].payments[*].collected_by must be present in the payload`,
                         },
                     ];
                 }

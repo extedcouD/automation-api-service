@@ -1076,9 +1076,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.context.action",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1091,11 +1088,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_1**: all of the following sub conditions must be met:
 
   - **condition validate_enum_1.1**: every element of $.context.action must be in ["on_confirm"]
-  - **condition validate_enum_1.2**: $.context.action must be present in the payload
-
-	> Note: **Condition validate_enum_1** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.action must **not** be present in the payload`,
+  - **condition validate_enum_1.2**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -1116,9 +1109,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.context.location.country.code",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1131,11 +1121,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_2**: all of the following sub conditions must be met:
 
   - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
-  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
-
-	> Note: **Condition validate_enum_2** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.location.country.code must **not** be present in the payload`,
+  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -1156,9 +1142,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.context.domain",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1171,11 +1154,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_4**: all of the following sub conditions must be met:
 
   - **condition validate_enum_4.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
-  - **condition validate_enum_4.2**: $.context.domain must be present in the payload
-
-	> Note: **Condition validate_enum_4** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.domain must **not** be present in the payload`,
+  - **condition validate_enum_4.2**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -1196,9 +1175,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.items[*].descriptor.code",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1211,11 +1187,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_5**: all of the following sub conditions must be met:
 
   - **condition validate_enum_5.1**: every element of $.message.order.items[*].descriptor.code must be in ["SJT", "SFSJT", "RJT", "PASS"]
-  - **condition validate_enum_5.2**: $.message.order.items[*].descriptor.code must be present in the payload
-
-	> Note: **Condition validate_enum_5** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.items[*].descriptor.code must **not** be present in the payload`,
+  - **condition validate_enum_5.2**: $.message.order.items[*].descriptor.code must be present in the payload`,
                         },
                     ];
                 }
@@ -1271,9 +1243,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.fulfillments[*].type",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1286,11 +1255,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_8**: all of the following sub conditions must be met:
 
   - **condition validate_enum_8.1**: every element of $.message.order.fulfillments[*].type must be in ["ROUTE", "TRIP", "TICKET", "PASS", "STOPS"]
-  - **condition validate_enum_8.2**: $.message.order.fulfillments[*].type must be present in the payload
-
-	> Note: **Condition validate_enum_8** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.fulfillments[*].type must **not** be present in the payload`,
+  - **condition validate_enum_8.2**: $.message.order.fulfillments[*].type must be present in the payload`,
                         },
                     ];
                 }
@@ -1456,9 +1421,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.payments[*].status",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1471,11 +1433,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_13**: all of the following sub conditions must be met:
 
   - **condition validate_enum_13.1**: every element of $.message.order.payments[*].status must be in ["NOT-PAID", "PAID"]
-  - **condition validate_enum_13.2**: $.message.order.payments[*].status must be present in the payload
-
-	> Note: **Condition validate_enum_13** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.payments[*].status must **not** be present in the payload`,
+  - **condition validate_enum_13.2**: $.message.order.payments[*].status must be present in the payload`,
                         },
                     ];
                 }
@@ -1496,9 +1454,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.payments[*].collected_by",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1511,11 +1466,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_14**: all of the following sub conditions must be met:
 
   - **condition validate_enum_14.1**: every element of $.message.order.payments[*].collected_by must be in ["BPP", "BAP"]
-  - **condition validate_enum_14.2**: $.message.order.payments[*].collected_by must be present in the payload
-
-	> Note: **Condition validate_enum_14** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.payments[*].collected_by must **not** be present in the payload`,
+  - **condition validate_enum_14.2**: $.message.order.payments[*].collected_by must be present in the payload`,
                         },
                     ];
                 }
@@ -1540,9 +1491,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.payments[*].type",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1555,11 +1503,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_15**: all of the following sub conditions must be met:
 
   - **condition validate_enum_15.1**: every element of $.message.order.payments[*].type must be in ["PRE-ORDER", "ON-FULFILLMENT", "POST-FULFILLMENT"]
-  - **condition validate_enum_15.2**: $.message.order.payments[*].type must be present in the payload
-
-	> Note: **Condition validate_enum_15** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.payments[*].type must **not** be present in the payload`,
+  - **condition validate_enum_15.2**: $.message.order.payments[*].type must be present in the payload`,
                         },
                     ];
                 }
@@ -1586,9 +1530,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.quote.breakup[*].title",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1601,11 +1542,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_16**: all of the following sub conditions must be met:
 
   - **condition validate_enum_16.1**: every element of $.message.order.quote.breakup[*].title must be in ["BASE_FARE", "REFUND", "CANCELLATION_CHARGES", "OFFER", "TOLL"]
-  - **condition validate_enum_16.2**: $.message.order.quote.breakup[*].title must be present in the payload
-
-	> Note: **Condition validate_enum_16** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.quote.breakup[*].title must **not** be present in the payload`,
+  - **condition validate_enum_16.2**: $.message.order.quote.breakup[*].title must be present in the payload`,
                         },
                     ];
                 }
@@ -1632,9 +1569,6 @@ export default function on_confirm(input: validationInput): validationOutput {
                     "$.message.order.status",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -1647,11 +1581,7 @@ export default function on_confirm(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_17**: all of the following sub conditions must be met:
 
   - **condition validate_enum_17.1**: every element of $.message.order.status must be in ["SOFT_CANCEL", "ACTIVE", "COMPLETE", "CANCELLED", "CANCEL_INITIATED"]
-  - **condition validate_enum_17.2**: $.message.order.status must be present in the payload
-
-	> Note: **Condition validate_enum_17** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.order.status must **not** be present in the payload`,
+  - **condition validate_enum_17.2**: $.message.order.status must be present in the payload`,
                         },
                     ];
                 }
