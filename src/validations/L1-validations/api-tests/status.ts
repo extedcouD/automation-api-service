@@ -298,9 +298,6 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.action",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -313,11 +310,7 @@ export default function status(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_1**: all of the following sub conditions must be met:
 
   - **condition validate_enum_1.1**: every element of $.context.action must be in ["status"]
-  - **condition validate_enum_1.2**: $.context.action must be present in the payload
-
-	> Note: **Condition validate_enum_1** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.action must **not** be present in the payload`,
+  - **condition validate_enum_1.2**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -338,9 +331,6 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.location.country.code",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -353,11 +343,7 @@ export default function status(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_2**: all of the following sub conditions must be met:
 
   - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
-  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
-
-	> Note: **Condition validate_enum_2** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.location.country.code must **not** be present in the payload`,
+  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -378,9 +364,6 @@ export default function status(input: validationInput): validationOutput {
                     "$.context.domain",
                 );
 
-                const skipCheck = !validations.arePresent(enumPath);
-                if (skipCheck) continue;
-
                 const validate =
                     validations.allIn(enumPath, enumList) &&
                     validations.arePresent(enumPath);
@@ -393,11 +376,7 @@ export default function status(input: validationInput): validationOutput {
                             description: `- **condition validate_enum_4**: all of the following sub conditions must be met:
 
   - **condition validate_enum_4.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
-  - **condition validate_enum_4.2**: $.context.domain must be present in the payload
-
-	> Note: **Condition validate_enum_4** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.context.domain must **not** be present in the payload`,
+  - **condition validate_enum_4.2**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
