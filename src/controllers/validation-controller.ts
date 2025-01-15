@@ -23,7 +23,10 @@ export class ValidationController {
 			const sessionData = await loadData(
 				computeSubscriberUri(req.body.context, req.params.action, false)
 			);
-			if (sessionData.difficulty_cache.headerValidaton === false) {
+			if (
+				sessionData &&
+				sessionData.difficulty_cache.headerValidaton === false
+			) {
 				logger.info("Signature validations are disabled");
 				next();
 				return;
@@ -140,7 +143,7 @@ export class ValidationController {
 		const body = req.body;
 		const suburl = computeSubscriberUri(body.context, action, false);
 		const sessionData = await loadData(suburl);
-		if (!sessionData.difficulty_cache.protocolValidations) {
+		if (sessionData && !sessionData.difficulty_cache.protocolValidations) {
 			logger.info("L1 validations are disabled");
 			next();
 			return;
@@ -148,9 +151,11 @@ export class ValidationController {
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
 		const l1Result = performL1Validations(action, body, true);
-		if (!l1Result[0].valid) {
-			const error = (l1Result[0].description as string) + extraMessage;
-			const code = l1Result[0].code as number;
+		const invalidResult = l1Result.filter((result) => !result.valid);
+
+		if (invalidResult.length > 0) {
+			const error = (invalidResult[0].description as string) + extraMessage;
+			const code = invalidResult[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
@@ -231,7 +236,7 @@ export class ValidationController {
 			computeSubscriberUri(context, action, false)
 		);
 		if (!validSession) {
-			logger.info("Responing with invalid session");
+			logger.info("responding with invalid session");
 			res.status(200).send(setAckResponse(false, "Invalid Session", "90001"));
 			return;
 		}
