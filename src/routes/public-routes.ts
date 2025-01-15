@@ -31,7 +31,7 @@ router.post(
 						);
 					}
 					dbController.savePayloadInCache(req, body, false);
-					// dbController.savePayloadInDb(req, body, false, statusCode);
+					dbController.savePayloadInDb(req, body, false, statusCode);
 					logger.info("Sending response to: " + JSON.stringify(body));
 				}
 				return originalSend.call(this, body); // Call the original send method
