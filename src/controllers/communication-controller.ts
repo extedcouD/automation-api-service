@@ -43,8 +43,7 @@ export class CommunicationController {
 				(req.query.subscriber_url as string) ??
 				computeSubscriberUri(context, req.params.action, true);
 			const sessionData = await loadData(subUrl);
-			logger.debug(sessionData.difficulty_cache);
-			const useGateway = sessionData.difficulty_cache.useGateway ?? true;
+			const useGateway = sessionData?.difficulty_cache.useGateway ?? true;
 			if (useGateway) {
 				logger.info("Forwarding request to Gateway server");
 				const response = await this.communicationService.forwardApiToGateway(

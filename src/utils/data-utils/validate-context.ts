@@ -11,6 +11,12 @@ export async function performContextValidations(
 	error?: string;
 }> {
 	const sessionData = await loadData(subscriberUrl);
+	if (!sessionData) {
+		logger.error("skipping context validation as session data not found");
+		return {
+			valid: true,
+		};
+	}
 	const current_flow_id = sessionData.current_flow_id;
 	if (!current_flow_id) {
 		return {

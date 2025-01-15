@@ -15,7 +15,7 @@ const dbController = new DataController();
 router.post(
 	"/:action",
 	validationController.validateRequestBodyNp,
-	validationController.validateSessionFromNp,
+	// validationController.validateSessionFromNp,
 	(req, res, next) => {
 		if (!res.locals.isSendWrapped) {
 			res.locals.isSendWrapped = true; // Flag to indicate the wrapping is done

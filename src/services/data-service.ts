@@ -14,6 +14,13 @@ export class DataService {
 		try {
 			const dbUrl = process.env.DATA_BASE_URL;
 			const sessionData = await loadData(subscriberUri);
+			if (sessionData === undefined) {
+				logger.error(
+					"Session data not found for subscriber URL: skipping presitant saving " +
+						subscriberUri
+				);
+				return;
+			}
 			const checkSessionUrl = `${dbUrl}/api/sessions/check/${sessionData.active_session_id}`;
 			const postUrl = `${dbUrl}/api/sessions`;
 			const exists = await axios.get(checkSessionUrl);

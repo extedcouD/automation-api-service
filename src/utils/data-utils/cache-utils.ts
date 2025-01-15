@@ -8,6 +8,10 @@ export async function saveContextData(
 	subscriberUrl: string
 ) {
 	const sessionData = await loadData(subscriberUrl);
+	if (sessionData === undefined) {
+		logger.info("Session data not found for subscriber URL: " + subscriberUrl);
+		return;
+	}
 	if (!sessionData.current_flow_id) {
 		logger.error("Current flow id not found in session data");
 		return;
@@ -29,6 +33,10 @@ export async function savePayloadData(
 	subscriberUrl: string
 ) {
 	const sessionData = await loadData(subscriberUrl);
+	if (sessionData === undefined) {
+		logger.info("Session data not found for subscriber URL: " + subscriberUrl);
+		return;
+	}
 	if (!sessionData.current_flow_id) {
 		logger.error("Current flow id not found in session data");
 		return;
@@ -55,5 +63,6 @@ export async function loadData(subscriberUrl: string) {
 		const data = await RedisService.getKey(subscriberUrl);
 		return JSON.parse(data ?? "{}") as SessionData;
 	}
-	throw new Error("session ID not found " + subscriberUrl);
+	return undefined;
+	// throw new Error("session ID not found " + subscriberUrl);
 }

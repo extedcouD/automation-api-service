@@ -4,12 +4,20 @@ import logger from "../utils/logger";
 import { createAuthHeader } from "../utils/headerUtils";
 import { config } from "../config/registryGatewayConfig";
 import { getAxiosErrorMessage } from "../utils/axiosUtils";
+import { computeSubscriberUri } from "../utils/subsciber-utils";
+import { loadData } from "../utils/data-utils/cache-utils";
 
 export class CommunicationService {
 	forwardApiToMock = async (body: any, action: string) => {
 		const url = process.env.MOCK_SERVER_URL;
 		logger.debug("Forwarding request to mock server " + url + action);
-		return await axios.post(`${url}/${action}`, body);
+		const subscriberUrl = computeSubscriberUri(body.context, action, false);
+		const data = await loadData(subscriberUrl);
+		if (data === undefined) {
+			return await axios.post(`${url}/mock/${action}`, body);
+		} else {
+			return await axios.post(`${url}/manual/${action}`, body);
+		}
 	};
 	forwardApiToNp = async (body: any, action: string, overriteUrl?: string) => {
 		const context: BecknContext = body.context;
