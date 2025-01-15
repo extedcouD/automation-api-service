@@ -14,15 +14,15 @@ export class CommunicationController {
 	}
 
 	forwardToMockServer = async (req: Request, res: Response) => {
+		res.status(200).send(setAckResponse(true));
 		try {
 			await new CommunicationService().forwardApiToMock(
 				req.body,
 				req.params.action
 			);
-			res.status(200).send(setAckResponse(true));
+			logger.info("Forwarded request to mock server");
 		} catch (error) {
-			logger.error("Error in forwarding request to mock server", e);
-			res.status(200).send(setInternalServerNack);
+			logger.error("Error in forwarding request to mock server", error);
 		}
 	};
 
@@ -62,8 +62,8 @@ export class CommunicationController {
 				return;
 			}
 		} catch (error) {
-			res.status(200).send(setInternalServerNack);
 			logger.error("Error in handling request from mock server", error);
+			res.status(200).send(setInternalServerNack);
 		}
 	};
 }
