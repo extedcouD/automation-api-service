@@ -14,8 +14,10 @@ export class CommunicationService {
 		const subscriberUrl = computeSubscriberUri(body.context, action, false);
 		const data = await loadData(subscriberUrl);
 		if (data === undefined) {
+			logger.info(`forwarding url ${url}/manual/${action}`);
 			return await axios.post(`${url}/mock/${action}`, body);
 		} else {
+			logger.info(`forwarding url ${url}/manual/${action}`);
 			return await axios.post(`${url}/manual/${action}`, body);
 		}
 	};
