@@ -151,10 +151,12 @@ export class ValidationController {
 		const apiLayerUrl = process.env.API_SERVICE_URL;
 		const extraMessage = ` \n\n _note: find complete list of [validations](${apiLayerUrl}/test)_`;
 		const l1Result = performL1Validations(action, body, true);
-		const invalidResult = l1Result.filter((result) => !result.valid);
-
+		const invalidResult = l1Result.filter(
+			(result) => !result.valid && result.code !== 200
+		);
+		console.log("invalidResult", invalidResult);
 		if (invalidResult.length > 0) {
-			const error = (invalidResult[0].description as string) + extraMessage;
+			const error = invalidResult[0].description + extraMessage;
 			const code = invalidResult[0].code as number;
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
@@ -175,10 +177,11 @@ export class ValidationController {
 		const l1Result = performL1Validations(action, { ...body }, true);
 		const isValid = l1Result.every((result) => result.valid);
 		if (!isValid) {
-			const allErrors = l1Result
-				.filter((result) => !result.valid)
-				.map((result) => result.description)
-				.join("\n");
+			const allErrors =
+				l1Result
+					.filter((result) => !result.valid)
+					.map((result) => result.description)
+					.join("\n") + extraMessage;
 			const code = l1Result[0].code as number;
 			res.status(200).send(setAckResponse(false, allErrors, code.toString()));
 			return;
