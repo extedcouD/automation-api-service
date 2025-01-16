@@ -55,8 +55,10 @@ export class DataService {
 					sessionId: sessionData.active_session_id,
 				},
 			};
-			await axios.post(postUrl + "/payload", requestBody);
-			logger.info("Data saved to DB");
+			const res = await axios.post(postUrl + "/payload", requestBody);
+			logger.info(
+				`Data saved to DB with response: ${res.data} and payloadID: ${requestId}`
+			);
 		} catch (error) {
 			logger.error("Error in saving data to DB ", getAxiosErrorMessage(error));
 		}
