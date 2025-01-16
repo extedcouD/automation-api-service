@@ -59,7 +59,12 @@ export class DataController {
 		}
 	};
 
-	savePayloadInCache(req: Request, responseBody: any, fromMock: boolean) {
+	savePayloadInCache(
+		req: Request,
+		responseBody: any,
+		fromMock: boolean,
+		reqId: string
+	) {
 		logger.info("Saving payload data to cache");
 		let url = computeSubscriberUri(
 			req.body.context,
@@ -70,8 +75,8 @@ export class DataController {
 			url = (req.query.subscriber_url as string) ?? url;
 		}
 		console.log("sub URL", url);
-		// add .context
-		savePayloadData(req.body.context, responseBody, url)
+
+		savePayloadData(req.body.context, responseBody, reqId, url)
 			.then(() => logger.info("Payload data saved to cache"))
 			.catch((err) => logger.error("Error in saving payload data to cache"));
 	}
@@ -80,7 +85,8 @@ export class DataController {
 		req: Request,
 		responseBody: any,
 		fromMock: boolean,
-		code: number
+		code: number,
+		reqId: string
 	) {
 		let url = computeSubscriberUri(
 			req.body.context,
@@ -91,7 +97,7 @@ export class DataController {
 			url = (req.query.subscriber_url as string) ?? url;
 		}
 		this.dataService
-			.saveSessionToDB(url, req.body, responseBody, code)
+			.saveSessionToDB(url, req.body, responseBody, code, reqId)
 			.catch((err) => logger.error("Error in saving payload data to DB", err));
 	}
 }

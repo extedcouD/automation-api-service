@@ -9,7 +9,8 @@ export class DataService {
 		subscriberUri: string,
 		payload: any,
 		response: any,
-		code: number
+		code: number,
+		requestId: string
 	) => {
 		try {
 			const dbUrl = process.env.DATA_BASE_URL;
@@ -42,6 +43,7 @@ export class DataService {
 			const requestBody = {
 				messageId: payload.context.message_id,
 				transactionId: payload.context.transaction_id,
+				payloadId: requestId,
 				action: action.toUpperCase(),
 				bppId: payload.context.bpp_id ?? "",
 				bapId: payload.context.bap_id,
