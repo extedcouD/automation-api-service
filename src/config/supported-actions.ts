@@ -1,19 +1,19 @@
 import on_cancel from "../validations/L1-validations/api-tests/on_cancel";
 
 export const supportedActions = {
-	null: ["search"],
+	null: ["search", "select", "init"],
 	search: ["on_search"],
-	on_search: ["search", "select"],
+	on_search: ["search", "select", "init"],
 	select: ["on_select"],
-	on_select: ["init"],
+	on_select: ["select", "init"],
 	init: ["on_init"],
-	on_init: ["confirm"],
-	confirm: ["on_confirm"],
-	on_confirm: ["status", "cancel"],
+	on_init: ["init", "confirm"],
+	confirm: ["on_confirm", "status"],
+	on_confirm: ["confirm", "status", "cancel", "on_status"],
 	status: ["on_status"],
-	on_status: ["cancel"],
-	cancel: ["on_cancel"],
-	on_cancel: [] as string[],
+	on_status: ["status", "cancel"],
+	cancel: ["on_cancel", "status"],
+	on_cancel: ["cancel", "status"] as string[],
 };
 
 export const apiProperties = {
@@ -27,27 +27,23 @@ export const apiProperties = {
 	},
 	select: {
 		async_predecessor: null,
-		transaction_partner: ["search", "on_search"],
+		transaction_partner: [],
 	},
 	on_select: {
 		async_predecessor: "select",
-		transaction_partner: ["search", "on_search", "select"],
+		transaction_partner: ["select"],
 	},
 	init: {
 		async_predecessor: null,
-		transaction_partner: ["search", "on_search", "select", "on_select"],
+		transaction_partner: [],
 	},
 	on_init: {
 		async_predecessor: "init",
-		transaction_partner: ["search", "on_search", "select", "on_select", "init"],
+		transaction_partner: ["init"],
 	},
 	confirm: {
 		async_predecessor: null,
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
 			"init",
 			"on_init",
 		],
@@ -55,10 +51,6 @@ export const apiProperties = {
 	on_confirm: {
 		async_predecessor: "confirm",
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
 			"init",
 			"on_init",
 			"confirm",
@@ -67,54 +59,29 @@ export const apiProperties = {
 	status: {
 		async_predecessor: null,
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
 			"init",
 			"on_init",
 			"confirm",
-			"on_confirm",
 		],
 	},
 	on_status: {
 		async_predecessor: "status",
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
 			"init",
 			"on_init",
 			"confirm",
-			"on_confirm",
-			"status",
 		],
 	},
 	cancel: {
 		async_predecessor: null,
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
-			"init",
-			"on_init",
 			"confirm",
-			"on_confirm",
 		],
 	},
 	on_cancel: {
 		async_predecessor: "cancel",
 		transaction_partner: [
-			"search",
-			"on_search",
-			"select",
-			"on_select",
-			"init",
-			"on_init",
 			"confirm",
-			"on_confirm",
 		],
 	},
 };
