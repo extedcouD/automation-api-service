@@ -3,6 +3,7 @@ import { CommunicationController } from "../controllers/communication-controller
 import { DataController } from "../controllers/data-controller";
 import { ValidationController } from "../controllers/validation-controller";
 import logger from "../utils/logger";
+import { v4 as uuidV4 } from "uuid";
 
 const router = express();
 
@@ -32,8 +33,9 @@ router.post(
 							statusCode
 						);
 					}
-					dbController.savePayloadInCache(req, body, true);
-					dbController.savePayloadInDb(req, body, true, statusCode);
+					const payloadID = uuidV4();
+					dbController.savePayloadInCache(req, body, true, payloadID);
+					dbController.savePayloadInDb(req, body, true, statusCode, payloadID);
 					logger.info("Sending response to: " + JSON.stringify(body));
 				}
 				return originalSend.call(this, body); // Call the original send method

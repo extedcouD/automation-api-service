@@ -30,6 +30,7 @@ export async function saveContextData(
 export async function savePayloadData(
 	context: BecknContext,
 	response: any,
+	requestID: string,
 	subscriberUrl: string
 ) {
 	const sessionData = await loadData(subscriberUrl);
@@ -51,6 +52,7 @@ export async function savePayloadData(
 	}
 	sessionData.session_payloads[sessionData.current_flow_id].push({
 		request: context,
+		payload_id: requestID,
 		response: response,
 	});
 
