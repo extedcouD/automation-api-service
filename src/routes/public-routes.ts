@@ -34,6 +34,9 @@ router.post(
 					const payloadID = uuidV4();
 					dbController.savePayloadInCache(req, body, false, payloadID);
 					dbController.savePayloadInDb(req, body, false, statusCode, payloadID);
+					logger.debug(
+						`FROM NP TO MOCK THE CONTEXT IS ${JSON.stringify(req.body.context)}`
+					);
 					logger.info("Sending response to: " + JSON.stringify(body));
 				}
 				return originalSend.call(this, body); // Call the original send method
