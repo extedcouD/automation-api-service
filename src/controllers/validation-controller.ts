@@ -261,6 +261,7 @@ export class ValidationController {
 			subscriberUrl
 		);
 		if (!validSession) {
+			logger.info("responding with invalid session");
 			res.status(200).send(setAckResponse(false, "Invalid Session", "90001"));
 			return;
 		}
