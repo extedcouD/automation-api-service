@@ -17,7 +17,6 @@ const validationController = new ValidationController();
 router.post(
 	"/:action",
 	validationController.validateRequestBodyMock,
-	validationController.validateSessionFromMock,
 	(req, res, next) => {
 		// Ensure `res.send` is wrapped only once
 		if (!res.locals.isSendWrapped) {
