@@ -141,6 +141,7 @@ export class ValidationController {
 	validateL1 = async (req: Request, res: Response, next: NextFunction) => {
 		const { action } = req.params;
 		const body = req.body;
+
 		const suburl = computeSubscriberUri(body.context, action, false);
 		const sessionData = await loadData(suburl);
 		if (sessionData && !sessionData.difficulty_cache.protocolValidations) {
