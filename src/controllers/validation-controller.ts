@@ -12,6 +12,7 @@ import { isHeaderValid } from "ondc-crypto-sdk-nodejs";
 import { DataService } from "../services/data-service";
 import { computeSubscriberUri } from "../utils/subsciber-utils";
 import { loadData } from "../utils/data-utils/cache-utils";
+import { saveLog } from "../utils/data-utils/cache-utils";
 
 export class ValidationController {
 	validateSignatureNp = async (
@@ -19,7 +20,9 @@ export class ValidationController {
 		res: Response,
 		next: NextFunction
 	) => {
+		const transactionId = req.body.context.transaction_id;
 		try {
+			await saveLog(transactionId, 'Starting signature validation');
 			const sessionData = await loadData(
 				computeSubscriberUri(req.body.context, req.params.action, false)
 			);
@@ -27,12 +30,14 @@ export class ValidationController {
 				sessionData &&
 				sessionData.difficulty_cache.headerValidaton === false
 			) {
+				await saveLog(transactionId, 'Signature validations are disabled');
 				logger.info("Signature validations are disabled");
 				next();
 				return;
 			}
 			const auth = req.headers.authorization;
 			if (!auth) {
+				await saveLog(transactionId, 'Missing authorization header', 'error');
 				logger.info("Responding with invalid signature");
 				res
 					.status(200)
@@ -57,8 +62,10 @@ export class ValidationController {
 				return;
 			}
 			logger.info("Signature validated");
+			await saveLog(transactionId, 'Signature validation successful');
 			next();
 		} catch (error) {
+			await saveLog(transactionId, `Signature validation failed: ${error}`, 'error');
 			logger.info("Responding with invalid signature");
 			res.status(200).send(setAckResponse(false, "Invalid Signature", "10001"));
 			return;
@@ -125,26 +132,34 @@ export class ValidationController {
 
 	// Middleware: L0 validations
 	validateL0(req: Request, res: Response, next: NextFunction) {
+		const transactionId = req.body.context.transaction_id;
 		const { action } = req.params;
 		const body = req.body;
 
+		saveLog(transactionId, 'Starting L0 validations');
 		const l0Result = performL0Validations(body, action);
 		if (!l0Result.valid) {
+			saveLog(transactionId, `L0 validation failed: ${l0Result.errors}`, 'error');
 			res.status(200).send(setAckResponse(false, l0Result.errors, "400"));
 			return;
 		}
+		saveLog(transactionId, 'L0 validations passed successfully');
 		logger.info("L0 validations passed");
 		next();
 	}
 
 	// Middleware: L1 validations
 	validateL1 = async (req: Request, res: Response, next: NextFunction) => {
+		const transactionId = req.body.context.transaction_id;
 		const { action } = req.params;
 		const body = req.body;
 
+		await saveLog(transactionId, 'Starting L1 validations');
+		
 		const suburl = computeSubscriberUri(body.context, action, false);
 		const sessionData = await loadData(suburl);
 		if (sessionData && !sessionData.difficulty_cache.protocolValidations) {
+			await saveLog(transactionId, 'L1 validations are disabled');
 			logger.info("L1 validations are disabled");
 			next();
 			return;
@@ -159,9 +174,11 @@ export class ValidationController {
 		if (invalidResult.length > 0) {
 			const error = invalidResult[0].description + extraMessage;
 			const code = invalidResult[0].code as number;
+			await saveLog(transactionId, `L1 validation failed: ${error}`, 'error');
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
+		await saveLog(transactionId, 'L1 validations passed successfully');
 		logger.info("L1 validations passed");
 		next();
 	};

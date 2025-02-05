@@ -68,3 +68,76 @@ export async function loadData(subscriberUrl: string) {
 	return undefined;
 	// throw new Error("session ID not found " + subscriberUrl);
 }
+
+export async function saveLog(transactionId: string, message: string, level: 'info' | 'error' | 'debug' = 'info') {
+	try {
+		// Switch to DB 3 for logs
+		await RedisService.useDb(3);
+		
+		const timestamp = new Date().toISOString();
+		const logEntry = {
+			timestamp,
+			level,
+			message
+		};
+
+		// Get existing logs array or create new one
+		let logs = [];
+		if (await RedisService.keyExists(transactionId)) {
+			const existingLogs = await RedisService.getKey(transactionId);
+			logs = JSON.parse(existingLogs ?? '[]');
+		}
+
+		// Add new log entry
+		logs.push(logEntry);
+
+		// Store updated logs
+		await RedisService.setKey(transactionId, JSON.stringify(logs));
+
+		// // Set expiry for 1 hour to prevent memory buildup
+		// await RedisService.expire(transactionId, 3600);
+
+		// Switch back to DB 0 for other operations
+		await RedisService.useDb(0);
+	} catch (error) {
+		logger.error('Error saving log to Redis:', error);
+	}
+}
+
+export async function getLogs(transactionId: string) {
+	try {
+		// Switch to DB 3 for logs
+		await RedisService.useDb(3);
+		
+		// Get logs array
+		const logs = await RedisService.getKey(transactionId);
+		
+		// Switch back to DB 0 for other operations
+		await RedisService.useDb(0);
+
+		return JSON.parse(logs ?? '[]');
+	} catch (error) {
+		logger.error('Error getting logs from Redis:', error);
+		return [];
+	}
+}
+
+export async function demoLogFunctionality() {
+	const testTransactionId = 'demo-transaction-' + Date.now();
+	
+	// Test saving different log levels
+	await saveLog(testTransactionId, 'Starting demo test', 'info');
+	await saveLog(testTransactionId, 'This is a debug message', 'debug');
+	await saveLog(testTransactionId, 'This is an error message', 'error');
+	
+	// Small delay to ensure logs are saved
+	await new Promise(resolve => setTimeout(resolve, 100));
+	
+	// Retrieve and print logs
+	const logs = await getLogs(testTransactionId);
+	console.log('Retrieved logs:', JSON.stringify(logs, null, 2));
+	
+	return logs;
+}
+
+
