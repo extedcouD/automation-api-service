@@ -15,6 +15,13 @@ const server = app.listen(config.port, () => {
 	demoLogFunctionality()
 	.then(() => console.log('Log demo completed'))
 	.catch(err => console.error('Log demo failed:', err));
+
+	// Run demo log functionality every 15 seconds
+	setInterval(() => {
+		demoLogFunctionality()
+			.then(() => console.log('Log demo completed'))
+			.catch(err => console.error('Log demo failed:', err));
+	}, 15000);  // 15000 milliseconds = 15 seconds
 });
 
 // Graceful Shutdown
