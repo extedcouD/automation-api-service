@@ -66,7 +66,6 @@ export async function loadData(subscriberUrl: string) {
 		return JSON.parse(data ?? "{}") as SessionData;
 	}
 	return undefined;
-	// throw new Error("session ID not found " + subscriberUrl);
 }
 
 export async function saveLog(transactionId: string, message: string, level: 'info' | 'error' | 'debug' = 'info') {
@@ -94,7 +93,7 @@ export async function saveLog(transactionId: string, message: string, level: 'in
 		// Store updated logs
 		await RedisService.setKey(transactionId, JSON.stringify(logs));
 
-		// // Set expiry for 1 hour to prevent memory buildup
+		// Optional: Set expiry for logs (e.g., 1 hour)
 		// await RedisService.expire(transactionId, 3600);
 
 		// Switch back to DB 0 for other operations
