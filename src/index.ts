@@ -10,18 +10,7 @@ RedisService.useDb(0);
 const server = app.listen(config.port, () => {
 	logger.info(
 		`Server running on port ${config.port} in ${config.environment} mode`
-	);
-	// Example usage:
-	demoLogFunctionality()
-	.then(() => console.log('Log demo completed'))
-	.catch(err => console.error('Log demo failed:', err));
-
-	// Run demo log functionality every 15 seconds
-	setInterval(() => {
-		demoLogFunctionality()
-			.then(() => console.log('Log demo completed'))
-			.catch(err => console.error('Log demo failed:', err));
-	}, 15000);  // 15000 milliseconds = 15 seconds
+	); // 15000 milliseconds = 15 seconds
 });
 
 // Graceful Shutdown
