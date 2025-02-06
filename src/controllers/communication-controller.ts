@@ -3,8 +3,9 @@ import e, { Request, Response } from "express";
 import logger from "../utils/logger";
 import { CommunicationService } from "../services/forwarding-service";
 import { BecknContext } from "../models/beckn-types";
-import { computeSubscriberUri } from "../utils/subsciber-utils";
+import { computeSubscriberUri } from "../utils/subscriber-utils";
 import { loadData } from "../utils/data-utils/cache-utils";
+import { ApiServiceRequest } from "../types/request-types";
 
 export class CommunicationController {
 	communicationService: CommunicationService;
@@ -13,12 +14,12 @@ export class CommunicationController {
 		this.communicationService = new CommunicationService();
 	}
 
-	forwardToMockServer = async (req: Request, res: Response) => {
+	forwardToMockServer = async (req: ApiServiceRequest, res: Response) => {
 		res.status(200).send(setAckResponse(true));
 		try {
 			await new CommunicationService().forwardApiToMock(
 				req.body,
-				req.params.action
+				req.requestProperties
 			);
 			logger.info("Forwarded request to mock server");
 		} catch (error) {
@@ -26,8 +27,16 @@ export class CommunicationController {
 		}
 	};
 
-	handleRequestFromMockServer = async (req: Request, res: Response) => {
+	handleRequestFromMockServer = async (
+		req: ApiServiceRequest,
+		res: Response
+	) => {
 		try {
+			if (!req.requestProperties) {
+				logger.error("[FATAL]: Request properties not found");
+				res.status(200).send(setInternalServerNack);
+				return;
+			}
 			const context: BecknContext = req.body.context;
 			const bpp_uri = context.bpp_uri;
 			if (bpp_uri) {
@@ -39,11 +48,8 @@ export class CommunicationController {
 				res.status(response.status).send(response.data);
 				return;
 			}
-			const subUrl =
-				(req.query.subscriber_url as string) ??
-				computeSubscriberUri(context, req.params.action, true);
-			const sessionData = await loadData(subUrl);
-			const useGateway = sessionData?.difficulty_cache.useGateway ?? true;
+			const subUrl = req.requestProperties.subscriberUrl;
+			const useGateway = req.requestProperties.difficulty.useGateway;
 			if (useGateway) {
 				logger.info("Forwarding request to Gateway server");
 				const response = await this.communicationService.forwardApiToGateway(
