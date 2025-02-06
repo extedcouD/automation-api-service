@@ -269,7 +269,6 @@ export class TransactionCacheService {
 			transaction.latestAction = requestBody.context.action;
 			transaction.latestTimestamp = requestBody.context.timestamp;
 			logger.info(`updated transaction with id ${txnId}`);
-			logger.debug(`transaction data: ${JSON.stringify(transaction)}`);
 			await RedisService.setKey(key, JSON.stringify(transaction));
 		} else {
 			logger.error(`Transaction with id ${txnId} not found`);
