@@ -16,9 +16,9 @@ export class CommunicationService {
 		let url = process.env.MOCK_SERVER_URL;
 		const action = requestProperties?.action ?? body.context.action;
 		if (requestProperties?.defaultMode === false) {
-			url = `${url}/mock/${action}`;
-		} else {
 			url = `${url}/manual/${action}`;
+		} else {
+			url = `${url}/mock/${action}`;
 		}
 		logger.info("Forwarding request to Mock server", url, action);
 		return await axios.post(url, body);
