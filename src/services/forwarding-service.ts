@@ -4,8 +4,6 @@ import logger from "../utils/logger";
 import { createAuthHeader } from "../utils/headerUtils";
 import { config } from "../config/registryGatewayConfig";
 import { getAxiosErrorMessage } from "../utils/axiosUtils";
-import { computeSubscriberUri } from "../utils/subscriber-utils";
-import { loadData } from "../utils/data-utils/cache-utils";
 import { RequestProperties } from "../types/cache-types";
 
 export class CommunicationService {

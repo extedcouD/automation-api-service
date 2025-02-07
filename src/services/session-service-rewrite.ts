@@ -348,7 +348,12 @@ export class SubscriberCacheService {
 			logger.error(`Subscriber with url ${subscriberUrl} not found`);
 			throw new Error(`Subscriber with url ${subscriberUrl} not found`);
 		}
-		return JSON.parse(rawData) as SubscriberCache;
+
+		const data = JSON.parse(rawData) as SubscriberCache;
+		if (data.activeSessions === undefined) {
+			data.activeSessions = [];
+		}
+		return data;
 	};
 	updateSubscriber = async (
 		subscriber: SubscriberCache,
