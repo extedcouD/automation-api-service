@@ -10,7 +10,8 @@ RedisService.useDb(0);
 const server = app.listen(config.port, () => {
 	logger.info(
 		`Server running on port ${config.port} in ${config.environment} mode`
-	); // 15000 milliseconds = 15 seconds
+	);
+	demoLogFunctionality();
 });
 
 // Graceful Shutdown

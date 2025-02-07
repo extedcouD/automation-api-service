@@ -68,11 +68,8 @@ export async function loadData(subscriberUrl: string) {
 	return undefined;
 }
 
-export async function saveLog(transactionId: string, message: string, level: 'info' | 'error' | 'debug' = 'info') {
+export async function saveLog(sessionId: string, message: string, level: 'info' | 'error' | 'debug' = 'info') {
 	try {
-		// Switch to DB 3 for logs
-		await RedisService.useDb(3);
-		
 		const timestamp = new Date().toISOString();
 		const logEntry = {
 			timestamp,
@@ -82,8 +79,10 @@ export async function saveLog(transactionId: string, message: string, level: 'in
 
 		// Get existing logs array or create new one
 		let logs = [];
-		if (await RedisService.keyExists(transactionId)) {
-			const existingLogs = await RedisService.getKey(transactionId);
+		const key = `consoleLogs:${sessionId}`;
+		
+		if (await RedisService.keyExists(key)) {
+			const existingLogs = await RedisService.getKey(key);
 			logs = JSON.parse(existingLogs ?? '[]');
 		}
 
@@ -91,29 +90,17 @@ export async function saveLog(transactionId: string, message: string, level: 'in
 		logs.push(logEntry);
 
 		// Store updated logs
-		await RedisService.setKey(transactionId, JSON.stringify(logs));
+		await RedisService.setKey(key, JSON.stringify(logs));
 
-		// Optional: Set expiry for logs (e.g., 1 hour)
-		// await RedisService.expire(transactionId, 3600);
-
-		// Switch back to DB 0 for other operations
-		await RedisService.useDb(0);
 	} catch (error) {
 		logger.error('Error saving log to Redis:', error);
 	}
 }
 
-export async function getLogs(transactionId: string) {
+export async function getLogs(sessionId: string) {
 	try {
-		// Switch to DB 3 for logs
-		await RedisService.useDb(3);
-		
-		// Get logs array
-		const logs = await RedisService.getKey(transactionId);
-		
-		// Switch back to DB 0 for other operations
-		await RedisService.useDb(0);
-
+		const key = `consoleLogs:${sessionId}`;
+		const logs = await RedisService.getKey(key);
 		return JSON.parse(logs ?? '[]');
 	} catch (error) {
 		logger.error('Error getting logs from Redis:', error);
