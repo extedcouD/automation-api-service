@@ -120,18 +120,18 @@ export class ValidationController {
 
 	// Middleware: L0 validations
 	validateL0(req: Request, res: Response, next: NextFunction) {
-		const transactionId = req.body.context.transaction_id;
+		const sessionId = (req as ApiServiceRequest).requestProperties?.sessionId ?? 'unknown';
 		const { action } = req.params;
 		const body = req.body;
 
-		saveLog(transactionId, 'Starting L0 validations');
+		saveLog(sessionId, 'Starting L0 validations');
 		const l0Result = performL0Validations(body, action);
 		if (!l0Result.valid) {
-			saveLog(transactionId, `L0 validation failed: ${l0Result.errors}`, 'error');
+			saveLog(sessionId, `L0 validation failed: ${l0Result.errors}`, 'error');
 			res.status(200).send(setAckResponse(false, l0Result.errors, "400"));
 			return;
 		}
-		saveLog(transactionId, 'L0 validations passed successfully');
+		saveLog(sessionId, 'L0 validations passed successfully');
 		logger.info("L0 validations passed");
 		next();
 	}
@@ -144,7 +144,7 @@ export class ValidationController {
 	) => {
 		const { action } = req.params;
 		const body = req.body;
-		const transactionId = req.body.context.transaction_id;
+		const sessionId = (req as ApiServiceRequest).requestProperties?.sessionId ?? 'unknown';
 		if (
 			req.requestProperties &&
 			!req.requestProperties.difficulty.protocolValidations
@@ -163,11 +163,11 @@ export class ValidationController {
 		if (invalidResult.length > 0) {
 			const error = invalidResult[0].description + extraMessage;
 			const code = invalidResult[0].code as number;
-			await saveLog(transactionId, `L1 validation failed: ${error}`, 'error');
+			await saveLog(sessionId, `L1 validation failed: ${error}`, 'error');
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
-		await saveLog(transactionId, 'L1 validations passed successfully');
+		await saveLog(sessionId, 'L1 validations passed successfully');
 		logger.info("L1 validations passed");
 		next();
 	};

@@ -16,16 +16,16 @@ export class CommunicationController {
 		
 	forwardToMockServer = async (req: ApiServiceRequest, res: Response) => {
 		res.status(200).send(setAckResponse(true));
-		const transactionId = req.body.context.transaction_id;
+		const sessionId = req.requestProperties?.sessionId ?? 'unknown';
 		try {
-			await saveLog(transactionId, 'Forwarding request to mock server');
+			await saveLog(sessionId, 'Forwarding request to mock server');
 			await new CommunicationService().forwardApiToMock(
 				req.body,
 				req.requestProperties
 			);
-			await saveLog(transactionId, 'Successfully forwarded request to mock server');
+			await saveLog(sessionId, 'Successfully forwarded request to mock server');
 		} catch (error) {
-			await saveLog(transactionId, `Error forwarding request to mock server: ${error}`, 'error');
+			await saveLog(sessionId, `Error forwarding request to mock server: ${error}`, 'error');
 			logger.error("Error in forwarding request to mock server", error);
 		}
 	};
@@ -34,7 +34,7 @@ export class CommunicationController {
 		req: ApiServiceRequest,
 		res: Response
 	) => {
-		const transactionId = req.body.context.transaction_id;
+		const sessionId = req.requestProperties?.sessionId ?? 'unknown';
 		try {
 			if (!req.requestProperties) {
 				logger.error("[FATAL]: Request properties not found");
@@ -44,7 +44,7 @@ export class CommunicationController {
 			const context: BecknContext = req.body.context;
 			const bpp_uri = context.bpp_uri;
 			if (bpp_uri) {
-				await saveLog(transactionId, 'Forwarding request to NP server');
+				await saveLog(sessionId, 'Forwarding request to NP server');
 				logger.info("Forwarding request to NP server");
 				const response = await this.communicationService.forwardApiToNp(
 					req.body,
@@ -73,7 +73,7 @@ export class CommunicationController {
 				return;
 			}
 		} catch (error) {
-			await saveLog(transactionId, `Error handling request from mock server: ${error}`, 'error');
+			await saveLog(sessionId, `Error handling request from mock server: ${error}`, 'error');
 			logger.error("Error in handling request from mock server", error);
 			res.status(200).send(setInternalServerNack);
 		}
