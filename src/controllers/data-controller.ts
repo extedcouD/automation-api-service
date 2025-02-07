@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import logger from "../utils/logger";
 import { DataService } from "../services/data-service";
 import { computeSubscriberUri } from "../utils/subscriber-utils";
+import { saveLog } from "../utils/data-utils/cache-utils";
 
 export class DataController {
 	dbUrl: string;
@@ -82,6 +83,9 @@ export class DataController {
 		code: number,
 		reqId: string
 	) {
+		const transactionId = req.body.context.transaction_id;
+		saveLog(transactionId, 'Saving payload data to database');
+		
 		let url = computeSubscriberUri(
 			req.body.context,
 			req.params.action,
@@ -92,6 +96,10 @@ export class DataController {
 		}
 		this.dataService
 			.saveSessionToDB(url, req.body, responseBody, code, reqId)
-			.catch((err) => logger.error("Error in saving payload data to DB", err));
+			.then(() => saveLog(transactionId, 'Successfully saved payload data to database'))
+			.catch((err) => {
+				logger.error("Error in saving payload data to DB", err);
+				saveLog(transactionId, `Error saving payload data to database: ${err}`, 'error');
+			});
 	}
 }
