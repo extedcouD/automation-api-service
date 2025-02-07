@@ -48,17 +48,6 @@ export class DataService {
 					sessionType: "AUTOMATION",
 					sessionActive: true,
 				};
-				const config = {
-					method: "post",
-					url: postUrl,
-					data: sessionPayload,
-				};
-				const curl = `curl -X ${config.method.toUpperCase()} '${
-					config.url
-				}' -H 'Content-Type: application/json' -d '${JSON.stringify(
-					config.data
-				)}'`;
-				console.log(curl);
 				await axios.post(postUrl, sessionPayload);
 			}
 			const action = payload.context.action as string;
@@ -78,18 +67,6 @@ export class DataService {
 					sessionId: sessionData.sessionId ?? key,
 				},
 			};
-			const config = {
-				method: "post",
-				url: postUrl + "/payload",
-				data: requestBody,
-			};
-			// Directly create the curl string before making the request
-			const curl = `curl -X ${config.method.toUpperCase()} '${
-				config.url
-			}' -H 'Content-Type: application/json' -d '${JSON.stringify(
-				requestBody
-			)}'`;
-			console.log(curl);
 
 			const res = await axios.post(postUrl + "/payload", requestBody);
 			logger.info(
