@@ -26,10 +26,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -111,10 +108,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -223,10 +217,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -343,10 +334,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -440,10 +428,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -486,10 +471,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -535,10 +517,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -635,10 +614,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -789,10 +765,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -941,10 +914,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -1114,10 +1084,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -1305,10 +1272,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -1486,10 +1450,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	
@@ -1658,10 +1619,7 @@
 	  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
 	  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload
 	
-	- **condition validate_enum_3**: all of the following sub conditions must be met:
-	
-	  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-	  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload
+	- **condition validate_enum_3**: $.context.location.city.code must be present in the payload
 	
 	- **condition validate_enum_4**: all of the following sub conditions must be met:
 	

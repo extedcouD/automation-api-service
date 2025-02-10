@@ -662,25 +662,19 @@ export default function confirm(input: validationInput): validationOutput {
             let valid = true;
             for (const testObj of scope) {
                 testObj._EXTERNAL = input.externalData;
-                const enumList = ["std:080"];
                 const enumPath = payloadUtils.getJsonPath(
                     testObj,
                     "$.context.location.city.code",
                 );
 
-                const validate =
-                    validations.allIn(enumPath, enumList) &&
-                    validations.arePresent(enumPath);
+                const validate = validations.arePresent(enumPath);
 
                 if (!validate) {
                     return [
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_enum_3**: all of the following sub conditions must be met:
-
-  - **condition validate_enum_3.1**: every element of $.context.location.city.code must be in ["std:080"]
-  - **condition validate_enum_3.2**: $.context.location.city.code must be present in the payload`,
+                            description: `- **condition validate_enum_3**: $.context.location.city.code must be present in the payload`,
                         },
                     ];
                 }
