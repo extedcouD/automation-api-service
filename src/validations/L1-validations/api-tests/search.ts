@@ -13,7 +13,7 @@ export default function search(input: validationInput): validationOutput {
     for (const testObj of scope) {
         testObj._EXTERNAL = input.externalData;
 
-        function Attri_Required__CONTEXT_TIMESTAMP(
+        function validate_attribute_4(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -33,7 +33,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_TIMESTAMP**: $.context.timestamp must be present in the payload`,
+                            description: `- **condition validate_attribute_4**: $.context.timestamp must be present in the payload`,
                         },
                     ];
                 }
@@ -42,7 +42,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_BAP_ID(
+        function validate_attribute_5(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -62,7 +62,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_BAP_ID**: $.context.bap_id must be present in the payload`,
+                            description: `- **condition validate_attribute_5**: $.context.bap_id must be present in the payload`,
                         },
                     ];
                 }
@@ -71,7 +71,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_TRANSACTION_ID(
+        function validate_attribute_6(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -91,7 +91,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_TRANSACTION_ID**: $.context.transaction_id must be present in the payload`,
+                            description: `- **condition validate_attribute_6**: $.context.transaction_id must be present in the payload`,
                         },
                     ];
                 }
@@ -100,7 +100,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_MESSAGE_ID(
+        function validate_attribute_7(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -120,7 +120,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_MESSAGE_ID**: $.context.message_id must be present in the payload`,
+                            description: `- **condition validate_attribute_7**: $.context.message_id must be present in the payload`,
                         },
                     ];
                 }
@@ -129,7 +129,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_VERSION(
+        function validate_attribute_8(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -149,7 +149,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_VERSION**: $.context.version must be present in the payload`,
+                            description: `- **condition validate_attribute_8**: $.context.version must be present in the payload`,
                         },
                     ];
                 }
@@ -158,7 +158,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_BAP_URI(
+        function validate_attribute_10(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -178,7 +178,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_BAP_URI**: $.context.bap_uri must be present in the payload`,
+                            description: `- **condition validate_attribute_10**: $.context.bap_uri must be present in the payload`,
                         },
                     ];
                 }
@@ -187,7 +187,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Attri_Required__CONTEXT_TTL(
+        function validate_attribute_11(
             input: validationInput,
         ): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
@@ -204,7 +204,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Attri_Required__CONTEXT_TTL**: $.context.ttl must be present in the payload`,
+                            description: `- **condition validate_attribute_11**: $.context.ttl must be present in the payload`,
                         },
                     ];
                 }
@@ -213,9 +213,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required__CONTEXT_ACTION(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_1(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -236,10 +234,10 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required__CONTEXT_ACTION**: all of the following sub conditions must be met:
+                            description: `- **condition validate_enum_1**: all of the following sub conditions must be met:
 
-  - **condition Enum_Required__CONTEXT_ACTION.1**: every element of $.context.action must be in ["search"]
-  - **condition Enum_Required__CONTEXT_ACTION.2**: $.context.action must be present in the payload`,
+  - **condition validate_enum_1.1**: every element of $.context.action must be in ["search"]
+  - **condition validate_enum_1.2**: $.context.action must be present in the payload`,
                         },
                     ];
                 }
@@ -248,9 +246,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required_LOCATION_COUNTRY_CODE(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_2(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -271,10 +267,10 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required_LOCATION_COUNTRY_CODE**: all of the following sub conditions must be met:
+                            description: `- **condition validate_enum_2**: all of the following sub conditions must be met:
 
-  - **condition Enum_Required_LOCATION_COUNTRY_CODE.1**: every element of $.context.location.country.code must be in ["IND"]
-  - **condition Enum_Required_LOCATION_COUNTRY_CODE.2**: $.context.location.country.code must be present in the payload`,
+  - **condition validate_enum_2.1**: every element of $.context.location.country.code must be in ["IND"]
+  - **condition validate_enum_2.2**: $.context.location.country.code must be present in the payload`,
                         },
                     ];
                 }
@@ -283,9 +279,34 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required__CONTEXT_DOMAIN(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_3(input: validationInput): validationOutput {
+            const scope = payloadUtils.getJsonPath(input.payload, "$");
+            let subResults: validationOutput = [];
+            let valid = true;
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const enumPath = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.context.location.city.code",
+                );
+
+                const validate = validations.arePresent(enumPath);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            code: 30000,
+                            description: `- **condition validate_enum_3**: $.context.location.city.code must be present in the payload`,
+                        },
+                    ];
+                }
+
+                delete testObj._EXTERNAL;
+            }
+            return [{ valid: valid, code: 200 }, ...subResults];
+        }
+        function validate_enum_4(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -306,10 +327,10 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required__CONTEXT_DOMAIN**: all of the following sub conditions must be met:
+                            description: `- **condition validate_enum_4**: all of the following sub conditions must be met:
 
-  - **condition Enum_Required__CONTEXT_DOMAIN.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
-  - **condition Enum_Required__CONTEXT_DOMAIN.2**: $.context.domain must be present in the payload`,
+  - **condition validate_enum_4.1**: every element of $.context.domain must be in ["ONDC:TRV11"]
+  - **condition validate_enum_4.2**: $.context.domain must be present in the payload`,
                         },
                     ];
                 }
@@ -318,9 +339,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required_FULFILLMENT_VEHICLE_CATEGORY(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_5(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -341,10 +360,10 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required_FULFILLMENT_VEHICLE_CATEGORY**: all of the following sub conditions must be met:
+                            description: `- **condition validate_enum_5**: all of the following sub conditions must be met:
 
-  - **condition Enum_Required_FULFILLMENT_VEHICLE_CATEGORY.1**: every element of $.message.intent.fulfillment.vehicle.category must be in ["BUS", "METRO"]
-  - **condition Enum_Required_FULFILLMENT_VEHICLE_CATEGORY.2**: $.message.intent.fulfillment.vehicle.category must be present in the payload`,
+  - **condition validate_enum_5.1**: every element of $.message.intent.fulfillment.vehicle.category must be in ["BUS", "METRO"]
+  - **condition validate_enum_5.2**: $.message.intent.fulfillment.vehicle.category must be present in the payload`,
                         },
                     ];
                 }
@@ -353,9 +372,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required_INTENT_FULFILLMENT_TYPE(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_6(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -377,9 +394,9 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required_INTENT_FULFILLMENT_TYPE**: every element of $.message.intent.fulfillment.type must be in ["ROUTE", "TRIP"]
+                            description: `- **condition validate_enum_6**: every element of $.message.intent.fulfillment.type must be in ["ROUTE", "TRIP"]
 
-	> Note: **Condition Enum_Required_INTENT_FULFILLMENT_TYPE** can be skipped if the following conditions are met:
+	> Note: **Condition validate_enum_6** can be skipped if the following conditions are met:
 	>
 	> - **condition B**: $.message.intent.fulfillment.type must **not** be present in the payload`,
                         },
@@ -390,9 +407,47 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required_STOPS_AUTHORIZATION_TYPE(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_7(input: validationInput): validationOutput {
+            const scope = payloadUtils.getJsonPath(input.payload, "$");
+            let subResults: validationOutput = [];
+            let valid = true;
+            for (const testObj of scope) {
+                testObj._EXTERNAL = input.externalData;
+                const enumList = [
+                    "START",
+                    "END",
+                    "INTERMEDIATE_STOP",
+                    "TRANSIT_STOP",
+                ];
+                const enumPath = payloadUtils.getJsonPath(
+                    testObj,
+                    "$.message.intent.fulfillment.stops[*].type",
+                );
+
+                const skipCheck = !validations.arePresent(enumPath);
+                if (skipCheck) continue;
+
+                const validate = validations.allIn(enumPath, enumList);
+
+                if (!validate) {
+                    return [
+                        {
+                            valid: false,
+                            code: 30000,
+                            description: `- **condition validate_enum_7**: every element of $.message.intent.fulfillment.stops[*].type must be in ["START", "END", "INTERMEDIATE_STOP", "TRANSIT_STOP"]
+
+	> Note: **Condition validate_enum_7** can be skipped if the following conditions are met:
+	>
+	> - **condition B**: $.message.intent.fulfillment.stops[*].type must **not** be present in the payload`,
+                        },
+                    ];
+                }
+
+                delete testObj._EXTERNAL;
+            }
+            return [{ valid: valid, code: 200 }, ...subResults];
+        }
+        function validate_enum_8(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -414,9 +469,9 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required_STOPS_AUTHORIZATION_TYPE**: every element of $.message.intent.fulfillment.stops[*].authorization.type must be in ["QR"]
+                            description: `- **condition validate_enum_8**: every element of $.message.intent.fulfillment.stops[*].authorization.type must be in ["QR"]
 
-	> Note: **Condition Enum_Required_STOPS_AUTHORIZATION_TYPE** can be skipped if the following conditions are met:
+	> Note: **Condition validate_enum_8** can be skipped if the following conditions are met:
 	>
 	> - **condition B**: $.message.intent.fulfillment.stops[*].authorization.type must **not** be present in the payload`,
                         },
@@ -427,9 +482,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function Enum_Required_STOPS_AUTHORIZATION_STATUS(
-            input: validationInput,
-        ): validationOutput {
+        function validate_enum_9(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -451,9 +504,9 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition Enum_Required_STOPS_AUTHORIZATION_STATUS**: every element of $.message.intent.fulfillment.stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED"]
+                            description: `- **condition validate_enum_9**: every element of $.message.intent.fulfillment.stops[*].authorization.status must be in ["UNCLAIMED", "CLAIMED"]
 
-	> Note: **Condition Enum_Required_STOPS_AUTHORIZATION_STATUS** can be skipped if the following conditions are met:
+	> Note: **Condition validate_enum_9** can be skipped if the following conditions are met:
 	>
 	> - **condition B**: $.message.intent.fulfillment.stops[*].authorization.status must **not** be present in the payload`,
                         },
@@ -464,9 +517,7 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function BUYER_FINDER_FEES_Tag_Required_TAGS_DESCRIPTOR_CODE(
-            input: validationInput,
-        ): validationOutput {
+        function validate_tag_0(input: validationInput): validationOutput {
             const scope = payloadUtils.getJsonPath(input.payload, "$");
             let subResults: validationOutput = [];
             let valid = true;
@@ -488,9 +539,9 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition BUYER_FINDER_FEES_Tag_Required_TAGS_DESCRIPTOR_CODE**: every element of $.message.intent.payment.tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
+                            description: `- **condition validate_tag_0**: every element of $.message.intent.payment.tags[*].descriptor.code must be in ["BUYER_FINDER_FEES", "SETTLEMENT_TERMS"]
 
-	> Note: **Condition BUYER_FINDER_FEES_Tag_Required_TAGS_DESCRIPTOR_CODE** can be skipped if the following conditions are met:
+	> Note: **Condition validate_tag_0** can be skipped if the following conditions are met:
 	>
 	> - **condition B**: $.message.intent.payment.tags[*].descriptor.code must **not** be present in the payload`,
                         },
@@ -517,6 +568,7 @@ export default function search(input: validationInput): validationOutput {
                     "$.list[*].descriptor.code",
                 );
                 const validValues = [
+                    "BUYER_FINDER_FEES_TYPE",
                     "BUYER_FINDER_FEES_PERCENTAGE",
                     "BUYER_FINDER_FEES_AMOUNT",
                 ];
@@ -528,7 +580,7 @@ export default function search(input: validationInput): validationOutput {
                         {
                             valid: false,
                             code: 30000,
-                            description: `- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
+                            description: `- **condition validate_tag_0_BUYER_FINDER_FEES**: every element of $.message.intent.payment.tags[?(@.descriptor.code=='BUYER_FINDER_FEES')].list[*].descriptor.code must be in ["BUYER_FINDER_FEES_TYPE", "BUYER_FINDER_FEES_PERCENTAGE", "BUYER_FINDER_FEES_AMOUNT"]`,
                         },
                     ];
                 }
@@ -579,97 +631,27 @@ export default function search(input: validationInput): validationOutput {
             }
             return [{ valid: valid, code: 200 }, ...subResults];
         }
-        function PAGINATION_Tag_Required_TAGS_DESCRIPTOR_CODE(
-            input: validationInput,
-        ): validationOutput {
-            const scope = payloadUtils.getJsonPath(input.payload, "$");
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const validTags = ["PAGINATION"];
-                const tagPath = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.message.intent.tags[*].descriptor.code",
-                );
-
-                const skipCheck = !validations.arePresent(tagPath);
-                if (skipCheck) continue;
-
-                const validate = validations.allIn(tagPath, validTags);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition PAGINATION_Tag_Required_TAGS_DESCRIPTOR_CODE**: every element of $.message.intent.tags[*].descriptor.code must be in ["PAGINATION"]
-
-	> Note: **Condition PAGINATION_Tag_Required_TAGS_DESCRIPTOR_CODE** can be skipped if the following conditions are met:
-	>
-	> - **condition B**: $.message.intent.tags[*].descriptor.code must **not** be present in the payload`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
-        function validate_tag_1_PAGINATION(
-            input: validationInput,
-        ): validationOutput {
-            const scope = payloadUtils.getJsonPath(
-                input.payload,
-                "$.message.intent.tags[?(@.descriptor.code=='PAGINATION')]",
-            );
-            let subResults: validationOutput = [];
-            let valid = true;
-            for (const testObj of scope) {
-                testObj._EXTERNAL = input.externalData;
-                const subTags = payloadUtils.getJsonPath(
-                    testObj,
-                    "$.list[*].descriptor.code",
-                );
-                const validValues = ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"];
-
-                const validate = validations.allIn(subTags, validValues);
-
-                if (!validate) {
-                    return [
-                        {
-                            valid: false,
-                            code: 30000,
-                            description: `- **condition validate_tag_1_PAGINATION**: every element of $.message.intent.tags[?(@.descriptor.code=='PAGINATION')].list[*].descriptor.code must be in ["PAGINATION_ID", "REQUESTED_PAGE_NUMBER"]`,
-                        },
-                    ];
-                }
-
-                delete testObj._EXTERNAL;
-            }
-            return [{ valid: valid, code: 200 }, ...subResults];
-        }
 
         const testFunctions: testFunctionArray = [
-            Attri_Required__CONTEXT_TIMESTAMP,
-            Attri_Required__CONTEXT_BAP_ID,
-            Attri_Required__CONTEXT_TRANSACTION_ID,
-            Attri_Required__CONTEXT_MESSAGE_ID,
-            Attri_Required__CONTEXT_VERSION,
-            Attri_Required__CONTEXT_BAP_URI,
-            Attri_Required__CONTEXT_TTL,
-            Enum_Required__CONTEXT_ACTION,
-            Enum_Required_LOCATION_COUNTRY_CODE,
-            Enum_Required__CONTEXT_DOMAIN,
-            Enum_Required_FULFILLMENT_VEHICLE_CATEGORY,
-            Enum_Required_INTENT_FULFILLMENT_TYPE,
-            Enum_Required_STOPS_AUTHORIZATION_TYPE,
-            Enum_Required_STOPS_AUTHORIZATION_STATUS,
-            BUYER_FINDER_FEES_Tag_Required_TAGS_DESCRIPTOR_CODE,
+            validate_attribute_4,
+            validate_attribute_5,
+            validate_attribute_6,
+            validate_attribute_7,
+            validate_attribute_8,
+            validate_attribute_10,
+            validate_attribute_11,
+            validate_enum_1,
+            validate_enum_2,
+            validate_enum_3,
+            validate_enum_4,
+            validate_enum_5,
+            validate_enum_6,
+            validate_enum_7,
+            validate_enum_8,
+            validate_enum_9,
+            validate_tag_0,
             validate_tag_0_BUYER_FINDER_FEES,
             validate_tag_0_SETTLEMENT_TERMS,
-            PAGINATION_Tag_Required_TAGS_DESCRIPTOR_CODE,
-            validate_tag_1_PAGINATION,
         ];
 
         let invalidResults: validationOutput = [];
