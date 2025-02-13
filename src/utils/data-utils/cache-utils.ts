@@ -66,5 +66,4 @@ export async function loadData(subscriberUrl: string) {
 		return JSON.parse(data ?? "{}") as SessionData;
 	}
 	return undefined;
-	// throw new Error("session ID not found " + subscriberUrl);
 }
