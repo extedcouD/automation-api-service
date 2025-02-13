@@ -7,6 +7,7 @@ import {
 } from "../services/session-service-rewrite";
 import logger from "../utils/logger";
 import { setInternalServerNack } from "../utils/ackUtils";
+import { saveLog } from "../utils/data-utils/cache-utils";
 
 export class SessionController {
 	sessionService: SessionManagementService;
@@ -29,6 +30,12 @@ export class SessionController {
 			sub.partType
 		);
 		req.requestProperties = properties;
+
+		properties.sessionId &&
+			saveLog(
+				properties.sessionId,
+				`Received ${action} with Transaction ID: ${properties.transactionId}`
+			);
 		next();
 	};
 
@@ -54,6 +61,11 @@ export class SessionController {
 			flowID
 		);
 		req.requestProperties = properties;
+		req.requestProperties.sessionId &&
+			saveLog(
+				req.requestProperties.sessionId,
+				`Received Mock ${action} with Transaction ID: ${properties.transactionId}`
+			);
 		next();
 	};
 

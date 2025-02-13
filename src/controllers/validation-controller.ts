@@ -12,6 +12,7 @@ import { isHeaderValid } from "ondc-crypto-sdk-nodejs";
 import { DataService } from "../services/data-service";
 import { computeSubscriberUri } from "../utils/subscriber-utils";
 import { ApiServiceRequest } from "../types/request-types";
+import { saveLog } from "../utils/data-utils/cache-utils";
 
 export class ValidationController {
 	validateRequestBodyNp = async (
@@ -119,14 +120,18 @@ export class ValidationController {
 
 	// Middleware: L0 validations
 	validateL0(req: Request, res: Response, next: NextFunction) {
+		const sessionId = (req as ApiServiceRequest).requestProperties?.sessionId ?? 'unknown';
 		const { action } = req.params;
 		const body = req.body;
 
+		saveLog(sessionId, 'Starting L0 validations');
 		const l0Result = performL0Validations(body, action);
 		if (!l0Result.valid) {
+			saveLog(sessionId, `L0 validation failed: ${l0Result.errors}`, 'error');
 			res.status(200).send(setAckResponse(false, l0Result.errors, "400"));
 			return;
 		}
+		saveLog(sessionId, 'L0 validations passed successfully');
 		logger.info("L0 validations passed");
 		next();
 	}
@@ -139,6 +144,7 @@ export class ValidationController {
 	) => {
 		const { action } = req.params;
 		const body = req.body;
+		const sessionId = (req as ApiServiceRequest).requestProperties?.sessionId ?? 'unknown';
 		if (
 			req.requestProperties &&
 			!req.requestProperties.difficulty.protocolValidations
@@ -157,9 +163,11 @@ export class ValidationController {
 		if (invalidResult.length > 0) {
 			const error = invalidResult[0].description + extraMessage;
 			const code = invalidResult[0].code as number;
+			await saveLog(sessionId, `L1 validation failed: ${error}`, 'error');
 			res.status(200).send(setAckResponse(false, error, code.toString()));
 			return;
 		}
+		await saveLog(sessionId, 'L1 validations passed successfully');
 		logger.info("L1 validations passed");
 		next();
 	};
