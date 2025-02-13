@@ -68,22 +68,26 @@ export async function loadData(subscriberUrl: string) {
 	return undefined;
 }
 
-export async function saveLog(sessionId: string, message: string, level: 'info' | 'error' | 'debug' = 'info') {
+export async function saveLog(
+	sessionId: string,
+	message: string,
+	level: "info" | "error" | "debug" = "info"
+) {
 	try {
 		const timestamp = new Date().toISOString();
 		const logEntry = {
 			timestamp,
 			level,
-			message
+			message,
 		};
 
 		// Get existing logs array or create new one
 		let logs = [];
 		const key = `consoleLogs:${sessionId}`;
-		
+
 		if (await RedisService.keyExists(key)) {
 			const existingLogs = await RedisService.getKey(key);
-			logs = JSON.parse(existingLogs ?? '[]');
+			logs = JSON.parse(existingLogs ?? "[]");
 		}
 
 		// Add new log entry
@@ -91,9 +95,8 @@ export async function saveLog(sessionId: string, message: string, level: 'info' 
 
 		// Store updated logs
 		await RedisService.setKey(key, JSON.stringify(logs));
-
 	} catch (error) {
-		logger.error('Error saving log to Redis:', error);
+		logger.error("Error saving log to Redis:", error);
 	}
 }
 
@@ -101,29 +104,27 @@ export async function getLogs(sessionId: string) {
 	try {
 		const key = `consoleLogs:${sessionId}`;
 		const logs = await RedisService.getKey(key);
-		return JSON.parse(logs ?? '[]');
+		return JSON.parse(logs ?? "[]");
 	} catch (error) {
-		logger.error('Error getting logs from Redis:', error);
+		logger.error("Error getting logs from Redis:", error);
 		return [];
 	}
 }
 
 export async function demoLogFunctionality() {
-	const testTransactionId = 'demo-transaction-' + Date.now();
-	
+	const testTransactionId = "demo-transaction-" + Date.now();
+
 	// Test saving different log levels
-	await saveLog(testTransactionId, 'Starting demo test', 'info');
-	await saveLog(testTransactionId, 'This is a debug message', 'debug');
-	await saveLog(testTransactionId, 'This is an error message', 'error');
-	
+	await saveLog(testTransactionId, "Starting demo test", "info");
+	await saveLog(testTransactionId, "This is a debug message", "debug");
+	await saveLog(testTransactionId, "This is an error message", "error");
+
 	// Small delay to ensure logs are saved
-	await new Promise(resolve => setTimeout(resolve, 100));
-	
+	await new Promise((resolve) => setTimeout(resolve, 100));
+
 	// Retrieve and print logs
 	const logs = await getLogs(testTransactionId);
-	console.log('Retrieved logs:', JSON.stringify(logs, null, 2));
-	
+	console.log("Retrieved logs:", JSON.stringify(logs, null, 2));
+
 	return logs;
 }
-
-

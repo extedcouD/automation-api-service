@@ -9,8 +9,6 @@ import {
 	TransactionCache,
 } from "../../types/cache-types";
 
-import logger from "../logger";
-
 export function validateAsyncContext(
 	subject: BecknContext,
 	transactionData: TransactionCache,
