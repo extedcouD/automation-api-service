@@ -763,24 +763,6 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
-<li><p><strong>condition Attri_Required_10_DESCRIPTOR_NAME</strong>: $.message.catalog.descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_11_PROVIDERS_ID</strong>: $.message.catalog.providers[*].id must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_12_DESCRIPTOR_NAME</strong>: $.message.catalog.providers[*].descriptor.name must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_13_FULFILLMENTS_ID</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_14_LOCATION_GPS</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].stops[*].location.gps must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_15_FULFILLMENTS_ID</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_16_CATEGORIES_ID</strong>: $.message.catalog.providers[<em>].categories[</em>].id must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_17_RANGE_START</strong>: $.message.catalog.providers[*].time.range.start must be present in the payload</p>
-</li>
-<li><p><strong>condition Attri_Required_18_RANGE_END</strong>: $.message.catalog.providers[*].time.range.end must be present in the payload</p>
-</li>
 <li><p><strong>condition Enum_Required_19_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
 <ul>
 <li><strong>condition Enum_Required_19_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_search&quot;]</li>
@@ -804,6 +786,26 @@
 <li><strong>condition Enum_Required_22_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
 <li><strong>condition Enum_Required_22_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
 </ul>
+</li>
+<li><p><strong>on_search_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
+<li><p><strong>condition Attri_Required_10_DESCRIPTOR_NAME</strong>: $.message.catalog.descriptor.name must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_11_PROVIDERS_ID</strong>: $.message.catalog.providers[*].id must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_12_DESCRIPTOR_NAME</strong>: $.message.catalog.providers[*].descriptor.name must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_13_FULFILLMENTS_ID</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_14_LOCATION_GPS</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].stops[*].location.gps must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_15_FULFILLMENTS_ID</strong>: $.message.catalog.providers[<em>].fulfillments[</em>].id must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_16_CATEGORIES_ID</strong>: $.message.catalog.providers[<em>].categories[</em>].id must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_17_RANGE_START</strong>: $.message.catalog.providers[*].time.range.start must be present in the payload</p>
+</li>
+<li><p><strong>condition Attri_Required_18_RANGE_END</strong>: $.message.catalog.providers[*].time.range.end must be present in the payload</p>
 </li>
 <li><p><strong>condition Enum_Required_23_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -925,6 +927,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_select</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -945,6 +949,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_33_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_33_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_select&quot;]</li>
+<li><strong>condition Enum_Required_33_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_34_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_34_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_34_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_35_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_35_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_35_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_36_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_36_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_36_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_select_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ITEMS_ID</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_PRICE_CURRENCY</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
@@ -990,30 +1020,6 @@
 <li><p><strong>condition Attri_Required_31_EXTERNAL_REF_URL</strong>: $.message.order.cancellation_terms[*].external_ref.url must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_32_EXTERNAL_REF_MIMETYPE</strong>: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_33_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_33_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_select&quot;]</li>
-<li><strong>condition Enum_Required_33_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_34_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_34_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_34_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_35_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_35_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_35_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_36_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_36_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_36_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_37_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -1097,6 +1103,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_init</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -1117,6 +1125,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_34_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_34_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_init&quot;]</li>
+<li><strong>condition Enum_Required_34_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_35_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_35_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_35_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_36_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_36_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_36_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_37_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_37_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_37_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_init_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ITEMS_ID</strong>: $.message.order.items[*].id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_PRICE_CURRENCY</strong>: $.message.order.items[*].price.currency must be present in the payload</p>
@@ -1164,30 +1198,6 @@
 <li><p><strong>condition Attri_Required_32_EXTERNAL_REF_URL</strong>: $.message.order.cancellation_terms[*].external_ref.url must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_33_EXTERNAL_REF_MIMETYPE</strong>: $.message.order.cancellation_terms[*].external_ref.mimetype must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_34_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_34_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_init&quot;]</li>
-<li><strong>condition Enum_Required_34_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_35_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_35_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_35_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_36_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_36_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_36_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_37_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_37_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_37_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_38_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -1293,6 +1303,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_confirm</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -1313,6 +1325,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_43_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_43_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_confirm&quot;]</li>
+<li><strong>condition Enum_Required_43_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_44_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_44_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_44_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_45_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_45_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_45_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_46_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_confirm_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ORDER_ID</strong>: $.message.order.id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_ITEMS_ID</strong>: $.message.order.items[*].id must be present in the payload</p>
@@ -1378,30 +1416,6 @@
 <li><p><strong>condition Attri_Required_41_ORDER_CREATED_AT</strong>: $.message.order.created_at must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_42_ORDER_UPDATED_AT</strong>: $.message.order.updated_at must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_43_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_43_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_confirm&quot;]</li>
-<li><strong>condition Enum_Required_43_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_44_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_44_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_44_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_45_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_45_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_45_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_46_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_47_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -1507,6 +1521,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_cancel</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -1527,6 +1543,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_38_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_38_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</li>
+<li><strong>condition Enum_Required_38_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_39_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_39_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_39_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_40_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_40_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_40_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_41_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_41_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_41_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_cancel_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ORDER_ID</strong>: $.message.order.id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_ORDER_STATUS</strong>: $.message.order.status must be present in the payload</p>
@@ -1582,30 +1624,6 @@
 <li><p><strong>condition Attri_Required_36_CANCELLATION_CANCELLED_BY</strong>: $.message.order.cancellation.cancelled_by must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_37_CANCELLATION_TIME</strong>: $.message.order.cancellation.time must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_38_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_38_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</li>
-<li><strong>condition Enum_Required_38_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_39_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_39_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_39_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_40_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_40_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_40_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_41_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_41_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_41_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_42_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -1711,6 +1729,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_update</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -1731,6 +1751,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_39_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_39_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</li>
+<li><strong>condition Enum_Required_39_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_40_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_40_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_40_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_41_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_41_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_41_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_42_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_42_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_42_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_update_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ORDER_ID</strong>: $.message.order.id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_ITEMS_ID</strong>: $.message.order.items[*].id must be present in the payload</p>
@@ -1788,30 +1834,6 @@
 <li><p><strong>condition Attri_Required_37_PARAMS_AMOUNT</strong>: $.message.order.payments[*].params.amount must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_38_CANCEL_BY_DURATION</strong>: $.message.order.cancellation_terms[*].cancel_by.duration must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_39_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_39_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_cancel&quot;]</li>
-<li><strong>condition Enum_Required_39_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_40_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_40_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_40_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_41_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_41_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_41_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_42_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_42_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_42_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_43_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -1903,6 +1925,8 @@
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p><strong>on_status</strong> : All the following sub conditions must pass as per the api requirement</p>
 <ul>
 <li><p><strong>condition Attri_Required_1_CONTEXT_TIMESTAMP</strong>: $.context.timestamp must be present in the payload</p>
@@ -1923,6 +1947,32 @@
 </li>
 <li><p><strong>condition Attri_Required_9_CONTEXT_BPP_URI</strong>: $.context.bpp_uri must be present in the payload</p>
 </li>
+<li><p><strong>condition Enum_Required_43_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_43_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_status&quot;]</li>
+<li><strong>condition Enum_Required_43_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_44_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_44_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
+<li><strong>condition Enum_Required_44_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_45_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_45_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
+<li><strong>condition Enum_Required_45_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>condition Enum_Required_46_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
+<ul>
+<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
+<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
+</ul>
+</li>
+<li><p><strong>on_status_Message_TESTS</strong> : All the following sub conditions must pass as per the api requirement</p>
+<ul>
 <li><p><strong>condition Attri_Required_10_ORDER_ID</strong>: $.message.order.id must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_11_ORDER_STATUS</strong>: $.message.order.status must be present in the payload</p>
@@ -1988,30 +2038,6 @@
 <li><p><strong>condition Attri_Required_41_ORDER_CREATED_AT</strong>: $.message.order.created_at must be present in the payload</p>
 </li>
 <li><p><strong>condition Attri_Required_42_ORDER_UPDATED_AT</strong>: $.message.order.updated_at must be present in the payload</p>
-</li>
-<li><p><strong>condition Enum_Required_43_CONTEXT_ACTION</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_43_CONTEXT_ACTION.1</strong>: every element of $.context.action must be in [&quot;on_status&quot;]</li>
-<li><strong>condition Enum_Required_43_CONTEXT_ACTION.2</strong>: $.context.action must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_44_COUNTRY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_44_COUNTRY_CODE.1</strong>: every element of $.context.location.country.code must be in [&quot;IND&quot;]</li>
-<li><strong>condition Enum_Required_44_COUNTRY_CODE.2</strong>: $.context.location.country.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_45_CITY_CODE</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_45_CITY_CODE.1</strong>: every element of $.context.location.city.code must be in [&quot;std:080&quot;]</li>
-<li><strong>condition Enum_Required_45_CITY_CODE.2</strong>: $.context.location.city.code must be present in the payload</li>
-</ul>
-</li>
-<li><p><strong>condition Enum_Required_46_CONTEXT_DOMAIN</strong>: all of the following sub conditions must be met:</p>
-<ul>
-<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.1</strong>: every element of $.context.domain must be in [&quot;ONDC:TRV11&quot;]</li>
-<li><strong>condition Enum_Required_46_CONTEXT_DOMAIN.2</strong>: $.context.domain must be present in the payload</li>
-</ul>
 </li>
 <li><p><strong>condition Enum_Required_47_DESCRIPTOR_CODE</strong>: all of the following sub conditions must be met:</p>
 <ul>
@@ -2116,6 +2142,8 @@
 <li><p><strong>condition validate_tag_2_BUYER_FINDER_FEES</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;BUYER_FINDER_FEES&#39;)].list[</em>].descriptor.code must be in [&quot;BUYER_FINDER_FEES_TYPE&quot;, &quot;BUYER_FINDER_FEES_PERCENTAGE&quot;, &quot;BUYER_FINDER_FEES_AMOUNT&quot;]</p>
 </li>
 <li><p><strong>condition validate_tag_2_SETTLEMENT_TERMS</strong>: every element of $.message.order.payments[<em>].tags[?(@.descriptor.code==&#39;SETTLEMENT_TERMS&#39;)].list[</em>].descriptor.code must be in [&quot;SETTLEMENT_WINDOW&quot;, &quot;SETTLEMENT_BASIS&quot;, &quot;SETTLEMENT_TYPE&quot;, &quot;MANDATORY_ARBITRATION&quot;, &quot;COURT_JURISDICTION&quot;, &quot;DELAY_INTEREST&quot;, &quot;STATIC_TERMS&quot;, &quot;SETTLEMENT_AMOUNT&quot;]</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
