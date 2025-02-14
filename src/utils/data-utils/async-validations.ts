@@ -51,8 +51,7 @@ export function validateAsyncContext(
 			return {
 				valid: false,
 				error: `message_id mismatch between ${predecessorName} and ${subjectAction}
-                expected ${predecessor.messageId} but found ${subject.message_id}
-                `,
+                expected ${predecessor.messageId} but found ${subject.message_id}`,
 			};
 		}
 		const filteredContexts = sortedContexts
