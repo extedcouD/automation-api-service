@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express, { NextFunction, Response } from "express";
 import { CommunicationController } from "../controllers/communication-controller";
 import { DataController } from "../controllers/data-controller";
 import { ValidationController } from "../controllers/validation-controller";
